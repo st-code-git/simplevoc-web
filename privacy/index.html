@@ -3,368 +3,546 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacy Policy – SimpleVoc</title>
+  <title>Privacy Policy / Datenschutzerklärung – SimpleVoc</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: #f7f8fa;
-      color: #1a1d23;
-      line-height: 1.7;
-      font-size: 16px;
+      background: #f7f8fa; color: #1a1d23; line-height: 1.7; font-size: 16px;
     }
-
     header {
-      background: #0a0e1a;
-      color: #fff;
-      padding: 40px 24px 32px;
-      text-align: center;
+      background: #0a0e1a; color: #fff;
+      padding: 32px 24px 28px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px;
     }
-
-    header .logo {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 12px;
-      text-decoration: none;
+    .header-left { display: flex; align-items: center; gap: 12px; }
+    .logo-icon {
+      width: 40px; height: 40px; background: rgba(29,180,255,.15);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;
     }
-
-    header .logo-icon {
-      width: 40px;
-      height: 40px;
-      background: rgba(29, 180, 255, 0.15);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
+    .header-left h1 { font-size: 1.1rem; font-weight: 700; color: #fff; }
+    .header-left p { font-size: 0.82rem; color: #8a9bb5; }
+    .lang-switcher { display: flex; gap: 6px; }
+    .lang-btn {
+      padding: 6px 14px; border-radius: 20px; border: 1.5px solid #2a3550;
+      background: transparent; color: #8a9bb5; font-size: 0.82rem; font-weight: 600;
+      cursor: pointer; transition: all 0.15s;
     }
-
-    header h1 {
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: #fff;
-      letter-spacing: 0.3px;
-    }
-
-    header p {
-      color: #8a9bb5;
-      font-size: 0.9rem;
-    }
-
-    main {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 40px 24px 80px;
-    }
-
-    .page-title {
-      font-size: 1.9rem;
-      font-weight: 700;
-      color: #0a0e1a;
-      margin-bottom: 6px;
-    }
-
-    .updated {
-      color: #6b7a90;
-      font-size: 0.875rem;
-      margin-bottom: 36px;
-    }
-
+    .lang-btn.active { background: #1db4ff; border-color: #1db4ff; color: #fff; }
+    main { max-width: 780px; margin: 0 auto; padding: 40px 24px 80px; }
+    .page-title { font-size: 1.9rem; font-weight: 700; color: #0a0e1a; margin-bottom: 6px; }
+    .updated { color: #6b7a90; font-size: 0.875rem; margin-bottom: 36px; }
     .intro {
-      background: #fff;
-      border: 1px solid #e3e8f0;
-      border-radius: 12px;
-      padding: 22px 24px;
-      margin-bottom: 36px;
-      color: #3a4455;
+      background: #fff; border: 1px solid #e3e8f0; border-radius: 12px;
+      padding: 20px 24px; margin-bottom: 36px; color: #3a4455; font-size: 0.95rem;
     }
-
-    section {
-      margin-bottom: 36px;
-    }
-
+    section { margin-bottom: 32px; }
     h2 {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: #0a0e1a;
-      margin-bottom: 14px;
-      padding-bottom: 8px;
-      border-bottom: 2px solid #e3e8f0;
+      font-size: 1.1rem; font-weight: 700; color: #0a0e1a;
+      margin-bottom: 12px; padding-bottom: 8px; border-bottom: 2px solid #e3e8f0;
     }
-
-    p { margin-bottom: 12px; color: #3a4455; }
+    p { margin-bottom: 10px; color: #3a4455; font-size: 0.95rem; }
     p:last-child { margin-bottom: 0; }
-
-    ul, ol {
-      padding-left: 20px;
-      margin-bottom: 12px;
-      color: #3a4455;
-    }
-
-    li { margin-bottom: 6px; }
-
-    .data-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 12px;
-      font-size: 0.9rem;
-    }
-
-    .data-table th {
-      background: #f0f3f8;
-      padding: 10px 14px;
-      text-align: left;
-      font-weight: 600;
-      color: #1a1d23;
-      border: 1px solid #dde2ec;
-    }
-
-    .data-table td {
-      padding: 10px 14px;
-      border: 1px solid #dde2ec;
-      color: #3a4455;
-      vertical-align: top;
-    }
-
-    .data-table tr:nth-child(even) td { background: #f7f8fa; }
-
-    .pill {
-      display: inline-block;
-      background: rgba(29, 180, 255, 0.1);
-      color: #0d8fd4;
-      border-radius: 4px;
-      padding: 1px 7px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      white-space: nowrap;
-    }
-
-    .pill.green {
-      background: rgba(34, 211, 165, 0.1);
-      color: #14957a;
-    }
-
-    .contact-box {
-      background: #fff;
-      border: 1px solid #e3e8f0;
-      border-radius: 12px;
-      padding: 22px 24px;
-    }
-
-    .contact-box a {
-      color: #1db4ff;
-      text-decoration: none;
-    }
-
-    .contact-box a:hover { text-decoration: underline; }
-
+    ul, ol { padding-left: 20px; margin-bottom: 10px; color: #3a4455; font-size: 0.95rem; }
+    li { margin-bottom: 5px; }
     strong { color: #1a1d23; }
-
+    a { color: #1db4ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .data-table { width: 100%; border-collapse: collapse; margin-bottom: 12px; font-size: 0.875rem; }
+    .data-table th {
+      background: #f0f3f8; padding: 9px 12px; text-align: left;
+      font-weight: 600; color: #1a1d23; border: 1px solid #dde2ec;
+    }
+    .data-table td { padding: 9px 12px; border: 1px solid #dde2ec; color: #3a4455; vertical-align: top; }
+    .data-table tr:nth-child(even) td { background: #f7f8fa; }
+    .basis-tag {
+      display: inline-block; background: rgba(29,180,255,.1); color: #0d8fd4;
+      border-radius: 4px; padding: 1px 6px; font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+    }
+    .card { background: #fff; border: 1px solid #e3e8f0; border-radius: 12px; padding: 20px 24px; }
+    .card p { font-size: 0.95rem; }
+    .rights-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .right-item {
+      background: #fff; border: 1px solid #e3e8f0; border-radius: 10px;
+      padding: 14px 16px;
+    }
+    .right-item strong { font-size: 0.875rem; display: block; margin-bottom: 2px; }
+    .right-item span { font-size: 0.82rem; color: #6b7a90; }
+    .footer-links { margin-top: 48px; padding-top: 24px; border-top: 1px solid #e3e8f0; display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer-links a { color: #6b7a90; font-size: 0.875rem; }
+    .footer-links a:hover { color: #1db4ff; }
     @media (max-width: 600px) {
       .page-title { font-size: 1.5rem; }
-      .data-table { font-size: 0.82rem; }
-      .data-table th, .data-table td { padding: 8px 10px; }
+      .data-table { font-size: 0.8rem; }
+      .data-table th, .data-table td { padding: 7px 8px; }
+      .rights-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
 <header>
-  <div class="logo">
+  <div class="header-left">
     <div class="logo-icon">🌐</div>
-    <h1>SimpleVoc</h1>
+    <div>
+      <h1>SimpleVoc</h1>
+      <p>Vocabulary learning with speech recognition</p>
+    </div>
   </div>
-  <p>Vocabulary learning with speech recognition</p>
+  <div class="lang-switcher">
+    <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" id="btn-de" onclick="setLang('de')">DE</button>
+  </div>
 </header>
 
+<!-- ═══════════════════════════ ENGLISH ═══════════════════════════ -->
+<div id="content-en">
 <main>
   <h1 class="page-title">Privacy Policy</h1>
-  <p class="updated">Last updated: May 13, 2026</p>
+  <p class="updated">Last updated: May 2026</p>
 
   <div class="intro">
-    SimpleVoc is a vocabulary learning app that uses your voice to capture words and sentences, translates them using AI, and helps you memorise them through spaced repetition. This policy explains what data we collect, why, and how it is protected.
+    SimpleVoc is a vocabulary learning app that uses your voice to capture words and sentences, translates them using AI, and helps you memorise them through spaced repetition. This policy explains what personal data we process, on what legal basis, and what rights you have.
   </div>
 
-  <!-- 1. Data we collect -->
   <section>
-    <h2>1. Data We Collect</h2>
+    <h2>1. Who Is Responsible</h2>
+    <div class="card">
+      <p><strong>Stefan Lehner</strong><br>
+      [Address]<br>
+      Email: <a href="mailto:privacy@simplevoc.de">privacy@simplevoc.de</a></p>
+    </div>
+  </section>
 
+  <section>
+    <h2>2. Data We Process and Why</h2>
     <table class="data-table">
       <thead>
-        <tr>
-          <th>Data</th>
-          <th>Why we collect it</th>
-          <th>Stored</th>
-        </tr>
+        <tr><th>Data</th><th>Purpose</th><th>Legal basis</th></tr>
       </thead>
       <tbody>
         <tr>
-          <td><strong>Email address</strong></td>
-          <td>Account identification and sign-in</td>
-          <td><span class="pill">Firebase Auth</span></td>
-        </tr>
-        <tr>
-          <td><strong>Display name</strong> (Google / Apple account)</td>
-          <td>Shown in the app interface</td>
-          <td><span class="pill">Firebase Auth</span></td>
+          <td><strong>Email address, display name</strong></td>
+          <td>Account creation and sign-in</td>
+          <td><span class="basis-tag">Art. 6(1)(b) GDPR</span></td>
         </tr>
         <tr>
           <td><strong>Vocabulary entries</strong> (words, sentences, translations)</td>
-          <td>Core app content — your personal vocabulary collection</td>
-          <td><span class="pill">On device</span> <span class="pill">Firestore</span></td>
+          <td>Core service — your personal vocabulary collection</td>
+          <td><span class="basis-tag">Art. 6(1)(b) GDPR</span></td>
         </tr>
         <tr>
           <td><strong>App settings</strong> (language preferences)</td>
-          <td>Remembering your language configuration</td>
-          <td><span class="pill">On device</span> <span class="pill">Firestore</span></td>
+          <td>Providing a personalised experience</td>
+          <td><span class="basis-tag">Art. 6(1)(b) GDPR</span></td>
         </tr>
         <tr>
           <td><strong>Usage count</strong> (number of words added)</td>
           <td>Enforcing free-tier limits and premium entitlements</td>
-          <td><span class="pill">Firestore</span></td>
+          <td><span class="basis-tag">Art. 6(1)(b) GDPR</span></td>
         </tr>
         <tr>
-          <td><strong>Voice audio</strong></td>
-          <td>Converted to text on-device by iOS speech recognition. The resulting <em>text</em> is sent to our AI service. Raw audio is never transmitted or stored.</td>
-          <td><span class="pill green">On device only</span></td>
-        </tr>
-        <tr>
-          <td><strong>Spoken text</strong></td>
-          <td>Sent to Google Gemini API for word extraction and translation</td>
-          <td><span class="pill">Google Gemini</span></td>
+          <td><strong>Spoken text</strong> (after on-device speech-to-text)</td>
+          <td>AI word extraction and translation via Gemini API</td>
+          <td><span class="basis-tag">Art. 6(1)(b) GDPR</span></td>
         </tr>
         <tr>
           <td><strong>Purchase &amp; subscription status</strong></td>
           <td>Verifying premium access</td>
-          <td><span class="pill">RevenueCat</span></td>
+          <td><span class="basis-tag">Art. 6(1)(b) GDPR</span></td>
         </tr>
         <tr>
           <td><strong>Anonymous device identifier</strong></td>
-          <td>Quota tracking before sign-in</td>
-          <td><span class="pill">On device</span> <span class="pill">Firestore</span></td>
+          <td>Quota tracking before sign-in; preventing abuse</td>
+          <td><span class="basis-tag">Art. 6(1)(f) GDPR</span></td>
+        </tr>
+        <tr>
+          <td><strong>Device attestation data</strong> (App Check)</td>
+          <td>Verifying requests come from the genuine app; fraud prevention</td>
+          <td><span class="basis-tag">Art. 6(1)(f) GDPR</span></td>
         </tr>
       </tbody>
     </table>
-
-    <p>We do <strong>not</strong> collect location data, contacts, browsing history, or any data unrelated to vocabulary learning.</p>
+    <p>We do <strong>not</strong> collect location data, contacts, browsing history, or advertising identifiers. We do <strong>not</strong> use your data for advertising.</p>
   </section>
 
-  <!-- 2. How we use your data -->
   <section>
-    <h2>2. How We Use Your Data</h2>
+    <h2>3. Account &amp; Authentication</h2>
+    <p>You can sign in using <strong>Google Sign-In</strong> or <strong>Sign in with Apple</strong>. When you use a social sign-in, the respective provider shares your email address and display name with us. You can also sign in with a magic link sent to your email address.</p>
+    <p>All authentication is handled by <strong>Firebase Authentication</strong> (Google LLC). Legal basis: Art. 6(1)(b) GDPR — necessary to perform the service contract.</p>
+  </section>
+
+  <section>
+    <h2>4. AI Processing (Gemini API)</h2>
+    <p>When you speak a word or sentence, your device converts your voice to text locally using iOS speech recognition. This text is then sent to our backend (Firebase Cloud Functions), which forwards it to <strong>Google Gemini API</strong> for word extraction and translation.</p>
+    <p><strong>Important:</strong> Please do not include sensitive personal data (names, addresses, health information, or identification numbers) in vocabulary you record. The app is designed for learning words and sentences, not for storing personal documents.</p>
+    <p>Google has committed contractually not to use submitted data to train its AI models. Processing takes place in Google's infrastructure, predominantly within the EU/EEA. For transfers outside the EU/EEA, Google relies on Standard Contractual Clauses (SCCs) approved by the European Commission. Legal basis: Art. 6(1)(b) GDPR.</p>
+  </section>
+
+  <section>
+    <h2>5. Subscriptions &amp; In-App Purchases</h2>
+    <p>Premium subscriptions are managed by <strong>RevenueCat, Inc.</strong> RevenueCat receives anonymised user identifiers, purchase history, and subscription status. It does <strong>not</strong> receive direct payment information — payment is processed entirely by Apple (App Store) or Google (Play Store).</p>
+    <p>Legal basis: Art. 6(1)(b) GDPR for contract performance; Art. 6(1)(c) GDPR for legal retention obligations.</p>
+  </section>
+
+  <section>
+    <h2>6. Device Permissions</h2>
+    <p>SimpleVoc requests the following device permissions:</p>
     <ul>
-      <li><strong>Providing the service</strong> — saving and syncing your vocabulary across devices, delivering translations via AI, running spaced-repetition learning sessions.</li>
-      <li><strong>Account management</strong> — authenticating you, managing your subscription status.</li>
-      <li><strong>Improving the shared dictionary</strong> — anonymised word frequency data (not linked to your account) is aggregated to improve translation quality for all users.</li>
-      <li><strong>Service integrity</strong> — Firebase App Check verifies that requests originate from legitimate app installations, protecting against abuse.</li>
+      <li><strong>Microphone</strong> — to record your voice for vocabulary capture. Audio is processed on-device by iOS speech recognition; raw audio is never transmitted or stored.</li>
+      <li><strong>Speech Recognition</strong> — iOS converts your spoken words to text on-device before any data leaves your device.</li>
     </ul>
-    <p>We do <strong>not</strong> sell your data. We do <strong>not</strong> use your data for advertising.</p>
+    <p>You can revoke these permissions at any time in your device system settings. Legal basis: Art. 6(1)(a) GDPR — your consent via the system permission dialog.</p>
   </section>
 
-  <!-- 3. Third-party services -->
   <section>
-    <h2>3. Third-Party Services</h2>
-    <p>SimpleVoc uses the following third-party services. Each has its own privacy policy.</p>
+    <h2>7. Firebase App Check</h2>
+    <p>We use <strong>Firebase App Check</strong> to verify that requests to our backend originate from the genuine SimpleVoc app and not from bots or abusive scripts. On iOS, this uses Apple's DeviceCheck/App Attest framework; on Android, Google Play Integrity. These services attest device authenticity without identifying you personally. Legal basis: Art. 6(1)(f) GDPR — our legitimate interest in securing the service.</p>
+  </section>
 
+  <section>
+    <h2>8. Data Storage &amp; Infrastructure</h2>
+    <p>Your vocabulary data is stored in two places:</p>
+    <ul>
+      <li><strong>On your device</strong> — in a local database (Sembast) that works without an internet connection.</li>
+      <li><strong>Google Firestore</strong> — in the <strong>europe-west1</strong> region (Frankfurt, Germany), encrypted at rest and in transit.</li>
+    </ul>
+    <p>Backend logic runs on <strong>Google Cloud Functions</strong> and <strong>Google Cloud Run</strong>, also in europe-west1. All data transmission uses TLS encryption.</p>
+  </section>
+
+  <section>
+    <h2>9. International Data Transfers</h2>
+    <p>Most processing takes place within the EU/EEA (europe-west1). However, some third-party service providers are based in the United States:</p>
+    <ul>
+      <li><strong>Google LLC</strong> (Firebase, Gemini API) — EU–US Data Privacy Framework (adequacy decision) and Standard Contractual Clauses</li>
+      <li><strong>Apple Inc.</strong> (Sign in with Apple, App Attest) — Standard Contractual Clauses</li>
+      <li><strong>RevenueCat, Inc.</strong> — Standard Contractual Clauses</li>
+    </ul>
+    <p>These safeguards ensure an equivalent level of data protection to that within the EU, as required by Art. 46 GDPR.</p>
+  </section>
+
+  <section>
+    <h2>10. Data Retention</h2>
+    <p>Your data is stored for as long as your account is active. When you delete your account (Settings → Delete Account), all personal data — vocabulary entries, settings, and your Firebase Auth account — is deleted immediately and permanently. Anonymised, aggregated word-frequency data in our shared dictionary (not linked to your account) may be retained for service improvement.</p>
+    <p>Legal retention obligations may require us to retain certain billing records for up to 7 years (Art. 6(1)(c) GDPR).</p>
+  </section>
+
+  <section>
+    <h2>11. No Automated Decision-Making</h2>
+    <p>We do not use automated decision-making or profiling within the meaning of Art. 22 GDPR. The spaced-repetition algorithm (FSRS) that schedules your reviews operates entirely on your device and on your own data — it does not profile you or produce legal effects.</p>
+  </section>
+
+  <section>
+    <h2>12. Your Rights</h2>
+    <div class="rights-grid">
+      <div class="right-item">
+        <strong>Access · Art. 15 GDPR</strong>
+        <span>Request a copy of all data we hold about you.</span>
+      </div>
+      <div class="right-item">
+        <strong>Rectification · Art. 16 GDPR</strong>
+        <span>Ask us to correct inaccurate personal data.</span>
+      </div>
+      <div class="right-item">
+        <strong>Erasure · Art. 17 GDPR</strong>
+        <span>Delete your account and all data in-app or by contacting us.</span>
+      </div>
+      <div class="right-item">
+        <strong>Restriction · Art. 18 GDPR</strong>
+        <span>Request that we limit how we process your data.</span>
+      </div>
+      <div class="right-item">
+        <strong>Portability · Art. 20 GDPR</strong>
+        <span>Receive your vocabulary data in a machine-readable format.</span>
+      </div>
+      <div class="right-item">
+        <strong>Objection · Art. 21 GDPR</strong>
+        <span>Object to processing based on legitimate interests.</span>
+      </div>
+      <div class="right-item">
+        <strong>Withdrawal · Art. 7(3) GDPR</strong>
+        <span>Withdraw consent (e.g. microphone) at any time with future effect.</span>
+      </div>
+      <div class="right-item">
+        <strong>Complaint · Art. 77 GDPR</strong>
+        <span>Lodge a complaint with your national supervisory authority.</span>
+      </div>
+    </div>
+    <p style="margin-top:12px;">To exercise any right, contact us at <a href="mailto:privacy@simplevoc.de">privacy@simplevoc.de</a>. We will respond within 30 days.</p>
+  </section>
+
+  <section>
+    <h2>13. Supervisory Authority</h2>
+    <p>You have the right to lodge a complaint with a data protection supervisory authority. A list of EU supervisory authorities is available at: <a href="https://edpb.europa.eu/about-edpb/about-edpb/members_en" target="_blank" rel="noopener">edpb.europa.eu</a></p>
+  </section>
+
+  <section>
+    <h2>14. Third-Party Services</h2>
+    <table class="data-table">
+      <thead><tr><th>Service</th><th>Provider</th><th>Privacy policy</th></tr></thead>
+      <tbody>
+        <tr><td>Firebase Auth, Firestore, App Check, Cloud Functions</td><td>Google LLC</td><td><a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
+        <tr><td>Google Sign-In</td><td>Google LLC</td><td><a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
+        <tr><td>Sign in with Apple</td><td>Apple Inc.</td><td><a href="https://www.apple.com/privacy/" target="_blank">apple.com/privacy</a></td></tr>
+        <tr><td>Gemini API</td><td>Google LLC</td><td><a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
+        <tr><td>RevenueCat</td><td>RevenueCat, Inc.</td><td><a href="https://www.revenuecat.com/privacy" target="_blank">revenuecat.com/privacy</a></td></tr>
+        <tr><td>iOS Speech Recognition</td><td>Apple Inc.</td><td><a href="https://www.apple.com/privacy/" target="_blank">apple.com/privacy</a></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>15. Changes to This Policy</h2>
+    <p>We may update this policy to reflect changes in the service or legal requirements. The date at the top of this page shows the latest revision. For significant changes we will notify users within the app.</p>
+  </section>
+
+  <section>
+    <h2>16. Contact</h2>
+    <div class="card">
+      <p><strong>Stefan Lehner</strong> — SimpleVoc<br>
+      <a href="mailto:privacy@simplevoc.de">privacy@simplevoc.de</a></p>
+    </div>
+  </section>
+
+  <div class="footer-links">
+    <a href="/impressum">Impressum</a>
+  </div>
+</main>
+</div>
+
+<!-- ═══════════════════════════ DEUTSCH ═══════════════════════════ -->
+<div id="content-de" style="display:none">
+<main>
+  <h1 class="page-title">Datenschutzerklärung</h1>
+  <p class="updated">Zuletzt aktualisiert: Mai 2026</p>
+
+  <div class="intro">
+    SimpleVoc ist eine Vokabellern-App, die deine Stimme nutzt, um Wörter und Sätze zu erfassen, sie mit KI zu übersetzen und dir durch Spaced Repetition beim Einprägen zu helfen. Diese Erklärung beschreibt, welche personenbezogenen Daten wir verarbeiten, auf welcher Rechtsgrundlage und welche Rechte du hast.
+  </div>
+
+  <section>
+    <h2>1. Verantwortliche Stelle</h2>
+    <div class="card">
+      <p><strong>Stefan Lehner</strong><br>
+      [Adresse]<br>
+      E-Mail: <a href="mailto:privacy@simplevoc.de">privacy@simplevoc.de</a></p>
+    </div>
+  </section>
+
+  <section>
+    <h2>2. Erhobene Daten und Zweck</h2>
     <table class="data-table">
       <thead>
-        <tr>
-          <th>Service</th>
-          <th>Provider</th>
-          <th>Purpose</th>
-        </tr>
+        <tr><th>Daten</th><th>Zweck</th><th>Rechtsgrundlage</th></tr>
       </thead>
       <tbody>
         <tr>
-          <td>Firebase Auth, Firestore, App Check, Hosting</td>
-          <td>Google LLC</td>
-          <td>Authentication, cloud data storage, security</td>
+          <td><strong>E-Mail-Adresse, Anzeigename</strong></td>
+          <td>Kontoerstellung und Anmeldung</td>
+          <td><span class="basis-tag">Art. 6 Abs. 1 lit. b DSGVO</span></td>
         </tr>
         <tr>
-          <td>Google Sign-In</td>
-          <td>Google LLC</td>
-          <td>Social sign-in</td>
+          <td><strong>Vokabeleinträge</strong> (Wörter, Sätze, Übersetzungen)</td>
+          <td>Kernleistung – deine persönliche Vokabelsammlung</td>
+          <td><span class="basis-tag">Art. 6 Abs. 1 lit. b DSGVO</span></td>
         </tr>
         <tr>
-          <td>Sign in with Apple</td>
-          <td>Apple Inc.</td>
-          <td>Social sign-in (iOS)</td>
+          <td><strong>App-Einstellungen</strong> (Sprachpräferenzen)</td>
+          <td>Personalisiertes Nutzungserlebnis</td>
+          <td><span class="basis-tag">Art. 6 Abs. 1 lit. b DSGVO</span></td>
         </tr>
         <tr>
-          <td>Gemini API</td>
-          <td>Google LLC</td>
-          <td>AI word extraction and translation</td>
+          <td><strong>Nutzungszähler</strong> (Anzahl gespeicherter Wörter)</td>
+          <td>Durchsetzung von Gratis- und Premium-Kontingenten</td>
+          <td><span class="basis-tag">Art. 6 Abs. 1 lit. b DSGVO</span></td>
         </tr>
         <tr>
-          <td>RevenueCat</td>
-          <td>RevenueCat, Inc.</td>
-          <td>In-app purchase and subscription management</td>
+          <td><strong>Gesprochenem Text</strong> (nach geräteinterner Spracherkennung)</td>
+          <td>KI-gestützte Wortextraktion und Übersetzung via Gemini API</td>
+          <td><span class="basis-tag">Art. 6 Abs. 1 lit. b DSGVO</span></td>
         </tr>
         <tr>
-          <td>iOS Speech Recognition</td>
-          <td>Apple Inc.</td>
-          <td>On-device speech-to-text conversion</td>
+          <td><strong>Kauf- und Abonnementstatus</strong></td>
+          <td>Überprüfung des Premium-Zugangs</td>
+          <td><span class="basis-tag">Art. 6 Abs. 1 lit. b DSGVO</span></td>
+        </tr>
+        <tr>
+          <td><strong>Anonyme Gerätekennung</strong></td>
+          <td>Kontingentprüfung vor der Anmeldung; Missbrauchsprävention</td>
+          <td><span class="basis-tag">Art. 6 Abs. 1 lit. f DSGVO</span></td>
+        </tr>
+        <tr>
+          <td><strong>Geräteattestation</strong> (App Check)</td>
+          <td>Sicherstellung, dass Anfragen aus der echten App stammen</td>
+          <td><span class="basis-tag">Art. 6 Abs. 1 lit. f DSGVO</span></td>
         </tr>
       </tbody>
     </table>
-
-    <p>Google's privacy policy: <a href="https://policies.google.com/privacy" style="color:#1db4ff;">policies.google.com/privacy</a><br>
-    Apple's privacy policy: <a href="https://www.apple.com/privacy/" style="color:#1db4ff;">apple.com/privacy</a><br>
-    RevenueCat's privacy policy: <a href="https://www.revenuecat.com/privacy" style="color:#1db4ff;">revenuecat.com/privacy</a></p>
+    <p>Wir erheben <strong>keine</strong> Standortdaten, Kontakte, Browser-Verläufe oder Werbe-IDs. Deine Daten werden <strong>nicht</strong> für Werbezwecke genutzt.</p>
   </section>
 
-  <!-- 4. Data storage and security -->
   <section>
-    <h2>4. Data Storage and Security</h2>
+    <h2>3. Konto &amp; Authentifizierung</h2>
+    <p>Du kannst dich mit <strong>Google-Anmeldung</strong> oder <strong>„Mit Apple anmelden"</strong> registrieren. Bei einer Social-Login-Methode übermittelt der jeweilige Anbieter deine E-Mail-Adresse und deinen Anzeigenamen an uns. Alternativ ist eine Anmeldung per Magic-Link per E-Mail möglich.</p>
+    <p>Alle Authentifizierungsvorgänge werden von <strong>Firebase Authentication</strong> (Google LLC) abgewickelt. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO – zur Vertragserfüllung erforderlich.</p>
+  </section>
+
+  <section>
+    <h2>4. KI-Verarbeitung (Gemini API)</h2>
+    <p>Wenn du ein Wort oder einen Satz einsprichst, wandelt dein Gerät deine Stimme lokal über die iOS-Spracherkennung in Text um. Dieser Text wird anschließend an unser Backend (Firebase Cloud Functions) gesendet, das ihn zur Wortextraktion und Übersetzung an die <strong>Google Gemini API</strong> weiterleitet.</p>
+    <p><strong>Wichtiger Hinweis:</strong> Bitte gib keine sensiblen personenbezogenen Daten (Namen, Adressen, Gesundheitsinformationen oder Ausweisnummern) als Vokabeln ein. Die App ist für das Lernen von Wörtern und Sätzen konzipiert – nicht zur Speicherung persönlicher Dokumente.</p>
+    <p>Google hat vertraglich zugesichert, übermittelte Daten nicht zum Training seiner KI-Modelle zu verwenden. Die Verarbeitung erfolgt in Googles Infrastruktur, überwiegend innerhalb der EU/des EWR. Für Übermittlungen außerhalb der EU/des EWR stützt sich Google auf Standardvertragsklauseln (SCC) der Europäischen Kommission. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO.</p>
+  </section>
+
+  <section>
+    <h2>5. Abonnements &amp; In-App-Käufe</h2>
+    <p>Premium-Abonnements werden von <strong>RevenueCat, Inc.</strong> verwaltet. RevenueCat erhält anonymisierte Nutzerkennungen, den Kaufverlauf und den Abonnementstatus. Direkte Zahlungsdaten werden <strong>nicht</strong> an RevenueCat übermittelt – die Zahlungsabwicklung erfolgt ausschließlich über Apple (App Store) oder Google (Play Store).</p>
+    <p>Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO für die Vertragserfüllung; Art. 6 Abs. 1 lit. c DSGVO für gesetzliche Aufbewahrungspflichten.</p>
+  </section>
+
+  <section>
+    <h2>6. Geräteberechtigungen</h2>
+    <p>SimpleVoc benötigt folgende Geräteberechtigungen:</p>
     <ul>
-      <li><strong>Location</strong> — cloud data is stored in Google Cloud's <strong>europe-west1</strong> region (Frankfurt, Germany).</li>
-      <li><strong>Encryption</strong> — all data is encrypted in transit (TLS) and at rest by Firebase/Google Cloud.</li>
-      <li><strong>Access control</strong> — Firestore security rules ensure each user can only access their own data. Backend services are protected by Firebase App Check and require authentication.</li>
-      <li><strong>Retention</strong> — your data is stored as long as your account is active. You can delete your account and all associated data at any time (see Section 6).</li>
+      <li><strong>Mikrofon</strong> – zur Aufnahme deiner Stimme für die Vokabelerfassung. Die Audioverarbeitung erfolgt lokal auf dem Gerät durch die iOS-Spracherkennung; Rohaudio wird niemals übertragen oder gespeichert.</li>
+      <li><strong>Spracherkennung</strong> – iOS wandelt gesprochene Wörter auf dem Gerät in Text um, bevor Daten das Gerät verlassen.</li>
     </ul>
+    <p>Du kannst diese Berechtigungen jederzeit in den Systemeinstellungen deines Geräts widerrufen. Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO – deine Einwilligung über den System-Berechtigungsdialog.</p>
   </section>
 
-  <!-- 5. Children's privacy -->
   <section>
-    <h2>5. Children's Privacy</h2>
-    <p>SimpleVoc is not directed at children under the age of 13. We do not knowingly collect personal data from children under 13. If you believe a child has provided us with personal data, please contact us and we will delete it promptly.</p>
+    <h2>7. Firebase App Check</h2>
+    <p>Wir nutzen <strong>Firebase App Check</strong>, um sicherzustellen, dass Anfragen an unser Backend aus der echten SimpleVoc-App stammen und nicht von Bots oder missbräuchlichen Skripten. Auf iOS kommt Apples DeviceCheck/App Attest-Framework zum Einsatz; auf Android Google Play Integrity. Diese Dienste bestätigen die Geräteauthentizität, ohne dich persönlich zu identifizieren. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO – unser berechtigtes Interesse an der Absicherung des Dienstes.</p>
   </section>
 
-  <!-- 6. Your rights (GDPR) -->
   <section>
-    <h2>6. Your Rights</h2>
-    <p>If you are located in the European Economic Area, you have the following rights regarding your personal data:</p>
+    <h2>8. Datenspeicherung &amp; Infrastruktur</h2>
+    <p>Deine Vokabeldaten werden an zwei Orten gespeichert:</p>
     <ul>
-      <li><strong>Access</strong> — request a copy of the data we hold about you.</li>
-      <li><strong>Correction</strong> — ask us to correct inaccurate data.</li>
-      <li><strong>Deletion</strong> — delete your account and all associated data directly in the app under <em>Settings → Delete Account</em>, or by contacting us. Deletion is permanent and takes effect immediately.</li>
-      <li><strong>Portability</strong> — request your vocabulary data in a machine-readable format.</li>
-      <li><strong>Objection</strong> — object to processing based on legitimate interests.</li>
+      <li><strong>Auf deinem Gerät</strong> – in einer lokalen Datenbank (Sembast), die auch offline funktioniert.</li>
+      <li><strong>Google Firestore</strong> – in der Region <strong>europe-west1</strong> (Frankfurt, Deutschland), verschlüsselt im Ruhezustand und bei der Übertragung.</li>
     </ul>
-    <p>To exercise any of these rights, contact us at the address below. We will respond within 30 days.</p>
+    <p>Die Backend-Logik läuft auf <strong>Google Cloud Functions</strong> und <strong>Google Cloud Run</strong>, ebenfalls in europe-west1. Alle Datenübertragungen erfolgen per TLS-Verschlüsselung.</p>
   </section>
 
-  <!-- 7. Changes -->
   <section>
-    <h2>7. Changes to This Policy</h2>
-    <p>We may update this policy from time to time. The "Last updated" date at the top of this page reflects the most recent revision. For significant changes we will notify users within the app.</p>
+    <h2>9. Internationale Datentransfers</h2>
+    <p>Der Großteil der Verarbeitung findet innerhalb der EU/des EWR statt (europe-west1). Einige Drittanbieter haben ihren Sitz jedoch in den USA:</p>
+    <ul>
+      <li><strong>Google LLC</strong> (Firebase, Gemini API) – EU-US Data Privacy Framework (Angemessenheitsbeschluss) und Standardvertragsklauseln</li>
+      <li><strong>Apple Inc.</strong> (Sign in with Apple, App Attest) – Standardvertragsklauseln</li>
+      <li><strong>RevenueCat, Inc.</strong> – Standardvertragsklauseln</li>
+    </ul>
+    <p>Diese Garantien gewährleisten ein dem EU-Niveau gleichwertiges Datenschutzniveau gemäß Art. 46 DSGVO.</p>
   </section>
 
-  <!-- 8. Contact -->
   <section>
-    <h2>8. Contact</h2>
-    <div class="contact-box">
-      <p>If you have any questions about this privacy policy or your data, please contact:</p>
-      <p style="margin-top:12px;">
-        <strong>Stefan Lehner</strong><br>
-        SimpleVoc<br>
-        <a href="mailto:privacy@simplevoc.de">privacy@simplevoc.de</a>
-      </p>
+    <h2>10. Speicherdauer</h2>
+    <p>Deine Daten werden gespeichert, solange dein Konto aktiv ist. Wenn du dein Konto löschst (Einstellungen → Konto löschen), werden alle personenbezogenen Daten – Vokabeleinträge, Einstellungen und dein Firebase-Auth-Konto – sofort und dauerhaft gelöscht. Anonymisierte, aggregierte Worthäufigkeitsdaten in unserem gemeinsamen Wörterbuch (nicht mit deinem Konto verknüpft) können zur Serviceverbesserung aufbewahrt werden.</p>
+    <p>Gesetzliche Aufbewahrungspflichten können uns verpflichten, bestimmte Abrechnungsunterlagen bis zu 7 Jahre aufzubewahren (Art. 6 Abs. 1 lit. c DSGVO).</p>
+  </section>
+
+  <section>
+    <h2>11. Keine automatisierte Entscheidungsfindung</h2>
+    <p>Wir setzen keine automatisierte Entscheidungsfindung oder Profiling im Sinne von Art. 22 DSGVO ein. Der Spaced-Repetition-Algorithmus (FSRS), der deine Wiederholungen plant, läuft ausschließlich auf deinem Gerät mit deinen eigenen Daten – er erstellt kein Profil über dich und hat keine rechtlichen Auswirkungen.</p>
+  </section>
+
+  <section>
+    <h2>12. Deine Rechte</h2>
+    <div class="rights-grid">
+      <div class="right-item">
+        <strong>Auskunft · Art. 15 DSGVO</strong>
+        <span>Kopie aller über dich gespeicherten Daten anfordern.</span>
+      </div>
+      <div class="right-item">
+        <strong>Berichtigung · Art. 16 DSGVO</strong>
+        <span>Korrektur unrichtiger personenbezogener Daten verlangen.</span>
+      </div>
+      <div class="right-item">
+        <strong>Löschung · Art. 17 DSGVO</strong>
+        <span>Konto und alle Daten in der App oder per Kontaktanfrage löschen.</span>
+      </div>
+      <div class="right-item">
+        <strong>Einschränkung · Art. 18 DSGVO</strong>
+        <span>Einschränkung der Verarbeitung deiner Daten verlangen.</span>
+      </div>
+      <div class="right-item">
+        <strong>Datenübertragbarkeit · Art. 20 DSGVO</strong>
+        <span>Vokabeldaten in maschinenlesbarem Format erhalten.</span>
+      </div>
+      <div class="right-item">
+        <strong>Widerspruch · Art. 21 DSGVO</strong>
+        <span>Verarbeitung auf Basis berechtigter Interessen widersprechen.</span>
+      </div>
+      <div class="right-item">
+        <strong>Widerruf · Art. 7 Abs. 3 DSGVO</strong>
+        <span>Einwilligungen (z. B. Mikrofon) jederzeit mit Wirkung für die Zukunft widerrufen.</span>
+      </div>
+      <div class="right-item">
+        <strong>Beschwerde · Art. 77 DSGVO</strong>
+        <span>Beschwerde bei einer Datenschutz-Aufsichtsbehörde einlegen.</span>
+      </div>
+    </div>
+    <p style="margin-top:12px;">Zur Ausübung deiner Rechte wende dich an <a href="mailto:privacy@simplevoc.de">privacy@simplevoc.de</a>. Wir antworten innerhalb von 30 Tagen.</p>
+  </section>
+
+  <section>
+    <h2>13. Zuständige Aufsichtsbehörde</h2>
+    <p>Du hast das Recht, eine Beschwerde bei einer Datenschutz-Aufsichtsbehörde einzulegen. Eine Liste der EU-Aufsichtsbehörden findest du unter: <a href="https://edpb.europa.eu/about-edpb/about-edpb/members_de" target="_blank" rel="noopener">edpb.europa.eu</a></p>
+  </section>
+
+  <section>
+    <h2>14. Drittanbieter</h2>
+    <table class="data-table">
+      <thead><tr><th>Dienst</th><th>Anbieter</th><th>Datenschutzerklärung</th></tr></thead>
+      <tbody>
+        <tr><td>Firebase Auth, Firestore, App Check, Cloud Functions</td><td>Google LLC</td><td><a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
+        <tr><td>Google-Anmeldung</td><td>Google LLC</td><td><a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
+        <tr><td>Mit Apple anmelden</td><td>Apple Inc.</td><td><a href="https://www.apple.com/de/privacy/" target="_blank">apple.com/de/privacy</a></td></tr>
+        <tr><td>Gemini API</td><td>Google LLC</td><td><a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
+        <tr><td>RevenueCat</td><td>RevenueCat, Inc.</td><td><a href="https://www.revenuecat.com/privacy" target="_blank">revenuecat.com/privacy</a></td></tr>
+        <tr><td>iOS-Spracherkennung</td><td>Apple Inc.</td><td><a href="https://www.apple.com/de/privacy/" target="_blank">apple.com/de/privacy</a></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>15. Änderungen dieser Erklärung</h2>
+    <p>Wir können diese Erklärung aktualisieren, um Änderungen am Dienst oder rechtliche Anforderungen widerzuspiegeln. Das Datum oben auf dieser Seite zeigt die aktuelle Fassung. Bei wesentlichen Änderungen werden wir Nutzer innerhalb der App informieren.</p>
+  </section>
+
+  <section>
+    <h2>16. Kontakt</h2>
+    <div class="card">
+      <p><strong>Stefan Lehner</strong> – SimpleVoc<br>
+      <a href="mailto:privacy@simplevoc.de">privacy@simplevoc.de</a></p>
     </div>
   </section>
-</main>
 
+  <div class="footer-links">
+    <a href="/impressum">Impressum</a>
+  </div>
+</main>
+</div>
+
+<script>
+  const DEFAULT_LANG = 'en';
+  function getLang() {
+    const p = new URLSearchParams(window.location.search).get('lang');
+    return (p === 'en' || p === 'de') ? p : DEFAULT_LANG;
+  }
+  function setLang(lang) {
+    document.getElementById('content-en').style.display = lang === 'en' ? 'block' : 'none';
+    document.getElementById('content-de').style.display = lang === 'de' ? 'block' : 'none';
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.getElementById('btn-de').classList.toggle('active', lang === 'de');
+    document.documentElement.lang = lang;
+    const url = new URL(window.location);
+    url.searchParams.set('lang', lang);
+    history.replaceState({}, '', url);
+  }
+  setLang(getLang());
+</script>
 </body>
 </html>
