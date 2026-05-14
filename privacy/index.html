@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacy Policy / Datenschutzerklärung – SimpleVoc</title>
+  <title>Privacy Policy / Datenschutzerklärung – simplevoc</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -69,6 +69,11 @@
     }
     .right-item strong { font-size: 0.875rem; display: block; margin-bottom: 2px; }
     .right-item span { font-size: 0.82rem; color: #6b7a90; }
+    .highlight {
+      background: #fff8e1; border-left: 3px solid #f5c842;
+      border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 12px 0;
+      font-size: 0.9rem; color: #3a4455;
+    }
     .footer-links { margin-top: 48px; padding-top: 24px; border-top: 1px solid #e3e8f0; display: flex; gap: 20px; flex-wrap: wrap; }
     .footer-links a { color: #6b7a90; font-size: 0.875rem; }
     .footer-links a:hover { color: #1db4ff; }
@@ -86,7 +91,7 @@
   <div class="header-left">
     <div class="logo-icon">🌐</div>
     <div>
-      <h1>SimpleVoc</h1>
+      <h1>simplevoc</h1>
       <p>Vocabulary learning with speech recognition</p>
     </div>
   </div>
@@ -103,7 +108,7 @@
   <p class="updated">Last updated: May 2026</p>
 
   <div class="intro">
-    SimpleVoc is a vocabulary learning app that uses your voice to capture words and sentences, translates them using AI, and helps you memorise them through spaced repetition. This policy explains what personal data we process, on what legal basis, and what rights you have.
+    simplevoc is a vocabulary learning app that uses your voice to capture words and sentences, translates them using AI, and helps you memorise them through spaced repetition. This policy explains what personal data we process, on what legal basis, and what rights you have.
   </div>
 
   <section>
@@ -175,7 +180,17 @@
 
   <section>
     <h2>4. AI Processing (Gemini API)</h2>
-    <p>When you speak a word or sentence, your device converts your voice to text locally using iOS speech recognition. This text is then sent to our backend (Firebase Cloud Functions), which forwards it to <strong>Google Gemini API</strong> for word extraction and translation.</p>
+    <div class="highlight">
+      <strong>Your voice never leaves your device.</strong> simplevoc uses the platform's built-in or on-device speech recognition to transcribe your spoken sentence locally. Only the resulting plain text is forwarded — for example: <em>"The weather is beautiful today"</em> or <em>"Ich möchte einen Kaffee bestellen"</em>. No audio file, voice recording, or audio stream is ever transmitted to our backend or to any third-party provider.
+    </div>
+    <p>Your device converts your voice to text locally using its on-device speech recognition engine. The platform-specific service used depends on your operating system:</p>
+    <ul>
+      <li><strong>iOS / iPadOS</strong> — Apple Speech Recognition (SFSpeechRecognizer), audio processed on-device by Apple's framework</li>
+      <li><strong>Android</strong> — Android SpeechRecognizer API, audio processed on-device</li>
+      <li><strong>macOS</strong> — Apple Speech Recognition framework, audio processed on-device</li>
+      <li><strong>Windows / Linux</strong> — WebAssembly (WASM) based speech-to-text module running entirely within the app on your computer, with no connection to any external service</li>
+    </ul>
+    <p>Once your spoken sentence has been transcribed to text on your device, this text is sent to our backend (Firebase Cloud Functions), which forwards it to <strong>Google Gemini API</strong> for word extraction and translation.</p>
     <p><strong>Important:</strong> Please do not include sensitive personal data (names, addresses, health information, or identification numbers) in vocabulary you record. The app is designed for learning words and sentences, not for storing personal documents.</p>
     <p>Google has committed contractually not to use submitted data to train its AI models. Processing takes place in Google's infrastructure, predominantly within the EU/EEA. For transfers outside the EU/EEA, Google relies on Standard Contractual Clauses (SCCs) approved by the European Commission. Legal basis: Art. 6(1)(b) GDPR.</p>
   </section>
@@ -188,17 +203,19 @@
 
   <section>
     <h2>6. Device Permissions</h2>
-    <p>SimpleVoc requests the following device permissions:</p>
+    <p>simplevoc requests the following device permissions:</p>
     <ul>
-      <li><strong>Microphone</strong> — to record your voice for vocabulary capture. Audio is processed on-device by iOS speech recognition; raw audio is never transmitted or stored.</li>
-      <li><strong>Speech Recognition</strong> — iOS converts your spoken words to text on-device before any data leaves your device.</li>
+      <li><strong>Microphone</strong> — to capture your voice for vocabulary input. Audio is processed entirely on-device by the platform's speech recognition engine. Raw audio is never transmitted to our backend or to any third party.</li>
+      <li><strong>Speech Recognition (iOS / iPadOS / macOS)</strong> — Apple's on-device framework (SFSpeechRecognizer) converts your spoken words to text before any data leaves your device.</li>
+      <li><strong>Speech Recognition (Android)</strong> — Android's on-device SpeechRecognizer API converts your spoken words to text locally on your phone or tablet.</li>
+      <li><strong>Speech Recognition (Windows / Linux)</strong> — a WebAssembly (WASM) module embedded in the app processes audio locally on your computer without any external connection.</li>
     </ul>
-    <p>You can revoke these permissions at any time in your device system settings. Legal basis: Art. 6(1)(a) GDPR — your consent via the system permission dialog.</p>
+    <p>You can revoke microphone permission at any time in your device or system settings. Legal basis: Art. 6(1)(a) GDPR — your consent via the system permission dialog.</p>
   </section>
 
   <section>
     <h2>7. Firebase App Check</h2>
-    <p>We use <strong>Firebase App Check</strong> to verify that requests to our backend originate from the genuine SimpleVoc app and not from bots or abusive scripts. On iOS, this uses Apple's DeviceCheck/App Attest framework; on Android, Google Play Integrity. These services attest device authenticity without identifying you personally. Legal basis: Art. 6(1)(f) GDPR — our legitimate interest in securing the service.</p>
+    <p>We use <strong>Firebase App Check</strong> to verify that requests to our backend originate from the genuine simplevoc app and not from bots or abusive scripts. On iOS, this uses Apple's DeviceCheck/App Attest framework; on Android, Google Play Integrity. These services attest device authenticity without identifying you personally. Legal basis: Art. 6(1)(f) GDPR — our legitimate interest in securing the service.</p>
   </section>
 
   <section>
@@ -287,7 +304,7 @@
         <tr><td>Sign in with Apple</td><td>Apple Inc.</td><td><a href="https://www.apple.com/privacy/" target="_blank">apple.com/privacy</a></td></tr>
         <tr><td>Gemini API</td><td>Google LLC</td><td><a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
         <tr><td>RevenueCat</td><td>RevenueCat, Inc.</td><td><a href="https://www.revenuecat.com/privacy" target="_blank">revenuecat.com/privacy</a></td></tr>
-        <tr><td>iOS Speech Recognition</td><td>Apple Inc.</td><td><a href="https://www.apple.com/privacy/" target="_blank">apple.com/privacy</a></td></tr>
+        <tr><td>On-device Speech Recognition — iOS/iPadOS/macOS: Apple SFSpeechRecognizer; Android: Google SpeechRecognizer; Windows/Linux: WASM module (no third party)</td><td>Apple Inc. (iOS/macOS), Google (Android), none (Windows/Linux)</td><td><a href="https://www.apple.com/privacy/" target="_blank">apple.com/privacy</a> · <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
       </tbody>
     </table>
   </section>
@@ -300,7 +317,7 @@
   <section>
     <h2>16. Contact</h2>
     <div class="card">
-      <p><strong>Stefan Lehner</strong> — SimpleVoc<br>
+      <p><strong>Stefan Lehner</strong> — simplevoc<br>
       <a href="mailto:privacy@simplevoc.de">privacy@simplevoc.de</a></p>
     </div>
   </section>
@@ -319,7 +336,7 @@
   <p class="updated">Zuletzt aktualisiert: Mai 2026</p>
 
   <div class="intro">
-    SimpleVoc ist eine Vokabellern-App, die deine Stimme nutzt, um Wörter und Sätze zu erfassen, sie mit KI zu übersetzen und dir durch Spaced Repetition beim Einprägen zu helfen. Diese Erklärung beschreibt, welche personenbezogenen Daten wir verarbeiten, auf welcher Rechtsgrundlage und welche Rechte du hast.
+    simplevoc ist eine Vokabellern-App, die deine Stimme nutzt, um Wörter und Sätze zu erfassen, sie mit KI zu übersetzen und dir durch Spaced Repetition beim Einprägen zu helfen. Diese Erklärung beschreibt, welche personenbezogenen Daten wir verarbeiten, auf welcher Rechtsgrundlage und welche Rechte du hast.
   </div>
 
   <section>
@@ -391,7 +408,17 @@
 
   <section>
     <h2>4. KI-Verarbeitung (Gemini API)</h2>
-    <p>Wenn du ein Wort oder einen Satz einsprichst, wandelt dein Gerät deine Stimme lokal über die iOS-Spracherkennung in Text um. Dieser Text wird anschließend an unser Backend (Firebase Cloud Functions) gesendet, das ihn zur Wortextraktion und Übersetzung an die <strong>Google Gemini API</strong> weiterleitet.</p>
+    <div class="highlight">
+      <strong>Deine Stimme verlässt dein Gerät nicht.</strong> simplevoc nutzt die geräteeigene Spracherkennung des jeweiligen Betriebssystems, um deinen gesprochenen Satz lokal in Text umzuwandeln. Nur dieser Textinhalt wird weitergeleitet – zum Beispiel: <em>„The weather is beautiful today"</em> oder <em>„Ich möchte einen Kaffee bestellen"</em>. Keine Audiodatei, keine Sprachaufnahme und kein Audiostream wird an unser Backend oder an Drittanbieter übermittelt.
+    </div>
+    <p>Dein Gerät wandelt deine Stimme lokal über seine plattformeigene Spracherkennungs-Engine in Text um. Welcher plattformspezifische Dienst genutzt wird, hängt von deinem Betriebssystem ab:</p>
+    <ul>
+      <li><strong>iOS / iPadOS</strong> – Apple Speech Recognition (SFSpeechRecognizer), Audio wird auf dem Gerät durch Apples Framework verarbeitet</li>
+      <li><strong>Android</strong> – Android SpeechRecognizer API, Audio wird auf dem Gerät verarbeitet</li>
+      <li><strong>macOS</strong> – Apple Speech Recognition Framework, Audio wird auf dem Gerät verarbeitet</li>
+      <li><strong>Windows / Linux</strong> – WebAssembly (WASM)-basiertes Spracherkennungsmodul, das vollständig innerhalb der App auf deinem Computer läuft – ohne Verbindung zu externen Diensten</li>
+    </ul>
+    <p>Sobald dein gesprochener Satz auf dem Gerät in Text umgewandelt wurde, wird dieser Text an unser Backend (Firebase Cloud Functions) gesendet, das ihn zur Wortextraktion und Übersetzung an die <strong>Google Gemini API</strong> weiterleitet.</p>
     <p><strong>Wichtiger Hinweis:</strong> Bitte gib keine sensiblen personenbezogenen Daten (Namen, Adressen, Gesundheitsinformationen oder Ausweisnummern) als Vokabeln ein. Die App ist für das Lernen von Wörtern und Sätzen konzipiert – nicht zur Speicherung persönlicher Dokumente.</p>
     <p>Google hat vertraglich zugesichert, übermittelte Daten nicht zum Training seiner KI-Modelle zu verwenden. Die Verarbeitung erfolgt in Googles Infrastruktur, überwiegend innerhalb der EU/des EWR. Für Übermittlungen außerhalb der EU/des EWR stützt sich Google auf Standardvertragsklauseln (SCC) der Europäischen Kommission. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO.</p>
   </section>
@@ -404,17 +431,19 @@
 
   <section>
     <h2>6. Geräteberechtigungen</h2>
-    <p>SimpleVoc benötigt folgende Geräteberechtigungen:</p>
+    <p>simplevoc benötigt folgende Geräteberechtigungen:</p>
     <ul>
-      <li><strong>Mikrofon</strong> – zur Aufnahme deiner Stimme für die Vokabelerfassung. Die Audioverarbeitung erfolgt lokal auf dem Gerät durch die iOS-Spracherkennung; Rohaudio wird niemals übertragen oder gespeichert.</li>
-      <li><strong>Spracherkennung</strong> – iOS wandelt gesprochene Wörter auf dem Gerät in Text um, bevor Daten das Gerät verlassen.</li>
+      <li><strong>Mikrofon</strong> – zur Aufnahme deiner Stimme für die Vokabelerfassung. Die Audioverarbeitung erfolgt vollständig lokal auf dem Gerät durch die plattformeigene Spracherkennungs-Engine. Rohaudio wird niemals an unser Backend oder an Drittanbieter übertragen.</li>
+      <li><strong>Spracherkennung (iOS / iPadOS / macOS)</strong> – Apples geräteeigenes Framework (SFSpeechRecognizer) wandelt gesprochene Wörter in Text um, bevor Daten das Gerät verlassen.</li>
+      <li><strong>Spracherkennung (Android)</strong> – Androids geräteeigene SpeechRecognizer API wandelt gesprochene Wörter lokal auf deinem Smartphone oder Tablet in Text um.</li>
+      <li><strong>Spracherkennung (Windows / Linux)</strong> – ein in der App eingebettetes WebAssembly (WASM)-Modul verarbeitet Audio lokal auf deinem Computer, ohne externe Verbindung.</li>
     </ul>
-    <p>Du kannst diese Berechtigungen jederzeit in den Systemeinstellungen deines Geräts widerrufen. Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO – deine Einwilligung über den System-Berechtigungsdialog.</p>
+    <p>Du kannst die Mikrofonberechtigung jederzeit in den Systemeinstellungen deines Geräts widerrufen. Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO – deine Einwilligung über den System-Berechtigungsdialog.</p>
   </section>
 
   <section>
     <h2>7. Firebase App Check</h2>
-    <p>Wir nutzen <strong>Firebase App Check</strong>, um sicherzustellen, dass Anfragen an unser Backend aus der echten SimpleVoc-App stammen und nicht von Bots oder missbräuchlichen Skripten. Auf iOS kommt Apples DeviceCheck/App Attest-Framework zum Einsatz; auf Android Google Play Integrity. Diese Dienste bestätigen die Geräteauthentizität, ohne dich persönlich zu identifizieren. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO – unser berechtigtes Interesse an der Absicherung des Dienstes.</p>
+    <p>Wir nutzen <strong>Firebase App Check</strong>, um sicherzustellen, dass Anfragen an unser Backend aus der echten simplevoc-App stammen und nicht von Bots oder missbräuchlichen Skripten. Auf iOS kommt Apples DeviceCheck/App Attest-Framework zum Einsatz; auf Android Google Play Integrity. Diese Dienste bestätigen die Geräteauthentizität, ohne dich persönlich zu identifizieren. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO – unser berechtigtes Interesse an der Absicherung des Dienstes.</p>
   </section>
 
   <section>
@@ -503,7 +532,7 @@
         <tr><td>Mit Apple anmelden</td><td>Apple Inc.</td><td><a href="https://www.apple.com/de/privacy/" target="_blank">apple.com/de/privacy</a></td></tr>
         <tr><td>Gemini API</td><td>Google LLC</td><td><a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
         <tr><td>RevenueCat</td><td>RevenueCat, Inc.</td><td><a href="https://www.revenuecat.com/privacy" target="_blank">revenuecat.com/privacy</a></td></tr>
-        <tr><td>iOS-Spracherkennung</td><td>Apple Inc.</td><td><a href="https://www.apple.com/de/privacy/" target="_blank">apple.com/de/privacy</a></td></tr>
+        <tr><td>Geräteeigene Spracherkennung – iOS/iPadOS/macOS: Apple SFSpeechRecognizer; Android: Google SpeechRecognizer; Windows/Linux: WASM-Modul (kein Drittanbieter)</td><td>Apple Inc. (iOS/macOS), Google (Android), keiner (Windows/Linux)</td><td><a href="https://www.apple.com/de/privacy/" target="_blank">apple.com/de/privacy</a> · <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
       </tbody>
     </table>
   </section>
@@ -516,7 +545,7 @@
   <section>
     <h2>16. Kontakt</h2>
     <div class="card">
-      <p><strong>Stefan Lehner</strong> – SimpleVoc<br>
+      <p><strong>Stefan Lehner</strong> – simplevoc<br>
       <a href="mailto:privacy@simplevoc.de">privacy@simplevoc.de</a></p>
     </div>
   </section>
