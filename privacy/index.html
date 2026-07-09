@@ -222,10 +222,11 @@
     <h2>8. Data Storage &amp; Infrastructure</h2>
     <p>Your vocabulary data is stored in two places:</p>
     <ul>
-      <li><strong>On your device</strong> — in a local database (Sembast) that works without an internet connection.</li>
+      <li><strong>On your device</strong> — in a local database that works without an internet connection. No data is shared from local storage with any third party.</li>
       <li><strong>Google Firestore</strong> — in the <strong>europe-west1</strong> region (Frankfurt, Germany), encrypted at rest and in transit.</li>
     </ul>
     <p>Backend logic runs on <strong>Google Cloud Functions</strong> and <strong>Google Cloud Run</strong>, also in europe-west1. All data transmission uses TLS encryption.</p>
+    <p>Dictionary data used for word sense disambiguation is partly based on Wiktionary content, provided by the <a href="https://wikdict.com" target="_blank" rel="noopener">WikDict project</a> and published under the Creative Commons Attribution-ShareAlike licence (<a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA</a>). No personal data is involved in this process.</p>
   </section>
 
   <section>
@@ -302,20 +303,40 @@
         <tr><td>Firebase Auth, Firestore, App Check, Cloud Functions</td><td>Google LLC</td><td><a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
         <tr><td>Google Sign-In</td><td>Google LLC</td><td><a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
         <tr><td>Sign in with Apple</td><td>Apple Inc.</td><td><a href="https://www.apple.com/privacy/" target="_blank">apple.com/privacy</a></td></tr>
-        <tr><td>Gemini API</td><td>Google LLC</td><td><a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
+        <tr><td>Gemini API (AI word extraction &amp; translation)</td><td>Google LLC</td><td><a href="https://ai.google.dev/gemini-api/terms" target="_blank">ai.google.dev/gemini-api/terms</a> · <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
         <tr><td>RevenueCat</td><td>RevenueCat, Inc.</td><td><a href="https://www.revenuecat.com/privacy" target="_blank">revenuecat.com/privacy</a></td></tr>
         <tr><td>On-device Speech Recognition — iOS/iPadOS/macOS: Apple SFSpeechRecognizer; Android: Google SpeechRecognizer; Windows/Linux: WASM module (no third party)</td><td>Apple Inc. (iOS/macOS), Google (Android), none (Windows/Linux)</td><td><a href="https://www.apple.com/privacy/" target="_blank">apple.com/privacy</a> · <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
+        <tr><td>WikDict (dictionary data for word sense detection — no personal data transmitted)</td><td>WikDict / Wiktionary contributors</td><td><a href="https://wikdict.com" target="_blank">wikdict.com</a> · CC BY-SA</td></tr>
       </tbody>
     </table>
   </section>
 
   <section>
-    <h2>15. Changes to This Policy</h2>
+    <h2>15. Pricing &amp; Word Quota</h2>
+    <p>simplevoc is free to use, with up to <strong>30 new vocabulary words per month</strong>. A premium subscription raises this monthly limit.</p>
+    <p><strong>Premium subscription: €0.99 / $0.99 per month</strong> — includes up to <strong>300 words per month</strong>. Your quota resets monthly on the anniversary of your account's sign-up date (not the 1st of the calendar month); unused words do not carry over to the next period.</p>
+    <p><strong>What counts towards your quota</strong> (each saved word = 1 word):</p>
+    <ul>
+      <li>Extracting and saving vocabulary words from a spoken or typed sentence</li>
+      <li>Saving a full sentence translation</li>
+    </ul>
+    <p><strong>What does not count towards your quota:</strong></p>
+    <ul>
+      <li>Reviewing words in learning / flashcard mode</li>
+      <li>Browsing your vocabulary collection</li>
+      <li>Verb conjugation lookup</li>
+      <li>Changing app settings or languages</li>
+    </ul>
+    <p>Subscriptions are processed through the App Store (Apple) or Google Play. Payment data is handled exclusively by Apple or Google — simplevoc never sees your payment details.</p>
+  </section>
+
+  <section>
+    <h2>16. Changes to This Policy</h2>
     <p>We may update this policy to reflect changes in the service or legal requirements. The date at the top of this page shows the latest revision. For significant changes we will notify users within the app.</p>
   </section>
 
   <section>
-    <h2>16. Contact</h2>
+    <h2>17. Contact</h2>
     <div class="card">
       <p><strong>Stefan Lehner</strong> — simplevoc<br>
       <a href="mailto:privacy@simplevoc.de">privacy@simplevoc.de</a></p>
@@ -450,10 +471,11 @@
     <h2>8. Datenspeicherung &amp; Infrastruktur</h2>
     <p>Deine Vokabeldaten werden an zwei Orten gespeichert:</p>
     <ul>
-      <li><strong>Auf deinem Gerät</strong> – in einer lokalen Datenbank (Sembast), die auch offline funktioniert.</li>
+      <li><strong>Auf deinem Gerät</strong> – in einer lokalen Datenbank, die auch offline funktioniert. Aus dem lokalen Speicher werden keine Daten an Dritte weitergegeben.</li>
       <li><strong>Google Firestore</strong> – in der Region <strong>europe-west1</strong> (Frankfurt, Deutschland), verschlüsselt im Ruhezustand und bei der Übertragung.</li>
     </ul>
     <p>Die Backend-Logik läuft auf <strong>Google Cloud Functions</strong> und <strong>Google Cloud Run</strong>, ebenfalls in europe-west1. Alle Datenübertragungen erfolgen per TLS-Verschlüsselung.</p>
+    <p>Wörterbuchdaten für die Bedeutungserkennung von Wörtern basieren teilweise auf Inhalten aus Wiktionary, bereitgestellt durch das <a href="https://wikdict.com" target="_blank" rel="noopener">WikDict-Projekt</a> und veröffentlicht unter der <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">Creative-Commons-Lizenz CC BY-SA</a>. Dabei werden keine personenbezogenen Daten verarbeitet.</p>
   </section>
 
   <section>
@@ -530,20 +552,40 @@
         <tr><td>Firebase Auth, Firestore, App Check, Cloud Functions</td><td>Google LLC</td><td><a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
         <tr><td>Google-Anmeldung</td><td>Google LLC</td><td><a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
         <tr><td>Mit Apple anmelden</td><td>Apple Inc.</td><td><a href="https://www.apple.com/de/privacy/" target="_blank">apple.com/de/privacy</a></td></tr>
-        <tr><td>Gemini API</td><td>Google LLC</td><td><a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
+        <tr><td>Gemini API (KI-Wortextraktion &amp; Übersetzung)</td><td>Google LLC</td><td><a href="https://ai.google.dev/gemini-api/terms" target="_blank">ai.google.dev/gemini-api/terms</a> · <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
         <tr><td>RevenueCat</td><td>RevenueCat, Inc.</td><td><a href="https://www.revenuecat.com/privacy" target="_blank">revenuecat.com/privacy</a></td></tr>
         <tr><td>Geräteeigene Spracherkennung – iOS/iPadOS/macOS: Apple SFSpeechRecognizer; Android: Google SpeechRecognizer; Windows/Linux: WASM-Modul (kein Drittanbieter)</td><td>Apple Inc. (iOS/macOS), Google (Android), keiner (Windows/Linux)</td><td><a href="https://www.apple.com/de/privacy/" target="_blank">apple.com/de/privacy</a> · <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
+        <tr><td>WikDict (Wörterbuchdaten für Bedeutungserkennung – keine personenbezogenen Daten übermittelt)</td><td>WikDict / Wiktionary-Autoren</td><td><a href="https://wikdict.com" target="_blank">wikdict.com</a> · CC BY-SA</td></tr>
       </tbody>
     </table>
   </section>
 
   <section>
-    <h2>15. Änderungen dieser Erklärung</h2>
+    <h2>15. Preismodell &amp; Wortkontingent</h2>
+    <p>simplevoc ist kostenlos nutzbar, mit bis zu <strong>30 neuen Vokabeln pro Monat</strong>. Ein Premium-Abonnement erhöht dieses monatliche Limit.</p>
+    <p><strong>Premium-Abonnement: 0,99 € / 0,99 $ pro Monat</strong> — beinhaltet bis zu <strong>300 Wörter pro Monat</strong>. Dein Kontingent wird monatlich zurückgesetzt, jeweils am Jahrestag deines Kontoregistrierungsdatums (nicht am 1. des Kalendermonats); nicht genutzte Wörter werden nicht auf die nächste Periode übertragen.</p>
+    <p><strong>Was auf dein Kontingent angerechnet wird</strong> (jedes gespeicherte Wort = 1 Wort):</p>
+    <ul>
+      <li>Extrahieren und Speichern von Vokabeln aus einem gesprochenen oder getippten Satz</li>
+      <li>Speichern einer vollständigen Satzübersetzung</li>
+    </ul>
+    <p><strong>Was nicht auf dein Kontingent angerechnet wird:</strong></p>
+    <ul>
+      <li>Wiederholen von Wörtern im Lernmodus / Karteikartenmodus</li>
+      <li>Durchsuchen deiner Vokabelsammlung</li>
+      <li>Konjugationsabfrage für Verben</li>
+      <li>Ändern von App-Einstellungen oder Sprachen</li>
+    </ul>
+    <p>Abonnements werden über den App Store (Apple) oder Google Play abgewickelt. Zahlungsdaten werden ausschließlich von Apple oder Google verarbeitet – simplevoc erhält zu keiner Zeit Zugang zu deinen Zahlungsdaten.</p>
+  </section>
+
+  <section>
+    <h2>16. Änderungen dieser Erklärung</h2>
     <p>Wir können diese Erklärung aktualisieren, um Änderungen am Dienst oder rechtliche Anforderungen widerzuspiegeln. Das Datum oben auf dieser Seite zeigt die aktuelle Fassung. Bei wesentlichen Änderungen werden wir Nutzer innerhalb der App informieren.</p>
   </section>
 
   <section>
-    <h2>16. Kontakt</h2>
+    <h2>17. Kontakt</h2>
     <div class="card">
       <p><strong>Stefan Lehner</strong> – simplevoc<br>
       <a href="mailto:privacy@simplevoc.de">privacy@simplevoc.de</a></p>

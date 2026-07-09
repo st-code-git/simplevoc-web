@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>simplevoc – Vocabulary Learning with Speech Recognition</title>
-  <meta name="description" content="Learn vocabulary the natural way. Speak a sentence, let AI extract and translate the words, then master them with smart spaced repetition. Free to start — runs in your browser.">
+  <meta name="description" content="Learn vocabulary the natural way. Speak a sentence, let AI extract and translate the words, then master them with smart spaced repetition.">
   <meta name="keywords" content="vocabulary learning, speech recognition, spaced repetition, language learning, FSRS, AI translation, Vokabellernen, Spracherkennung">
   <link rel="canonical" href="https://simplevoc.de">
   <meta property="og:title" content="simplevoc – Vocabulary Learning with Speech Recognition">
@@ -254,27 +254,6 @@
     .p-wt { font-size: 8px; color: #6a7d96; margin-top: 1px; }
     .p-tr { font-size: 10px; color: #1db4ff; font-style: italic; }
 
-    /* Browser mockup (decorative) */
-    .browser-hint {
-      position: absolute; right: -52px; bottom: 28px;
-      width: 240px; background: #0f1a2c;
-      border: 1px solid #253450; border-radius: 9px; overflow: hidden;
-      box-shadow: 0 16px 48px rgba(0,0,0,.5); opacity: .8; z-index: 1;
-    }
-    .bh-bar {
-      background: #172030; height: 26px;
-      display: flex; align-items: center; gap: 5px; padding: 0 9px;
-    }
-    .bh-dot { width: 7px; height: 7px; border-radius: 50%; }
-    .bh-url {
-      flex: 1; height: 14px; background: #0f1a2c; border-radius: 3px;
-      margin: 0 6px; padding: 0 5px;
-      display: flex; align-items: center;
-      font-size: 7px; color: #6a7d96;
-    }
-    .bh-body { padding: 10px 12px; }
-    .bh-line { height: 6px; border-radius: 3px; background: #1e3050; margin-bottom: 5px; }
-
     /* ── Screenshot placeholders ─────────────────── */
     .shots {
       display: grid; grid-template-columns: repeat(3,1fr);
@@ -398,7 +377,6 @@
       .features     { grid-template-columns: 1fr; }
       .priv-box     { grid-template-columns: 1fr; padding: 28px; }
       .shots        { grid-template-columns: 1fr; }
-      .browser-hint { display: none; }
     }
     @media (max-width: 520px) {
       .plat-item    { padding: 10px 12px; }
@@ -418,10 +396,6 @@
     <button class="btn-icon" id="theme-toggle" title="Toggle theme" onclick="toggleTheme()">☀</button>
     <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
     <button class="lang-btn" id="btn-de" onclick="setLang('de')">DE</button>
-    <a href="https://www.app.simplevoc.de" class="btn-cta">
-      <span class="t-en">Open App →</span>
-      <span class="t-de">App öffnen →</span>
-    </a>
   </div>
 </nav>
 
@@ -442,18 +416,12 @@
       <span class="t-de">Sag einen Satz in deiner Zielsprache. simplevoc extrahiert die Vokabeln, übersetzt sie mit KI im Kontext und plant intelligente Wiederholungen — damit die Wörter wirklich hängenbleiben.</span>
     </p>
     <div class="hero-actions">
-      <a href="https://www.app.simplevoc.de" class="btn-primary">
-        <span class="t-en">Open in Browser — free</span>
-        <span class="t-de">Im Browser öffnen — kostenlos</span>
-      </a>
       <a href="#platforms" class="btn-ghost">
-        <span class="t-en">All platforms ↓</span>
-        <span class="t-de">Alle Plattformen ↓</span>
+        <span class="t-en">Platforms ↓</span>
+        <span class="t-de">Plattformen ↓</span>
       </a>
     </div>
     <div class="hero-trust">
-      <span class="t-en">No install needed</span>
-      <span class="t-de">Keine Installation</span>
       <span class="t-en">Works offline</span>
       <span class="t-de">Offline nutzbar</span>
       <span class="t-en">GDPR compliant</span>
@@ -495,22 +463,6 @@
           <div><div class="p-w">heute</div><div class="p-wt t-en">adverb</div><div class="p-wt t-de">Adverb</div></div>
           <div class="p-tr">today</div>
         </div>
-      </div>
-    </div>
-
-    <!-- Decorative browser hint -->
-    <div class="browser-hint">
-      <div class="bh-bar">
-        <div class="bh-dot" style="background:#ff5f57"></div>
-        <div class="bh-dot" style="background:#febc2e"></div>
-        <div class="bh-dot" style="background:#28c840"></div>
-        <div class="bh-url">www.app.simplevoc.de</div>
-      </div>
-      <div class="bh-body">
-        <div class="bh-line" style="width:55%"></div>
-        <div class="bh-line" style="width:80%"></div>
-        <div class="bh-line" style="width:67%"></div>
-        <div class="bh-line" style="width:40%; background:#1db4ff; margin-top:10px; height:18px; border-radius:6px; opacity:.6"></div>
       </div>
     </div>
   </div>
@@ -676,18 +628,10 @@
       <span class="t-de">Lerne überall, wo du bist</span>
     </div>
     <p class="sec-sub">
-      <span class="t-en">simplevoc runs as a native app on all major platforms — and in any modern browser via WebAssembly, with no installation required.</span>
-      <span class="t-de">simplevoc läuft nativ auf allen wichtigen Plattformen — und in jedem modernen Browser via WebAssembly, ohne Installation.</span>
+      <span class="t-en">simplevoc is coming to iOS and Android as a native app.</span>
+      <span class="t-de">simplevoc kommt als native App für iOS und Android.</span>
     </p>
     <div class="plat-grid">
-      <div class="plat-item">
-        <div class="plat-icon">🌐</div>
-        <div>Browser</div>
-        <div class="plat-tag">
-          <span class="t-en">Available now</span>
-          <span class="t-de">Jetzt verfügbar</span>
-        </div>
-      </div>
       <div class="plat-item">
         <div class="plat-icon">🍎</div>
         <div>iOS</div>
@@ -702,30 +646,6 @@
         <div class="plat-tag soon">
           <span class="t-en">Play Store soon</span>
           <span class="t-de">Play Store bald</span>
-        </div>
-      </div>
-      <div class="plat-item">
-        <div class="plat-icon">🍏</div>
-        <div>macOS</div>
-        <div class="plat-tag soon">
-          <span class="t-en">Coming soon</span>
-          <span class="t-de">Bald verfügbar</span>
-        </div>
-      </div>
-      <div class="plat-item">
-        <div class="plat-icon">🪟</div>
-        <div>Windows</div>
-        <div class="plat-tag soon">
-          <span class="t-en">Coming soon</span>
-          <span class="t-de">Bald verfügbar</span>
-        </div>
-      </div>
-      <div class="plat-item">
-        <div class="plat-icon">🐧</div>
-        <div>Linux</div>
-        <div class="plat-tag soon">
-          <span class="t-en">Coming soon</span>
-          <span class="t-de">Bald verfügbar</span>
         </div>
       </div>
     </div>
@@ -787,24 +707,6 @@
             <div class="ep">Android</div>
             <div class="ev">Android SpeechRecognizer API</div>
           </div>
-          <div class="engine-row">
-            <div class="ep">macOS</div>
-            <div class="ev">Apple Speech Recognition</div>
-          </div>
-          <div class="engine-row">
-            <div class="ep">Windows / Linux</div>
-            <div class="ev">
-              <span class="t-en">WASM module — local, no network</span>
-              <span class="t-de">WASM-Modul — lokal, kein Netzwerk</span>
-            </div>
-          </div>
-          <div class="engine-row">
-            <div class="ep">Browser</div>
-            <div class="ev">
-              <span class="t-en">WASM module — local, no network</span>
-              <span class="t-de">WASM-Modul — lokal, kein Netzwerk</span>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -815,21 +717,17 @@
 <!-- ══════════════════ FINAL CTA ══════════════════ -->
 <section class="cta-sec wrap">
   <div class="eyebrow" style="display:block;text-align:center">
-    <span class="t-en">Get started</span>
-    <span class="t-de">Jetzt starten</span>
+    <span class="t-en">Coming soon</span>
+    <span class="t-de">Demnächst verfügbar</span>
   </div>
   <h2>
-    <span class="t-en">Start learning for free —<br>right in your browser.</span>
-    <span class="t-de">Kostenlos im Browser starten.</span>
+    <span class="t-en">Launching soon on iOS &amp; Android.</span>
+    <span class="t-de">Startet bald für iOS &amp; Android.</span>
   </h2>
   <p>
-    <span class="t-en">No account required to try. No install. No ads. Just smarter vocabulary learning.</span>
-    <span class="t-de">Zum Ausprobieren kein Konto nötig. Keine Installation. Keine Werbung. Einfach effektiveres Vokabellernen.</span>
+    <span class="t-en">No ads, no tracking. Just smarter vocabulary learning.</span>
+    <span class="t-de">Keine Werbung, kein Tracking. Einfach effektiveres Vokabellernen.</span>
   </p>
-  <a href="https://www.app.simplevoc.de" class="btn-primary" style="font-size:1.05rem;padding:15px 34px;display:inline-flex">
-    <span class="t-en">Open simplevoc →</span>
-    <span class="t-de">simplevoc öffnen →</span>
-  </a>
 </section>
 
 
