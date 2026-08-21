@@ -5,61 +5,84 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AGB / Terms of Use – simplevoc</title>
   <style>
+    /* ── Palette — mirrors the app's light (warm beige) theme,
+          lib/theme/app_theme.dart → AppTheme.lightColors ───────── */
+    :root {
+      --bg:         #F5EFE0;            /* background   — warm beige   */
+      --surface:    #EDE6D3;            /* surface      — deeper beige */
+      --card:       #FEFCF7;            /* cardBg       — cream white  */
+      --text:       #1A1A2E;            /* textPrimary  — near black   */
+      --text-body:  #3C3D49;            /* prose, one step lighter     */
+      --text-mute:  #5F6472;            /* textSecondary, darkened for */
+                                        /* AA on beige (app: #6B7080)  */
+      --accent:     #4F3FBF;            /* accent       — indigo       */
+      --accent-dk:  #3B2D9A;            /* accentDark   — hover        */
+      --accent-bg:  rgba(79,63,191,.10);
+      --border:     rgba(0,0,0,.12);    /* borderDefault               */
+      --border-sub: rgba(0,0,0,.08);    /* borderSubtle                */
+      --row-alt:    #FBF7EC;            /* zebra stripe on beige       */
+      --warn-bg:    #F7EFD6;
+      --warn-bar:   #A66A00;
+    }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: #f7f8fa; color: #1a1d23; line-height: 1.7; font-size: 16px;
+      background: var(--bg); color: var(--text); line-height: 1.7; font-size: 16px;
     }
     header {
-      background: #0a0e1a; color: #fff;
+      background: var(--surface); color: var(--text);
+      border-bottom: 1px solid var(--border);
       padding: 32px 24px 28px;
       display: flex; align-items: center; justify-content: space-between;
       flex-wrap: wrap; gap: 16px;
     }
     .header-left { display: flex; align-items: center; gap: 12px; }
+    /* Real app icon, matching the landing page nav lockup. */
     .logo-icon {
-      width: 40px; height: 40px; background: rgba(29,180,255,.15);
-      border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;
+      width: 40px; height: 40px; border-radius: 10px;
+      display: block; object-fit: cover;
+      border: 1px solid var(--border);
     }
-    .header-left h1 { font-size: 1.1rem; font-weight: 700; color: #fff; }
-    .header-left p { font-size: 0.82rem; color: #8a9bb5; }
+    .header-left h1 { font-size: 1.1rem; font-weight: 700; color: var(--text); }
+    .header-left p { font-size: 0.82rem; color: var(--text-mute); }
     .lang-switcher { display: flex; gap: 6px; }
     .lang-btn {
-      padding: 6px 14px; border-radius: 20px; border: 1.5px solid #2a3550;
-      background: transparent; color: #8a9bb5; font-size: 0.82rem; font-weight: 600;
+      padding: 6px 14px; border-radius: 20px; border: 1.5px solid var(--border);
+      background: transparent; color: var(--text-mute); font-size: 0.82rem; font-weight: 600;
       cursor: pointer; transition: all 0.15s;
     }
-    .lang-btn.active { background: #1db4ff; border-color: #1db4ff; color: #fff; }
+    .lang-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
     main { max-width: 780px; margin: 0 auto; padding: 40px 24px 80px; }
-    .page-title { font-size: 1.9rem; font-weight: 700; color: #0a0e1a; margin-bottom: 6px; }
-    .updated { color: #6b7a90; font-size: 0.875rem; margin-bottom: 36px; }
+    .page-title { font-size: 1.9rem; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .updated { color: var(--text-mute); font-size: 0.875rem; margin-bottom: 36px; }
     .intro {
-      background: #fff; border: 1px solid #e3e8f0; border-radius: 12px;
-      padding: 20px 24px; margin-bottom: 36px; color: #3a4455; font-size: 0.95rem;
+      background: var(--card); border: 1px solid var(--border-sub); border-radius: 12px;
+      padding: 20px 24px; margin-bottom: 36px; color: var(--text-body); font-size: 0.95rem;
     }
     section { margin-bottom: 32px; }
     h2 {
-      font-size: 1.05rem; font-weight: 700; color: #0a0e1a;
-      margin-bottom: 12px; padding-bottom: 8px; border-bottom: 2px solid #e3e8f0;
+      font-size: 1.05rem; font-weight: 700; color: var(--text);
+      margin-bottom: 12px; padding-bottom: 8px; border-bottom: 2px solid var(--border-sub);
     }
-    h3 { font-size: 0.95rem; font-weight: 600; color: #1a1d23; margin: 14px 0 6px; }
-    p { margin-bottom: 10px; color: #3a4455; font-size: 0.95rem; }
+    h3 { font-size: 0.95rem; font-weight: 600; color: var(--text); margin: 14px 0 6px; }
+    p { margin-bottom: 10px; color: var(--text-body); font-size: 0.95rem; }
     p:last-child { margin-bottom: 0; }
-    ul, ol { padding-left: 20px; margin-bottom: 10px; color: #3a4455; font-size: 0.95rem; }
+    ul, ol { padding-left: 20px; margin-bottom: 10px; color: var(--text-body); font-size: 0.95rem; }
     li { margin-bottom: 5px; }
-    strong { color: #1a1d23; }
-    a { color: #1db4ff; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    strong { color: var(--text); }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { color: var(--accent-dk); text-decoration: underline; }
     .highlight {
-      background: #fff8e1; border-left: 3px solid #f5c842;
+      background: var(--warn-bg); border-left: 3px solid var(--warn-bar);
       border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 12px 0;
-      font-size: 0.9rem; color: #3a4455;
+      font-size: 0.9rem; color: var(--text-body);
     }
-    .card { background: #fff; border: 1px solid #e3e8f0; border-radius: 12px; padding: 20px 24px; }
+    .card { background: var(--card); border: 1px solid var(--border-sub); border-radius: 12px; padding: 20px 24px; }
     .card p { font-size: 0.95rem; }
-    .footer-links { margin-top: 48px; padding-top: 24px; border-top: 1px solid #e3e8f0; display: flex; gap: 20px; flex-wrap: wrap; }
-    .footer-links a { color: #6b7a90; font-size: 0.875rem; }
-    .footer-links a:hover { color: #1db4ff; }
+    .footer-links { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border-sub); display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer-links a { color: var(--text-mute); font-size: 0.875rem; }
+    .footer-links a:hover { color: var(--accent); }
     @media (max-width: 600px) { .page-title { font-size: 1.5rem; } }
   </style>
 </head>
@@ -67,7 +90,8 @@
 
 <header>
   <div class="header-left">
-    <div class="logo-icon">🌐</div>
+    <a href="/"><img src="../media/icon.png" class="logo-icon" width="1024" height="1024"
+         alt="simplevoc app icon"></a>
     <div>
       <h1>simplevoc</h1>
       <p>Vocabulary learning with speech recognition</p>
@@ -76,6 +100,8 @@
   <div class="lang-switcher">
     <button class="lang-btn" id="btn-de" onclick="setLang('de')">DE</button>
     <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" id="btn-fr" onclick="setLang('fr')">FR</button>
+    <button class="lang-btn" id="btn-es" onclick="setLang('es')">ES</button>
   </div>
 </header>
 
@@ -83,11 +109,14 @@
 <div id="content-de">
 <main>
   <h1 class="page-title">Allgemeine Geschäftsbedingungen (AGB)</h1>
-  <p class="updated">Stand: Mai 2026</p>
+  <p class="updated">Stand: August 2026</p>
 
   <div class="intro">
-    Diese Allgemeinen Geschäftsbedingungen regeln die Nutzung der App <strong>simplevoc</strong> und der zugehörigen Dienste. Mit der Registrierung oder Nutzung von simplevoc stimmst du diesen Bedingungen zu.
+    Diese Allgemeinen Geschäftsbedingungen regeln die Nutzung der App <strong>simplevoc</strong> und der zugehörigen Dienste. Mit der Registrierung bei simplevoc oder der Nutzung von simplevoc mit einem lokalen Account stimmst du diesen Bedingungen zu.
   </div>
+
+  <div class="highlight">
+    <strong>Aktueller Status: Early-Adopter-Phase.</strong> simplevoc befindet sich in der Early-Adopter-Phase, deren Zweck die Produkteinführung ist. Der volle Funktionsumfang steht in dieser Phase kostenlos zur Verfügung. Ein kostenpflichtiges Abonnement wird derzeit nicht angeboten, es findet keine Zahlungsabwicklung statt. Der Betreiber behält sich vor, Dienste, die in der Early-Adopter-Phase kostenlos sind, künftig entgeltlich anzubieten. In diesem Fall informieren wir dich mit ausreichender Vorlaufzeit in der App; wie ein solcher Wechsel abläuft, regelt § 3.3.</div>
 
   <section>
     <h2>§ 1 Anbieter und Geltungsbereich</h2>
@@ -95,54 +124,74 @@
     <div class="card" style="margin:12px 0">
       <p><strong>Stefan Lehner</strong><br>
       Vollständige Kontaktdaten: <a href="/impressum">Impressum</a><br>
-      E-Mail: <a href="mailto:contact@simplevoc.de">contact@simplevoc.de</a></p>
+      E-Mail: <a href="mailto:support@simplevoc.de">support@simplevoc.de</a></p>
     </div>
     <p>Diese AGB gelten für die Nutzung der App simplevoc sowie aller damit verbundenen Dienste (gemeinsam „simplevoc" oder der „Dienst"). Abweichende Bedingungen des Nutzers werden nicht akzeptiert.</p>
+    <p><strong>Apple Standard-EULA.</strong> Für die iOS-Version gilt zusätzlich Apples „Licensed Application End User License Agreement" (<a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener">Standard-EULA</a>), das die Lizenz an der App selbst regelt. Diese AGB regeln demgegenüber das Vertragsverhältnis über den Dienst – Konto, Cloud-Synchronisierung, KI-Credits und Support. Soweit sich beide Dokumente überschneiden, gilt für die Lizenz an der App die Standard-EULA und für den Dienst diese AGB; zwingende Verbraucherrechte bleiben unberührt.</p>
   </section>
 
   <section>
     <h2>§ 2 Registrierung und Nutzungsvoraussetzungen</h2>
 
     <h3>2.1 Mindestalter</h3>
-    <p>Die Nutzung von simplevoc setzt ein Mindestalter von <strong>13 Jahren</strong> voraus. Nutzer unter 18 Jahren benötigen die Zustimmung eines Erziehungsberechtigten. Mit der Registrierung versicherst du, die Altersvoraussetzungen zu erfüllen.</p>
+    <p>Die Nutzung von simplevoc setzt ein Mindestalter von <strong>13 Jahren</strong> voraus. Nutzer unter 18 Jahren benötigen die Zustimmung eines Erziehungsberechtigten. Mit der Nutzung von simplevoc versicherst du, die Altersvoraussetzungen zu erfüllen.</p>
+    <p>Zwei Funktionen beruhen auf einer Einwilligung und nicht auf diesem Vertrag: die Cloud-Spracherkennung und das Senden von Absturzberichten. Diese Einwilligung kann nach Art. 8 DSGVO erst ab <strong>16 Jahren</strong> selbst erteilt werden. Die App fragt dich deshalb einmalig nach deinem <strong>Geburtsjahr</strong> und bietet beide Funktionen unterhalb dieses Alters nicht an; das Geburtsjahr wird ausschließlich auf deinem Gerät gespeichert (siehe <a href="/privacy?lang=de">Datenschutzerklärung</a>, Abschnitt 14). Alle übrigen Funktionen stehen dir ab 13 Jahren uneingeschränkt zur Verfügung – die Spracheingabe läuft dann über die geräteeigene Spracherkennung.</p>
 
     <h3>2.2 Konto</h3>
-    <p>Zur vollständigen Nutzung von simplevoc ist die Erstellung eines Kontos erforderlich. Du kannst dich mit deiner E-Mail-Adresse, einem Google-Konto oder „Mit Apple anmelden" registrieren. Die bei der Registrierung angegebenen Daten müssen wahrheitsgemäß und aktuell sein.</p>
+    <p>Du kannst simplevoc ohne Registrierung mit einem lokalen Account nutzen. Hierbei werden deine Vokabeln ausschließlich auf deinem Gerät gespeichert und nicht in der Cloud gesichert oder synchronisiert. Um deine Vokabeln in der Cloud zu sichern und damit geräteübergreifend zu synchronisieren, ist ein Konto erforderlich. Du kannst dich mit einem Google-Konto oder über „Mit Apple anmelden" registrieren. Die bei der Registrierung angegebenen Daten müssen wahrheitsgemäß und aktuell sein.</p>
 
     <h3>2.3 Kontosicherheit</h3>
-    <p>Du bist für die Geheimhaltung deiner Zugangsdaten verantwortlich. Unbefugte Zugriffe auf dein Konto sind uns unverzüglich unter <a href="mailto:contact@simplevoc.de">contact@simplevoc.de</a> zu melden. Wir haften nicht für Schäden, die aus einer Verletzung dieser Pflicht entstehen.</p>
+    <p>Du bist für die Geheimhaltung deiner Zugangsdaten verantwortlich. Unbefugte Zugriffe auf dein Konto sind uns unverzüglich unter <a href="mailto:support@simplevoc.de">support@simplevoc.de</a> zu melden. Wir haften nicht für Schäden, die aus einer Verletzung dieser Pflicht entstehen.</p>
 
     <h3>2.4 Einzelnes Konto</h3>
     <p>Jeder Nutzer darf nur ein Konto anlegen. Die Weitergabe von Zugangsdaten an Dritte ist nicht gestattet.</p>
   </section>
 
   <section>
-    <h2>§ 3 Kostenloser Dienst und Premium-Abonnement</h2>
+    <h2>§ 3 Nutzungsphasen, kostenloser Dienst und Premium-Abonnement</h2>
 
-    <h3>3.1 Kostenloser Tarif</h3>
-    <p>simplevoc ist in einem kostenlosen Grundumfang nutzbar. Im kostenlosen Tarif kann die Anzahl der speicherbaren Vokabeleinträge begrenzt sein. Der Betreiber behält sich vor, den Umfang des kostenlosen Angebots jederzeit anzupassen.</p>
+    <h3>3.1 Early-Adopter-Phase (aktuell)</h3>
+    <p>simplevoc befindet sich derzeit in der <strong>Early-Adopter-Phase</strong>. In dieser Phase wird der Dienst allen Nutzern <strong>unentgeltlich</strong> mit dem vollen Funktionsumfang zur Verfügung gestellt. Dies bezieht auch das unter 3.2 beschriebene Nutzungskontigent (KI-Credits) mit ein. Ein kostenpflichtiges Abonnement wird in dieser Phase nicht angeboten; es werden keine Zahlungen erhoben und keine Zahlungsdaten verarbeitet.</p>
+    <p>Die Early-Adopter-Phase dient der Einführung und Weiterentwicklung des Dienstes. Funktionen können in dieser Phase häufiger geändert, ergänzt oder wieder entfernt werden; es besteht kein Anspruch auf einen bestimmten Funktionsumfang (siehe auch § 7).</p>
 
-    <h3>3.2 Premium-Abonnement</h3>
-    <p>Gegen Entgelt kann ein Premium-Abonnement abgeschlossen werden, das erweiterte Funktionen und höhere Nutzungskontingente beinhaltet. Details zu Preis und Leistungsumfang des Premium-Abonnements werden in der App angezeigt.</p>
+    <h3>3.2 Nutzungskontingent (KI-Credits)</h3>
+    <p>Die KI-gestützten Funktionen von simplevoc werden über ein monatliches Kontingent abgerechnet, das in der App als <strong>„KI-Credits"</strong> bezeichnet wird. Auch in der Early-Adopter-Phase gilt ein solches Kontingent von derzeit 300 KI-Credits (Änderungen vorbehalten). Das Kontingent wird monatlich zurückgesetzt, und zwar jeweils am Monatstag deiner Kontoregistrierung und nicht am Ersten des Kalendermonats; nicht genutzte Credits werden nicht in die nächste Periode übertragen. Der jeweils geltende Umfang und dein aktueller Verbrauch werden in der App angezeigt. Der Betreiber behält sich vor, den Umfang des unentgeltlichen Angebots mit Wirkung für die Zukunft anzupassen.</p>
+    <p><strong>Was Credits verbraucht:</strong></p>
+    <ul>
+      <li>Wörter aus einem gesprochenen oder getippten Satz extrahieren und übersetzen (Modus „Aufteilen"): ein halber Credit je erkanntem Wort, kaufmännisch gerundet, mindestens 1</li>
+      <li>Einen vollständigen Satz übersetzen (Modus „Satz"): ein halber Credit je eingegebenem Wort, kaufmännisch gerundet, mindestens 1</li>
+      <li>Eine neue Übungssitzung im Kontext-Modus erzeugen: 1 Credit je einbezogenem Wort (derzeit 5 bzw. 10 Credits je Sitzung)</li>
+      <li>Eine Konjugationsübung erzeugen: 1 Credit</li>
+    </ul>
+    <p><strong>Was keine Credits verbraucht:</strong></p>
+    <ul>
+      <li>Wiederholen von Vokabeln im Lern- und Karteikartenmodus</li>
+      <li>Fortsetzen einer bereits erzeugten Kontext-Session</li>
+      <li>Erneutes Üben einer bereits erzeugten Konjugation – sie wird auf dem Gerät und in deinem Konto gespeichert und wird kein zweites Mal berechnet</li>
+      <li>Durchsuchen deiner Sammlung sowie das manuelle Anlegen von Einträgen ohne KI</li>
+      <li>Spracheingabe, Synchronisierung und das Ändern von Einstellungen oder Sprachen</li>
+    </ul>
+    <p>Credits werden nur bei einer erfolgreichen KI-Antwort abgerechnet. Schlägt eine Anfrage fehl oder liefert sie kein Ergebnis, wird nichts angerechnet. Die genannten Sätze gelten für den aktuellen Stand des Dienstes; Änderungen mit Wirkung für die Zukunft bleiben nach Maßgabe von § 11 vorbehalten.</p>
 
-    <h3>3.3 Abrechnung und Verlängerung</h3>
-    <p>Das Premium-Abonnement wird über den jeweiligen App-Store (Apple App Store oder Google Play Store) abgerechnet. Es verlängert sich automatisch um den gewählten Abrechnungszeitraum, sofern es nicht vor Ablauf der aktuellen Periode gekündigt wird. Für Abrechnung, Stornierung und Rückerstattung gelten die Bedingungen des jeweiligen App-Stores.</p>
+    <h3>3.3 Übergang in die reguläre Phase</h3>
+    <p>Der Betreiber kann die Early-Adopter-Phase beenden und in die reguläre Phase wechseln, in der der Dienst in einen kostenlosen Tarif mit reduziertem Nutzungskontingent und ein kostenpflichtiges Premium-Abonnement mit größerem Kontingent aufgeteilt ist. Ein Anspruch auf dauerhaft unentgeltliche Nutzung des vollen Funktionsumfangs besteht nicht.</p>
+    <p><strong>Ankündigung.</strong> Über den Wechsel und über den dann geltenden Umfang des kostenlosen Tarifs informieren wir dich vorab in der App, mindestens <strong>30 Tage</strong> vor dem Stichtag. Preis, Laufzeit und Leistungsumfang eines Abonnements werden dir unmittelbar vor einem Kauf in der App und im jeweiligen App-Store angezeigt; maßgeblich sind stets diese Angaben.</p>
+    <p><strong>Kein automatischer kostenpflichtiger Vertrag.</strong> Der Wechsel allein lässt für dich keine Kosten entstehen. Ein Premium-Abonnement kommt ausschließlich durch deinen ausdrücklichen Kauf im jeweiligen App-Store zustande. Ohne Kauf nutzt du simplevoc nach dem Wechsel im kostenlosen Tarif weiter.</p>
+    <p><strong>Dein Kündigungsrecht.</strong> Beeinträchtigt die Änderung deine Nutzung des Dienstes nicht nur unerheblich, kannst du den Vertrag innerhalb von 30 Tagen ab der Ankündigung – oder, wenn dieser Zeitpunkt später liegt, ab dem Wirksamwerden der Änderung – kostenfrei beenden, indem du dein Konto löschst (§ 10.2). Deine Vokabeln kannst du vorher jederzeit in den Einstellungen exportieren.</p>
+    <p>Der Betreiber kann Early Adoptern freiwillige Übergangsregelungen einräumen, etwa den befristeten kostenlosen Weiterbezug des Premium-Umfangs. Ein Rechtsanspruch darauf besteht nicht; ein etwaiges Enddatum wird dir in der App angezeigt.</p>
 
     <h3>3.4 Kündigung des Abonnements</h3>
-    <p>Das Premium-Abonnement kann jederzeit über die Einstellungen des jeweiligen App-Stores gekündigt werden. Die Kündigung wird zum Ende des laufenden Abrechnungszeitraums wirksam. Eine Erstattung bereits gezahlter Beträge erfolgt nur nach den Richtlinien des jeweiligen App-Stores.</p>
+    <p>Sobald ein Premium-Abonnement angeboten wird, kann es jederzeit über die Einstellungen des jeweiligen App-Stores gekündigt werden. Die Kündigung wird zum Ende des laufenden Abrechnungszeitraums wirksam. Eine Erstattung bereits gezahlter Beträge erfolgt nur nach den Richtlinien des jeweiligen App-Stores.</p>
   </section>
 
   <section>
     <h2>§ 4 Widerrufsrecht</h2>
 
     <h3>4.1 Kostenloser Dienst</h3>
-    <p>Wenn du simplevoc kostenlos nutzt, hast du als Verbraucher ein 14-tägiges Widerrufsrecht nach Vertragsschluss (Registrierung). Das Widerrufsrecht erlischt vorzeitig, wenn du der Ausführung des Vertrags vor Ablauf der Widerrufsfrist ausdrücklich zustimmst und bestätigst, dass du weißt, dass du dein Widerrufsrecht mit Beginn der Vertragserfüllung verlierst.</p>
+    <p>Wenn du simplevoc kostenlos nutzt – wie derzeit in der Early-Adopter-Phase alle Nutzer –, hast du als Verbraucher mit Wohnsitz in der EU oder im Vereinigten Königreich ein 14-tägiges Widerrufsrecht nach Vertragsschluss (Registrierung); außerhalb dieser Staaten richtet sich ein Widerrufs- oder Rücktrittsrecht nach dem Recht deines Wohnsitzstaates (§ 14). Das Widerrufsrecht erlischt vorzeitig, wenn du der Ausführung des Vertrags vor Ablauf der Widerrufsfrist ausdrücklich zustimmst und bestätigst, dass du weißt, dass du dein Widerrufsrecht mit Beginn der Vertragserfüllung verlierst. Da in dieser Phase keine Zahlung erfolgt, entstehen dir durch einen Widerruf keine Kosten; du kannst dein Konto jederzeit auch ohne Widerruf löschen (§ 10.2).</p>
 
-    <h3>4.2 Premium-Abonnement</h3>
-    <p>Beim Kauf eines Premium-Abonnements hast du als Verbraucher ein 14-tägiges Widerrufsrecht ab Vertragsschluss. Das Widerrufsrecht erlischt vorzeitig, wenn mit der Ausführung des Vertrags begonnen wurde und du ausdrücklich zugestimmt hast, dass wir mit der Ausführung vor Ablauf der Widerrufsfrist beginnen, und du bestätigt hast, dass du dein Widerrufsrecht mit Beginn der Vertragserfüllung verlierst.</p>
-
-    <h3>4.3 Widerrufserklärung</h3>
-    <p>Den Widerruf kannst du durch eine eindeutige Erklärung (z. B. per E-Mail an <a href="mailto:contact@simplevoc.de">contact@simplevoc.de</a>) erklären. Bei In-App-Käufen über den App Store richtet sich das Widerrufsrecht nach den Bedingungen von Apple bzw. Google.</p>
+    <h3>4.2 Widerrufserklärung</h3>
+    <p>Den Widerruf kannst du durch eine eindeutige Erklärung (z. B. per E-Mail an <a href="mailto:support@simplevoc.de">support@simplevoc.de</a>) erklären sowie durch Löschung deines Kontos in der App.</p>
   </section>
 
   <section>
@@ -151,11 +200,11 @@
     <h3>5.1 Zulässige Nutzung</h3>
     <p>simplevoc darf ausschließlich für legale und persönliche Lernzwecke verwendet werden. Es ist insbesondere untersagt:</p>
     <ul>
-      <li>den Dienst gewerblich oder für automatisierte Abfragen zu nutzen;</li>
-      <li>Sicherheitsmechanismen zu umgehen oder zu manipulieren;</li>
-      <li>die Infrastruktur des Dienstes mit unverhältnismäßig vielen Anfragen zu belasten;</li>
-      <li>Inhalte einzugeben, die gegen geltendes Recht verstoßen;</li>
-      <li>sensible personenbezogene Daten Dritter als Vokabeleinträge zu speichern.</li>
+      <li>den Dienst gewerblich oder für automatisierte Abfragen zu nutzen</li>
+      <li>Sicherheitsmechanismen zu umgehen oder zu manipulieren</li>
+      <li>die Infrastruktur des Dienstes mit unverhältnismäßig vielen Anfragen zu belasten</li>
+      <li>volksverhetzenden oder extremistische Inhalte, sowie Inhalte, die gegen geltendes Recht verstoßen, einzugeben</li>
+      <li>sensible personenbezogene Daten Dritter als Vokabeleinträge zu speichern</li>
     </ul>
 
     <h3>5.2 Verantwortung für Inhalte</h3>
@@ -163,7 +212,10 @@
   </section>
 
   <section>
-    <h2>§ 6 KI-Übersetzungsdienst</h2>
+    <h2>§ 6 Spracherkennung und KI-Übersetzungsdienst</h2>
+
+    <h3>6.0 Spracherkennung</h3>
+    <p>Zur Umwandlung deiner Aufnahme in Text nutzt simplevoc standardmäßig die Cloud-Spracherkennung des Anbieters <strong>AssemblyAI</strong>; die Aufnahme wird dabei direkt von deinem Gerät an dessen europäischen Endpunkt übertragen. Du kannst diese Funktion in den Einstellungen (Spracheingabe) jederzeit ausschalten – dann erfolgt die Erkennung ausschließlich auf deinem Gerät, bei geringerer Genauigkeit. Für welche Sprachen die Cloud-Erkennung genutzt wird und wie die Daten verarbeitet werden, beschreibt die <a href="/privacy?lang=de">Datenschutzerklärung</a> (Abschnitt 4). Eine bestimmte Erkennungsgenauigkeit wird nicht zugesichert.</p>
 
     <h3>6.1 Keine Garantie für Übersetzungsqualität</h3>
     <p>simplevoc verwendet Künstliche Intelligenz (Google Gemini API) zur Wortextraktion und Übersetzung. KI-generierte Übersetzungen können Fehler enthalten. Der Dienst ist ausschließlich für <strong>Lernzwecke</strong> bestimmt und nicht als Ersatz für professionelle Übersetzungen oder für rechtlich, medizinisch oder sicherheitskritische Zwecke geeignet.</p>
@@ -179,13 +231,12 @@
 
   <section>
     <h2>§ 7 Verfügbarkeit des Dienstes</h2>
-    <p>Wir sind bestrebt, simplevoc kontinuierlich verfügbar zu halten, übernehmen jedoch keine Garantie für eine ununterbrochene Verfügbarkeit. Wartungsarbeiten, technische Störungen oder Umstände, die außerhalb unserer Kontrolle liegen, können zu vorübergehenden Unterbrechungen führen. Im kostenlosen Tarif besteht kein Anspruch auf eine bestimmte Verfügbarkeit.</p>
+    <p>Wir sind bestrebt, simplevoc kontinuierlich verfügbar zu halten, übernehmen jedoch keine Garantie für eine ununterbrochene Verfügbarkeit. Wartungsarbeiten, technische Störungen oder Umstände, die außerhalb unserer Kontrolle liegen, können zu vorübergehenden Unterbrechungen führen. Es besteht kein Anspruch auf eine bestimmte Verfügbarkeit.</p>
   </section>
 
   <section>
     <h2>§ 8 Geistiges Eigentum</h2>
     <p>Alle Rechte an der App simplevoc, einschließlich Design, Code und Marken, liegen beim Betreiber oder seinen Lizenzgebern. Die Nutzungslizenz beschränkt sich auf den persönlichen, nicht kommerziellen Gebrauch im Rahmen dieser AGB.</p>
-    <p>Deine eigenen Vokabeleinträge bleiben dein geistiges Eigentum. Du räumst uns das Recht ein, sie zur Erbringung des Dienstes (Speicherung, Synchronisierung, Verarbeitung durch KI) zu verarbeiten.</p>
   </section>
 
   <section>
@@ -193,23 +244,23 @@
 
     <h3>9.1 Haftungsbeschränkung</h3>
     <p>Der Betreiber haftet unbeschränkt für Schäden aus der Verletzung von Leben, Körper oder Gesundheit sowie für vorsätzlich oder grob fahrlässig verursachte Schäden.</p>
-    <p>Im Übrigen ist die Haftung des Betreibers – soweit gesetzlich zulässig – auf typisch vorhersehbare Schäden bei der Verletzung wesentlicher Vertragspflichten (Kardinalpflichten) beschränkt.</p>
+    <p>Im Übrigen ist die Haftung des Betreibers – soweit gesetzlich zulässig – auf typisch vorhersehbare Schäden bei der Verletzung wesentlicher Vertragspflichten (Kardinalpflichten) beschränkt. Für Nutzer mit gewöhnlichem Aufenthalt außerhalb der EU gelten ergänzend oder abweichend die regionalen Bestimmungen in § 14.</p>
 
     <h3>9.2 Keine Haftung für KI-Inhalte</h3>
     <p>Der Betreiber übernimmt keine Haftung für die inhaltliche Richtigkeit von KI-generierten Übersetzungen. Die Nutzung dieser Inhalte für rechtliche, medizinische oder geschäftliche Entscheidungen erfolgt auf eigenes Risiko des Nutzers.</p>
 
     <h3>9.3 Externe Dienste</h3>
-    <p>Für Schäden, die durch externe Dienste (Google Firebase, Gemini API, RevenueCat, Apple) entstehen, haftet der Betreiber nicht, soweit diese außerhalb seines Einflussbereichs liegen.</p>
+    <p>Für Schäden, die durch externe Dienste (Google Firebase, Gemini API, AssemblyAI, RevenueCat, Apple) entstehen, haftet der Betreiber nicht, soweit diese außerhalb seines Einflussbereichs liegen.</p>
   </section>
 
   <section>
     <h2>§ 10 Laufzeit und Kündigung</h2>
 
     <h3>10.1 Laufzeit</h3>
-    <p>Der Vertrag über die kostenlose Nutzung von simplevoc wird auf unbestimmte Zeit geschlossen. Das Premium-Abonnement läuft für den gewählten Abrechnungszeitraum und verlängert sich automatisch (siehe § 3).</p>
+    <p>Der Vertrag über die kostenlose Nutzung von simplevoc wird auf unbestimmte Zeit geschlossen; er endet nicht mit dem Ende der Early-Adopter-Phase, sondern läuft im dann geltenden kostenfreien Tarif weiter (§ 3.3). Der Betreiber behält sich vor, das Nutzungskontingent des kostenlosen Tarifs gegenüber dem heutigen Kontingent (§ 3.2) deutlich zu reduzieren.</p>
 
     <h3>10.2 Kündigung durch den Nutzer</h3>
-    <p>Du kannst dein Konto jederzeit über die App (Einstellungen → Konto löschen) oder per E-Mail an <a href="mailto:contact@simplevoc.de">contact@simplevoc.de</a> löschen. Mit Kontolöschung werden alle gespeicherten Daten unwiderruflich gelöscht.</p>
+    <p>Du kannst dein Konto jederzeit über die App (Einstellungen → Konto löschen) oder per E-Mail an <a href="mailto:support@simplevoc.de">support@simplevoc.de</a> löschen. Mit Kontolöschung werden alle gespeicherten Daten unwiderruflich gelöscht und der Vertrag gekündigt.</p>
 
     <h3>10.3 Kündigung durch den Betreiber</h3>
     <p>Wir behalten uns das Recht vor, Konten bei schwerwiegenden oder wiederholten Verstößen gegen diese AGB ohne vorherige Ankündigung zu sperren oder zu löschen. In weniger schwerwiegenden Fällen erfolgt zuvor eine Verwarnung.</p>
@@ -220,13 +271,16 @@
 
   <section>
     <h2>§ 11 Änderungen dieser AGB</h2>
-    <p>Wir behalten uns vor, diese AGB mit angemessener Vorankündigung (mindestens 30 Tage) zu ändern. Du wirst über Änderungen per In-App-Benachrichtigung oder E-Mail informiert. Widersprichst du den geänderten AGB nicht innerhalb der Frist, gelten sie als angenommen. Bei Widerspruch endet das Vertragsverhältnis zum Zeitpunkt des Wirksamwerdens der Änderungen.</p>
+    <p>Wir behalten uns vor, diese AGB zu ändern, soweit dies durch die Weiterentwicklung des Dienstes, geänderte technische oder rechtliche Rahmenbedingungen oder eine Anpassung des Leistungsangebots veranlasst ist. Über eine Änderung informieren wir dich mindestens <strong>30 Tage</strong> vor ihrem Wirksamwerden in der App; liegt uns eine E-Mail-Adresse von dir vor, zusätzlich per E-Mail. Änderungen wirken nie zurück.</p>
+    <p>Bist du mit einer Änderung nicht einverstanden, kannst du den Vertrag bis zu ihrem Wirksamwerden jederzeit kostenfrei beenden, indem du dein Konto löschst (§ 10.2); deine Daten kannst du vorher in den Einstellungen exportieren. Nutzt du simplevoc nach dem Wirksamwerden weiter, legen wir die geänderte Fassung der weiteren Nutzung zugrunde. Bestimmungen, die ausschließlich ein kostenpflichtiges Abonnement betreffen, werden dir vor einem Kauf angezeigt und gelten nur für den jeweiligen Kauf.</p>
   </section>
 
   <section>
     <h2>§ 12 Anwendbares Recht und Streitbeilegung</h2>
-    <p>Es gilt das Recht der Bundesrepublik Deutschland unter Ausschluss des UN-Kaufrechts. Für Verbraucher mit Wohnsitz in einem anderen EU-Mitgliedstaat gelten zwingend anwendbare Verbraucherschutzvorschriften des jeweiligen Wohnsitzstaates.</p>
-    <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a>. Wir sind zur Teilnahme an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle weder bereit noch verpflichtet.</p>
+    <p>Es gilt das Recht der Bundesrepublik Deutschland unter Ausschluss des UN-Kaufrechts.</p>
+    <p><strong>Zwingendes Recht deines Wohnsitzstaates.</strong> Diese Rechtswahl entzieht dir nicht den Schutz zwingender Verbraucherschutzvorschriften des Staates, in dem du deinen gewöhnlichen Aufenthalt hast – unabhängig davon, ob dieser Staat der EU angehört. Ist eine Regelung dieser AGB nach dem Recht deines Wohnsitzstaates unwirksam oder sieht dieses Recht eine für dich günstigere Regelung vor, geht sie vor. Ergänzende Bestimmungen für einzelne Regionen enthält § 14.</p>
+    <p><strong>Gerichtsstand.</strong> Als Verbraucher kannst du uns an deinem Wohnsitz oder an unserem Sitz verklagen; wir können dich nur an deinem Wohnsitz verklagen. Ein hiervon abweichender Gerichtsstand wird nicht vereinbart.</p>
+    <p>Wir sind zur Teilnahme an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle weder bereit noch verpflichtet (§ 36 VSBG).</p>
   </section>
 
   <section>
@@ -235,10 +289,78 @@
   </section>
 
   <section>
-    <h2>§ 14 Kontakt</h2>
+    <h2>§ 14 Regionale Bestimmungen</h2>
+
+    <h3>14.1 Verhältnis zu den übrigen Bestimmungen</h3>
+    <p>Dieser Paragraf ergänzt die vorstehenden Bestimmungen für einzelne Regionen und geht ihnen im Konfliktfall vor. Es gilt jeweils nur der Abschnitt für den Staat, in dem du deinen gewöhnlichen Aufenthalt hast. Zwingendes Verbraucherrecht deines Wohnsitzstaates bleibt in jedem Fall unberührt (§ 12). In welchen Ländern simplevoc angeboten wird, regelt § 14.10.</p>
+
+    <h3>14.2 Europäische Union, EWR und Schweiz</h3>
+    <p>Hast du deinen gewöhnlichen Aufenthalt in einem Mitgliedstaat der EU oder des EWR, gilt das Verbraucherschutzrecht deines Wohnsitzstaates neben diesen AGB und geht ihnen vor, soweit es für dich günstiger ist. Dazu gehören dein Widerrufsrecht nach § 4 und deine Rechte bei mangelhaften digitalen Inhalten nach der Richtlinie (EU) 2019/770. Deine Datenschutzrechte nach der DSGVO beschreibt die <a href="/privacy?lang=de">Datenschutzerklärung</a>.</p>
+    <p>Hast du deinen gewöhnlichen Aufenthalt in der <strong>Schweiz</strong>, gelten das Obligationenrecht und das Bundesgesetz gegen den unlauteren Wettbewerb neben diesen AGB; schweizerische Verbraucherschutzvorschriften gehen vor, soweit sie für dich günstiger sind. Deine Datenschutzrechte nach dem revidierten Datenschutzgesetz (revDSG) beschreibt die <a href="/privacy?lang=de">Datenschutzerklärung</a>, Abschnitt 18.3.</p>
+
+    <h3>14.3 Vereinigtes Königreich</h3>
+    <p>Für Nutzer mit gewöhnlichem Aufenthalt im Vereinigten Königreich gilt der Consumer Rights Act 2015. Danach müssen digitale Inhalte von zufriedenstellender Qualität, für den vorgesehenen Zweck geeignet und wie beschrieben sein; diese Rechte werden durch diese AGB nicht ausgeschlossen oder eingeschränkt. Dein Widerrufsrecht nach § 4 richtet sich nach den Consumer Contracts (Information, Cancellation and Additional Charges) Regulations 2013. Du kannst uns vor den Gerichten des Vereinigten Königreichs verklagen. Deine Datenschutzrechte nach der UK GDPR beschreibt die <a href="/privacy?lang=de">Datenschutzerklärung</a>, Abschnitt 18.2.</p>
+
+    <h3>14.4 Vereinigte Staaten von Amerika</h3>
+    <p>Für Nutzer mit gewöhnlichem Aufenthalt in den USA gilt ergänzend:</p>
+    <div class="highlight">
+      <strong>KEINE GEWÄHRLEISTUNG.</strong> SOWEIT GESETZLICH ZULÄSSIG, WIRD SIMPLEVOC „WIE BESEHEN" UND „WIE VERFÜGBAR" BEREITGESTELLT, OHNE JEGLICHE AUSDRÜCKLICHE, KONKLUDENTE ODER GESETZLICHE GEWÄHRLEISTUNG. WIR SCHLIESSEN INSBESONDERE DIE KONKLUDENTEN GEWÄHRLEISTUNGEN DER MARKTGÄNGIGKEIT (MERCHANTABILITY), DER EIGNUNG FÜR EINEN BESTIMMTEN ZWECK (FITNESS FOR A PARTICULAR PURPOSE), DER RICHTIGKEIT UND DER NICHTVERLETZUNG VON RECHTEN DRITTER AUS. WIR SICHERN NICHT ZU, DASS DER DIENST UNUNTERBROCHEN ODER FEHLERFREI ARBEITET ODER DASS KI-ERZEUGTE ÜBERSETZUNGEN ZUTREFFEN.
+    </div>
+    <p><strong>Haftungshöchstbetrag.</strong> Soweit gesetzlich zulässig, ist unsere Gesamthaftung aus oder im Zusammenhang mit diesen AGB und dem Dienst auf den höheren der folgenden Beträge begrenzt: die Summe der Beträge, die du in den zwölf Monaten vor dem schadensauslösenden Ereignis für simplevoc gezahlt hast, oder 100 US-Dollar. Wir haften nicht für mittelbare Schäden, Folgeschäden, entgangenen Gewinn, Datenverlust oder Betriebsunterbrechung.</p>
+    <p><strong>Freistellung.</strong> Du stellst uns von Ansprüchen Dritter frei, die daraus entstehen, dass du Inhalte in simplevoc eingibst oder den Dienst entgegen diesen AGB oder entgegen geltendem Recht nutzt, einschließlich angemessener Kosten der Rechtsverteidigung. Dies gilt nicht, soweit uns Vorsatz oder grobe Fahrlässigkeit trifft.</p>
+    <p><strong>Export und Sanktionen.</strong> Du sicherst zu, dass du dich nicht in einem Staat aufhältst, der einem Embargo der US-Regierung unterliegt oder von ihr als „terrorismusunterstützend" eingestuft wurde, und dass du auf keiner Liste verbotener oder beschränkter Parteien der US-Regierung geführt wirst (u. a. SDN-Liste des US-Finanzministeriums, Denied Persons List und Entity List des US-Handelsministeriums). Du nutzt simplevoc nicht für nach US-Recht verbotene Zwecke.</p>
+    <p><strong>Bundesstaatliche Abweichungen.</strong> Einige US-Bundesstaaten lassen den Ausschluss konkludenter Gewährleistungen oder die Beschränkung der Haftung für Neben- und Folgeschäden nicht zu. In diesem Fall gelten die vorstehenden Ausschlüsse und Beschränkungen für dich nur so weit, wie es das Recht deines Bundesstaates zulässt; deine gesetzlichen Verbraucherrechte bleiben unberührt. Hinweise zu deinen Datenschutzrechten nach dem Recht der US-Bundesstaaten enthält die <a href="/privacy?lang=de">Datenschutzerklärung</a>, Abschnitt 18.1.</p>
+
+    <h3>14.5 Kanada</h3>
+    <p>Zwingende Vorschriften des Verbraucherschutzrechts deiner Provinz oder deines Territoriums gehen diesen AGB vor. Für Verbraucher in <strong>Québec</strong> gilt zusätzlich: Das Consumer Protection Act (RLRQ c P-40.1) kann vertraglich nicht abbedungen werden; die Beschränkungen in § 9 und § 14.4 gelten für dich nur so weit, wie dieses Gesetz es zulässt, und du kannst uns in dem Gerichtsbezirk verklagen, in dem du deinen Wohnsitz hast. Deine Datenschutzrechte nach PIPEDA und dem Recht der Provinzen beschreibt die <a href="/privacy?lang=de">Datenschutzerklärung</a>, Abschnitt 18.4.</p>
+
+    <h3>14.6 Australien und Neuseeland</h3>
+    <p>Für Nutzer mit gewöhnlichem Aufenthalt in <strong>Australien</strong> gilt: Unsere Leistungen unterliegen Garantien, die nach dem Australian Consumer Law (Anhang 2 zum Competition and Consumer Act 2010) nicht ausgeschlossen werden können. Diese AGB schließen diese Garantien weder aus noch schränken sie sie ein; die Beschränkungen in § 9 und § 14.4 gelten nur so weit, wie das Australian Consumer Law es zulässt. Soweit unsere Haftung für die Verletzung einer Verbrauchergarantie zulässigerweise begrenzt werden darf, ist sie auf die erneute Erbringung der Leistung oder die Erstattung der Kosten einer erneuten Erbringung beschränkt.</p>
+    <p>Für Nutzer mit gewöhnlichem Aufenthalt in <strong>Neuseeland</strong> gelten der Consumer Guarantees Act 1993 und der Fair Trading Act 1986, soweit du simplevoc als Verbraucher nutzt; diese AGB schließen Rechte nach diesen Gesetzen weder aus noch schränken sie sie ein. Deine Datenschutzrechte beschreibt die <a href="/privacy?lang=de">Datenschutzerklärung</a>, Abschnitt 18.5.</p>
+
+    <h3>14.7 Afrika</h3>
+    <p>Zwingende Verbraucherschutz- und Datenschutzvorschriften deines Wohnsitzstaates gehen diesen AGB vor. Ergänzend gilt:</p>
+    <ul>
+      <li><strong>Südafrika:</strong> Der Consumer Protection Act 68 von 2008 und der Electronic Communications and Transactions Act 25 von 2002 sind zwingend; die Beschränkungen in § 9 und § 14.4 gelten nur so weit, wie diese Gesetze es zulassen. Nach dem Protection of Personal Information Act (POPIA) gilt als Kind, wer das 18. Lebensjahr noch nicht vollendet hat – die Zustimmung eines Erziehungsberechtigten nach § 2.1 ist daher in Südafrika für alle Minderjährigen erforderlich.</li>
+      <li><strong>Nigeria:</strong> Es gelten der Federal Competition and Consumer Protection Act 2018 und der Nigeria Data Protection Act 2023.</li>
+      <li><strong>Kenia:</strong> Es gelten der Consumer Protection Act 2012 und der Data Protection Act 2019.</li>
+      <li><strong>Ghana:</strong> Es gilt der Data Protection Act 2012 (Act 843) sowie das ghanaische Verbraucherschutzrecht.</li>
+    </ul>
+    <p>Deine Datenschutzrechte in diesen Ländern beschreibt die <a href="/privacy?lang=de">Datenschutzerklärung</a>, Abschnitt 18.6.</p>
+
+        <h3>14.8 Lateinamerika</h3>
+    <p>Dieser Abschnitt gilt, wenn du deinen gewöhnlichen Aufenthalt in Argentinien, Bolivien, Chile, Costa Rica, der Dominikanischen Republik, Ecuador, El Salvador, Guatemala, Honduras, Kolumbien, Mexiko, Nicaragua, Panama, Paraguay, Peru oder Uruguay hast.</p>
+    <p><strong>Dein Verbraucherrecht geht vor.</strong> Das Verbraucherschutzrecht dieser Staaten ist zwingendes Recht (<em>orden público</em>) und kann weder vertraglich abbedungen noch durch die Rechtswahl zugunsten deutschen Rechts in § 12 verdrängt werden. Soweit es dir mehr gewährt als diese AGB, gilt es:</p>
+    <ul>
+      <li><strong>Mexiko</strong> – Ley Federal de Protección al Consumidor; Behörde: PROFECO</li>
+      <li><strong>Kolumbien</strong> – Estatuto del Consumidor, Ley 1480 de 2011; Behörde: Superintendencia de Industria y Comercio</li>
+      <li><strong>Argentinien</strong> – Ley 24.240 de Defensa del Consumidor sowie Art. 42 der Verfassung</li>
+      <li><strong>Chile</strong> – Ley 19.496; Behörde: SERNAC</li>
+      <li><strong>Peru</strong> – Código de Protección y Defensa del Consumidor, Ley 29571; Behörde: INDECOPI</li>
+      <li><strong>Ecuador</strong> – Ley Orgánica de Defensa del Consumidor</li>
+      <li><strong>Uruguay</strong> – Ley 17.250 · <strong>Paraguay</strong> – Ley 1334/98 (Behörde: SEDECO) · <strong>Bolivien</strong> – Ley 453</li>
+      <li><strong>Costa Rica</strong> – Ley 7472 · <strong>Panama</strong> – Ley 45 de 2007 (Behörde: ACODECO) · <strong>Dominikanische Republik</strong> – Ley 358-05 (Behörde: Pro Consumidor)</li>
+      <li><strong>Guatemala</strong> – Decreto 006-2003 (Behörde: DIACO) · <strong>El Salvador</strong> – Ley de Protección al Consumidor (Behörde: Defensoría del Consumidor) · <strong>Honduras</strong> – Decreto 24-2008 · <strong>Nicaragua</strong> – Ley 842</li>
+    </ul>
+    <p><strong>Der Haftungshöchstbetrag gilt für dich nicht.</strong> Diese Rechtsordnungen behandeln eine Klausel, die die Haftung des Anbieters gegenüber Verbrauchern beschränkt oder ausschließt, regelmäßig als unwirksam. Die Begrenzung nach § 14.4 findet daher auf Nutzer mit Wohnsitz in diesen Staaten <strong>keine</strong> Anwendung; § 9 gilt nur so weit, wie es dein nationales Recht zulässt.</p>
+    <p><strong>Auslegung und Gerichtsstand.</strong> Unklarheiten dieser AGB werden zu deinen Gunsten als Verbraucher ausgelegt. Du kannst uns an deinem Wohnsitz verklagen und dich dort bei der zuständigen Verbraucherschutzbehörde beschweren.</p>
+    <p><strong>Sprache.</strong> Diese AGB werden in spanischer Sprache veröffentlicht; für dich ist die spanische Fassung maßgeblich (siehe § 14.9).</p>
+    <p>Deine Datenschutzrechte in diesen Ländern beschreibt die <a href="/privacy?lang=de">Datenschutzerklärung</a>, Abschnitt 18.7.</p>
+
+<h3>14.9 Sprache</h3>
+    <p>Diese AGB werden in deutscher, englischer, französischer und spanischer Sprache veröffentlicht. Für Nutzer mit gewöhnlichem Aufenthalt in Deutschland, Österreich und der Schweiz ist die deutsche Fassung maßgeblich, für Nutzer mit gewöhnlichem Aufenthalt in Frankreich, Québec, Belgien und den übrigen französischsprachigen Gebieten die französische Fassung, für Nutzer mit gewöhnlichem Aufenthalt in Spanien und den spanischsprachigen Ländern Lateinamerikas die spanische Fassung, für alle übrigen Nutzer die englische Fassung.</p>
+    <p><strong>Übersetzung auf Anfrage.</strong> Wenn du diese AGB lieber in einer anderen Sprache lesen möchtest, schreibe uns an <a href="mailto:support@simplevoc.de">support@simplevoc.de</a> – wir stellen dir kostenfrei eine Übersetzung zur Verfügung. Schreibt das Recht deines Wohnsitzstaates eine Fassung in einer bestimmten Sprache vor, geht diese der deutschen, der englischen, der französischen und der spanischen Fassung vor. Übersetzungen, die wir zur besseren Verständlichkeit bereitstellen, ändern im Übrigen nichts an der oben genannten maßgeblichen Fassung.</p>
+
+    <h3>14.10 Länder, in denen simplevoc angeboten wird</h3>
+    <p>simplevoc wird ausschließlich in den Ländern angeboten, die im App Store und bei Google Play als verfügbar angezeigt werden. Wir können Länder jederzeit ergänzen oder streichen; maßgeblich ist stets die dort angezeigte Verfügbarkeit.</p>
+    <p>simplevoc wird nicht in Staaten und Gebieten angeboten, die Sanktionen oder Embargos der Europäischen Union oder der Vereinigten Staaten unterliegen; der Zugang aus solchen Gebieten ist untersagt.</p>
+  </section>
+
+  <section>
+    <h2>§ 15 Kontakt</h2>
     <div class="card">
       <p><strong>Stefan Lehner</strong> – simplevoc<br>
-      <a href="mailto:contact@simplevoc.de">contact@simplevoc.de</a></p>
+      <a href="mailto:support@simplevoc.de">support@simplevoc.de</a></p>
     </div>
   </section>
 
@@ -253,10 +375,14 @@
 <div id="content-en" style="display:none">
 <main>
   <h1 class="page-title">Terms of Use</h1>
-  <p class="updated">Last updated: May 2026</p>
+  <p class="updated">Last updated: August 2026</p>
 
   <div class="intro">
-    These Terms of Use govern your access to and use of the <strong>simplevoc</strong> app and related services. By registering or using simplevoc, you agree to these terms.
+    These Terms of Use govern your access to and use of the <strong>simplevoc</strong> app and related services. By registering with simplevoc, or by using simplevoc with a local account, you agree to these terms.
+  </div>
+
+  <div class="highlight">
+    <strong>Current status: early-adopter phase.</strong> simplevoc is in its early-adopter phase, the purpose of which is to launch the product. The full feature set is available free of charge during this phase. No paid subscription is offered at present and no payment is processed. We reserve the right to offer services that are free during the early-adopter phase for a fee in future. In that case we will inform you in the app with sufficient notice; section 3.3 sets out how such a transition works.
   </div>
 
   <section>
@@ -265,54 +391,74 @@
     <div class="card" style="margin:12px 0">
       <p><strong>Stefan Lehner</strong><br>
       Full contact details: <a href="/impressum?lang=en">Legal Notice</a><br>
-      Email: <a href="mailto:contact@simplevoc.de">contact@simplevoc.de</a></p>
+      Email: <a href="mailto:support@simplevoc.de">support@simplevoc.de</a></p>
     </div>
     <p>These Terms apply to the simplevoc app and all associated services (collectively "simplevoc" or the "Service"). We do not accept any conflicting terms from users.</p>
+    <p><strong>Apple Standard EULA.</strong> For the iOS version, Apple's <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener">Licensed Application End User License Agreement</a> (the "Standard EULA") additionally applies and governs the licence to the app itself. These Terms govern the contract for the Service — account, cloud sync, AI credits, and support. Where the two overlap, the Standard EULA governs the app licence and these Terms govern the Service; mandatory consumer rights are unaffected.</p>
   </section>
 
   <section>
     <h2>2. Registration and Eligibility</h2>
 
     <h3>Minimum age</h3>
-    <p>You must be at least <strong>13 years old</strong> to use simplevoc. Users under 18 require the consent of a parent or guardian. By registering, you confirm you meet these requirements.</p>
+    <p>You must be at least <strong>13 years old</strong> to use simplevoc. Users under 18 require the consent of a parent or guardian. By using simplevoc you confirm you meet these requirements.</p>
+    <p>Two features rely on consent rather than on this contract: cloud speech recognition and sending crash reports. Under Art. 8 GDPR that consent can only be given by the user themselves from the age of <strong>16</strong>. The app therefore asks once for your <strong>year of birth</strong> and does not offer either feature below that age; the year is stored on your device only (see <a href="/privacy?lang=en">Privacy Policy</a>, Section 14). Everything else is available to you in full from the age of 13 — speech input then runs on your device's own recognition.</p>
 
     <h3>Account</h3>
-    <p>A full-featured account is required to use simplevoc. You can sign up with an email address, a Google account, or Sign in with Apple. All information provided at registration must be accurate and kept up to date.</p>
+    <p>You can use simplevoc without registering, with a local account. Your vocabulary is then stored only on your device and is not backed up to the cloud or synchronised. To back up your vocabulary to the cloud and sync it across devices, an account is required. You can sign up with a Google account or with Sign in with Apple. All information provided at registration must be accurate and kept up to date.</p>
 
     <h3>Account security</h3>
-    <p>You are responsible for keeping your login credentials confidential. Report any unauthorised access immediately to <a href="mailto:contact@simplevoc.de">contact@simplevoc.de</a>. We are not liable for losses resulting from a failure to keep credentials secure.</p>
+    <p>You are responsible for keeping your login credentials confidential. Report any unauthorised access immediately to <a href="mailto:support@simplevoc.de">support@simplevoc.de</a>. We are not liable for losses resulting from a failure to keep credentials secure.</p>
 
     <h3>One account per person</h3>
     <p>Each person may hold one account. Sharing login credentials with third parties is not permitted.</p>
   </section>
 
   <section>
-    <h2>3. Free Plan and Premium Subscription</h2>
+    <h2>3. Service Phases, Free Use and Premium Subscription</h2>
 
-    <h3>Free plan</h3>
-    <p>simplevoc is available with a free plan. The number of vocabulary entries that can be saved may be limited under the free plan. We reserve the right to adjust the scope of the free offering at any time.</p>
+    <h3>3.1 Early-adopter phase (current)</h3>
+    <p>simplevoc is currently in its <strong>early-adopter phase</strong>. During this phase the Service is provided to all users <strong>free of charge</strong> with the full feature set. This includes the usage quota (AI credits) described in section 3.2. No paid subscription is offered during this phase; no payments are collected and no payment data is processed.</p>
+    <p>The early-adopter phase serves to launch and further develop the Service. Features may be changed, added, or removed more frequently during this phase; no particular feature set is guaranteed (see also section 7).</p>
 
-    <h3>Premium subscription</h3>
-    <p>A paid Premium subscription is available and provides expanded features and higher usage limits. Pricing and features are displayed within the app before purchase.</p>
+    <h3>3.2 Usage quota (AI credits)</h3>
+    <p>simplevoc's AI-powered features are metered through a monthly quota, referred to in the app as <strong>"AI credits"</strong>. Such a quota applies during the early-adopter phase as well, currently 300 AI credits (subject to change). The quota resets monthly, on the day of the month on which you registered your account and not on the 1st of the calendar month; unused credits do not carry over to the next period. The quota that applies to you and your current usage are shown in the app. We reserve the right to adjust the scope of the free offering with effect for the future.</p>
+    <p><strong>What consumes credits:</strong></p>
+    <ul>
+      <li>Extracting and translating words from a spoken or typed sentence ("Split" mode): half a credit per recognised word, rounded, minimum 1</li>
+      <li>Translating a complete sentence ("Sentence" mode): half a credit per submitted word, rounded, minimum 1</li>
+      <li>Generating a new practice session in Context Mode: 1 credit per word included (currently 5 or 10 credits per session)</li>
+      <li>Generating a conjugation exercise: 1 credit</li>
+    </ul>
+    <p><strong>What does not consume credits:</strong></p>
+    <ul>
+      <li>Reviewing vocabulary in learning and flashcard mode</li>
+      <li>Continuing a context session that has already been generated</li>
+      <li>Practising a conjugation that has already been generated — it is stored on your device and in your account and is never charged a second time</li>
+      <li>Browsing your collection and adding entries manually without AI</li>
+      <li>Speech input, synchronisation, and changing settings or languages</li>
+    </ul>
+    <p>Credits are only charged on a successful AI response. If a request fails or returns no result, nothing is charged. The rates above reflect the current state of the Service; changes with effect for the future remain reserved in accordance with section 11.</p>
 
-    <h3>Billing and renewal</h3>
-    <p>The Premium subscription is billed through the applicable app store (Apple App Store or Google Play Store). It renews automatically for the chosen billing period unless cancelled before the end of the current period. Billing, cancellation, and refunds are governed by the relevant app store's terms.</p>
+    <h3>3.3 Transition to the regular phase</h3>
+    <p>We may end the early-adopter phase and move to the regular phase, in which the Service is split into a free plan with a reduced usage quota and a paid Premium subscription with a larger quota. There is no entitlement to permanent free use of the full feature set.</p>
+    <p><strong>Notice.</strong> We will inform you of the transition, and of the quota that will then apply on the free plan, in the app in advance — at least <strong>30 days</strong> before the cut-off date. The price, term, and features of a subscription are shown to you in the app and in the relevant app store immediately before any purchase; those details are always the ones that apply.</p>
+    <p><strong>No automatic paid contract.</strong> The transition alone does not cause you any cost. A Premium subscription is only ever concluded by your express purchase in the relevant app store. Without a purchase, you continue using simplevoc on the free plan after the transition.</p>
+    <p><strong>Your right to terminate.</strong> If the change impairs your use of the Service other than insignificantly, you may terminate the agreement free of charge within 30 days of the notice — or of the change taking effect, if that is later — by deleting your account (section 10). You can export your vocabulary at any time beforehand in Settings.</p>
+    <p>We may grant early adopters voluntary transitional benefits, such as continued free access to the premium feature set for a limited time. There is no entitlement to this; any end date is shown to you in the app.</p>
 
-    <h3>Cancellation</h3>
-    <p>You may cancel your Premium subscription at any time via your app store account settings. Cancellation takes effect at the end of the current billing period. Refunds are subject to the policies of the relevant app store.</p>
+    <h3>3.4 Cancellation of the subscription</h3>
+    <p>Once a Premium subscription is offered, you may cancel it at any time via your app store account settings. Cancellation takes effect at the end of the current billing period. Refunds are subject to the policies of the relevant app store.</p>
   </section>
 
   <section>
     <h2>4. Right of Withdrawal</h2>
 
-    <h3>Free service</h3>
-    <p>As a consumer, you have a 14-day right of withdrawal from the date of registration. This right expires early if you expressly agree to the commencement of the service before the withdrawal period ends and acknowledge that you lose your right of withdrawal upon the start of performance.</p>
+    <h3>4.1 Free service</h3>
+    <p>As a consumer resident in the EU or the United Kingdom, you have a 14-day right of withdrawal from the date of registration — this covers all such users during the current early-adopter phase. Outside those countries, any right of withdrawal or cancellation follows the law of your country of residence (section 14). This right expires early if you expressly agree to the commencement of the service before the withdrawal period ends and acknowledge that you lose your right of withdrawal upon the start of performance. As no payment is taken during this phase, withdrawing costs you nothing; you can also delete your account at any time without withdrawing (section 10).</p>
 
-    <h3>Premium subscription</h3>
-    <p>As a consumer, you have a 14-day right of withdrawal from the date of purchase. This right expires early once performance has begun with your express consent and your acknowledgement that you lose the right of withdrawal upon commencement of performance.</p>
-
-    <h3>How to withdraw</h3>
-    <p>You may exercise your right of withdrawal by a clear statement (e.g. by email to <a href="mailto:contact@simplevoc.de">contact@simplevoc.de</a>). For in-app purchases via an app store, the withdrawal right is governed by Apple's or Google's terms.</p>
+    <h3>4.2 How to withdraw</h3>
+    <p>You may exercise your right of withdrawal by a clear statement (e.g. by email to <a href="mailto:support@simplevoc.de">support@simplevoc.de</a>), or by deleting your account in the app.</p>
   </section>
 
   <section>
@@ -321,11 +467,11 @@
     <h3>Permitted use</h3>
     <p>simplevoc may only be used for lawful, personal learning purposes. The following are prohibited:</p>
     <ul>
-      <li>Commercial use or automated querying of the Service;</li>
-      <li>Circumventing or manipulating security mechanisms;</li>
-      <li>Placing disproportionate load on the Service's infrastructure;</li>
-      <li>Entering content that violates applicable law;</li>
-      <li>Storing sensitive personal data of third parties as vocabulary entries.</li>
+      <li>Commercial use or automated querying of the Service</li>
+      <li>Circumventing or manipulating security mechanisms</li>
+      <li>Placing disproportionate load on the Service's infrastructure</li>
+      <li>Entering content that incites hatred or is extremist, as well as content that violates applicable law</li>
+      <li>Storing sensitive personal data of third parties as vocabulary entries</li>
     </ul>
 
     <h3>Responsibility for content</h3>
@@ -333,7 +479,10 @@
   </section>
 
   <section>
-    <h2>6. AI Translation Service</h2>
+    <h2>6. Speech Recognition and AI Translation Service</h2>
+
+    <h3>Speech recognition</h3>
+    <p>By default, simplevoc transcribes your recording using the cloud speech recognition service of <strong>AssemblyAI</strong>; the recording is streamed directly from your device to its European endpoint. You can switch this off at any time in Settings → Speech input, in which case recognition runs on your device only, at lower accuracy. The languages for which cloud recognition is used and the way the data is processed are described in the <a href="/privacy?lang=en">Privacy Policy</a> (Section 4). No particular recognition accuracy is guaranteed.</p>
 
     <h3>No guarantee of translation quality</h3>
     <p>simplevoc uses Artificial Intelligence (Google Gemini API) for word extraction and translation. AI-generated translations may contain errors. The Service is intended solely for <strong>educational purposes</strong> and is not a substitute for professional translation or suitable for legally, medically, or safety-critical use.</p>
@@ -349,13 +498,12 @@
 
   <section>
     <h2>7. Service Availability</h2>
-    <p>We aim to keep simplevoc continuously available but do not guarantee uninterrupted access. Maintenance, technical issues, or circumstances beyond our control may cause temporary interruptions. No specific availability is guaranteed under the free plan.</p>
+    <p>We aim to keep simplevoc continuously available but do not guarantee uninterrupted access. Maintenance, technical issues, or circumstances beyond our control may cause temporary interruptions. No specific availability is guaranteed.</p>
   </section>
 
   <section>
     <h2>8. Intellectual Property</h2>
     <p>All rights in the simplevoc app, including design, code, and trademarks, belong to the provider or its licensors. The licence granted to you is limited to personal, non-commercial use within the scope of these Terms.</p>
-    <p>Your vocabulary entries remain your intellectual property. You grant us the right to process them to provide the Service (storage, synchronisation, AI processing).</p>
   </section>
 
   <section>
@@ -363,23 +511,23 @@
 
     <h3>Limitation of liability</h3>
     <p>We are fully liable for damages arising from injury to life, body, or health, and for intentional or grossly negligent conduct.</p>
-    <p>Otherwise, our liability is limited — to the extent permitted by law — to foreseeable damages arising from breaches of material contractual obligations (cardinal obligations).</p>
+    <p>Otherwise, our liability is limited — to the extent permitted by law — to foreseeable damages arising from breaches of material contractual obligations (cardinal obligations). For users habitually resident outside the EU, the regional terms in section 14 apply in addition or instead.</p>
 
     <h3>AI-generated content</h3>
     <p>We accept no liability for the accuracy of AI-generated translations. Using such content for legal, medical, or business decisions is at your own risk.</p>
 
     <h3>Third-party services</h3>
-    <p>We are not liable for damages caused by third-party services (Google Firebase, Gemini API, RevenueCat, Apple) that are outside our control.</p>
+    <p>We are not liable for damages caused by third-party services (Google Firebase, Gemini API, AssemblyAI, RevenueCat, Apple) that are outside our control.</p>
   </section>
 
   <section>
     <h2>10. Term and Termination</h2>
 
     <h3>Duration</h3>
-    <p>The agreement for the free use of simplevoc is concluded for an indefinite period. The Premium subscription runs for the chosen billing period and renews automatically (see section 3).</p>
+    <p>The agreement for the free use of simplevoc is concluded for an indefinite period; it does not end when the early-adopter phase ends but continues under the free plan that then applies (section 3.3). We reserve the right to reduce the free plan's usage quota significantly compared with the quota that applies today (section 3.2).</p>
 
     <h3>Termination by you</h3>
-    <p>You may delete your account at any time via the app (Settings → Delete Account) or by emailing <a href="mailto:contact@simplevoc.de">contact@simplevoc.de</a>. Deletion permanently removes all stored data.</p>
+    <p>You may delete your account at any time via the app (Settings → Delete Account) or by emailing <a href="mailto:support@simplevoc.de">support@simplevoc.de</a>. Deletion permanently removes all stored data and terminates the agreement.</p>
 
     <h3>Termination by us</h3>
     <p>We reserve the right to suspend or delete accounts in the event of serious or repeated violations of these Terms without prior notice. In less serious cases, a prior warning will be issued.</p>
@@ -390,13 +538,16 @@
 
   <section>
     <h2>11. Changes to These Terms</h2>
-    <p>We may update these Terms with reasonable notice (at least 30 days). You will be informed of changes via in-app notification or email. If you do not object within the notice period, the updated Terms are deemed accepted. If you do object, the agreement ends when the changes take effect.</p>
+    <p>We may update these Terms where this is warranted by the further development of the Service, by changed technical or legal conditions, or by an adjustment of what we offer. We will inform you of a change in the app at least <strong>30 days</strong> before it takes effect and, where we hold an email address for you, by email as well. Changes never apply retroactively.</p>
+    <p>If you do not agree to a change, you may terminate the agreement free of charge at any time before it takes effect by deleting your account (section 10); you can export your data beforehand in Settings. If you continue to use simplevoc after the change takes effect, we will apply the updated version to your further use. Provisions that concern a paid subscription only are shown to you before any purchase and apply to that purchase only.</p>
   </section>
 
   <section>
     <h2>12. Governing Law and Dispute Resolution</h2>
-    <p>These Terms are governed by the laws of the Federal Republic of Germany, excluding the UN Convention on Contracts for the International Sale of Goods. For consumers residing in other EU member states, mandatory consumer protection provisions of their country of residence apply.</p>
-    <p>The European Commission provides an online dispute resolution platform: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a>. We are neither willing nor obliged to participate in dispute resolution proceedings before a consumer arbitration board.</p>
+    <p>These Terms are governed by the laws of the Federal Republic of Germany, excluding the UN Convention on Contracts for the International Sale of Goods.</p>
+    <p><strong>Mandatory law of your country of residence.</strong> This choice of law does not deprive you of the protection of mandatory consumer protection provisions of the country in which you are habitually resident — whether or not that country is in the EU. Where a provision of these Terms is invalid under the law of your country of residence, or that law provides a rule more favourable to you, that rule prevails. Supplementary provisions for particular regions are set out in section 14.</p>
+    <p><strong>Jurisdiction.</strong> As a consumer you may bring proceedings against us either where you are domiciled or at our registered seat; we may bring proceedings against you only where you are domiciled. No departing choice of forum is agreed.</p>
+    <p>We are neither willing nor obliged to participate in dispute resolution proceedings before a consumer arbitration board (§ 36 VSBG).</p>
   </section>
 
   <section>
@@ -405,10 +556,78 @@
   </section>
 
   <section>
-    <h2>14. Contact</h2>
+    <h2>14. Regional Terms</h2>
+
+    <h3>14.1 Relationship to the rest of these Terms</h3>
+    <p>This section supplements the provisions above for particular regions and prevails over them in the event of a conflict. Only the sub-section for the country in which you are habitually resident applies to you. Mandatory consumer law of your country of residence is unaffected in any event (section 12). Section 14.10 sets out where simplevoc is offered.</p>
+
+    <h3>14.2 European Union, EEA and Switzerland</h3>
+    <p>If you are habitually resident in an EU or EEA member state, the consumer protection law of your country of residence applies alongside these Terms and prevails where it is more favourable to you. This includes your right of withdrawal under section 4 and your rights in respect of defective digital content under Directive (EU) 2019/770. Your data protection rights under the GDPR are described in the <a href="/privacy">Privacy Policy</a>.</p>
+    <p>If you are habitually resident in <strong>Switzerland</strong>, the Swiss Code of Obligations and the Federal Act against Unfair Competition apply alongside these Terms; Swiss consumer protection rules prevail where they are more favourable to you. Your data protection rights under the revised Federal Act on Data Protection (revFADP) are described in the <a href="/privacy">Privacy Policy</a>, Section 18.3.</p>
+
+    <h3>14.3 United Kingdom</h3>
+    <p>For users habitually resident in the United Kingdom, the Consumer Rights Act 2015 applies. Digital content must be of satisfactory quality, fit for its purpose, and as described; these Terms do not exclude or limit those rights. Your right of withdrawal under section 4 is governed by the Consumer Contracts (Information, Cancellation and Additional Charges) Regulations 2013. You may bring proceedings against us in the courts of the United Kingdom. Your data protection rights under the UK GDPR are described in the <a href="/privacy">Privacy Policy</a>, Section 18.2.</p>
+
+    <h3>14.4 United States</h3>
+    <p>The following applies additionally to users habitually resident in the United States:</p>
+    <div class="highlight">
+      <strong>NO WARRANTY.</strong> TO THE MAXIMUM EXTENT PERMITTED BY LAW, SIMPLEVOC IS PROVIDED "AS IS" AND "AS AVAILABLE", WITHOUT WARRANTY OF ANY KIND, WHETHER EXPRESS, IMPLIED, OR STATUTORY. WE SPECIFICALLY DISCLAIM THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, ACCURACY, AND NON-INFRINGEMENT. WE DO NOT WARRANT THAT THE SERVICE WILL BE UNINTERRUPTED OR ERROR-FREE, OR THAT AI-GENERATED TRANSLATIONS WILL BE CORRECT.
+    </div>
+    <p><strong>Cap on liability.</strong> To the extent permitted by law, our total liability arising out of or relating to these Terms and the Service is limited to the greater of the amounts you paid for simplevoc in the twelve months preceding the event giving rise to the claim, or USD 100. We are not liable for indirect or consequential damages, lost profits, loss of data, or business interruption.</p>
+    <p><strong>Indemnity.</strong> You will indemnify us against third-party claims arising from the content you enter into simplevoc or from your use of the Service in breach of these Terms or of applicable law, including reasonable costs of legal defence. This does not apply to the extent we acted intentionally or with gross negligence.</p>
+    <p><strong>Export and sanctions.</strong> You represent and warrant that you are not located in a country subject to a U.S. Government embargo or designated by the U.S. Government as a "terrorist supporting" country, and that you are not listed on any U.S. Government list of prohibited or restricted parties, including the U.S. Treasury Department's Specially Designated Nationals List and the U.S. Department of Commerce Denied Persons List and Entity List. You will not use simplevoc for any purpose prohibited by U.S. law.</p>
+    <p><strong>State variations.</strong> Some U.S. states do not allow the exclusion of implied warranties or the limitation of liability for incidental or consequential damages. Where that is so, the exclusions and limitations above apply to you only to the extent your state's law permits, and your statutory consumer rights are unaffected. For your privacy rights under U.S. state law, see the <a href="/privacy">Privacy Policy</a>, Section 18.1.</p>
+
+    <h3>14.5 Canada</h3>
+    <p>Mandatory consumer protection law of your province or territory prevails over these Terms. For consumers in <strong>Quebec</strong> the following also applies: the Consumer Protection Act (CQLR c P-40.1) cannot be excluded by contract; the limitations in section 9 and section 14.4 apply to you only to the extent that Act permits, and you may bring proceedings against us in the judicial district in which you reside. Your data protection rights under PIPEDA and provincial law are described in the <a href="/privacy">Privacy Policy</a>, Section 18.4.</p>
+
+    <h3>14.6 Australia and New Zealand</h3>
+    <p>For users habitually resident in <strong>Australia</strong>, our goods and services come with guarantees that cannot be excluded under the Australian Consumer Law (Schedule 2 to the Competition and Consumer Act 2010). Nothing in these Terms excludes, restricts, or modifies those guarantees, and the limitations in section 9 and section 14.4 apply only to the extent the Australian Consumer Law permits. Where our liability for a failure to comply with a consumer guarantee may lawfully be limited, it is limited to resupplying the service or paying the cost of having it resupplied.</p>
+    <p>For users habitually resident in <strong>New Zealand</strong>, the Consumer Guarantees Act 1993 and the Fair Trading Act 1986 apply where you acquire simplevoc as a consumer; these Terms do not exclude or limit rights under those Acts. Your data protection rights are described in the <a href="/privacy">Privacy Policy</a>, Section 18.5.</p>
+
+    <h3>14.7 Africa</h3>
+    <p>Mandatory consumer protection and data protection law of your country of residence prevails over these Terms. In addition:</p>
+    <ul>
+      <li><strong>South Africa:</strong> the Consumer Protection Act 68 of 2008 and the Electronic Communications and Transactions Act 25 of 2002 are mandatory; the limitations in section 9 and section 14.4 apply only to the extent those Acts permit. Under the Protection of Personal Information Act (POPIA) a child is anyone under 18, so the parental consent required by section 2 applies in South Africa to all minors.</li>
+      <li><strong>Nigeria:</strong> the Federal Competition and Consumer Protection Act 2018 and the Nigeria Data Protection Act 2023 apply.</li>
+      <li><strong>Kenya:</strong> the Consumer Protection Act 2012 and the Data Protection Act 2019 apply.</li>
+      <li><strong>Ghana:</strong> the Data Protection Act 2012 (Act 843) applies, together with Ghanaian consumer protection law.</li>
+    </ul>
+    <p>Your data protection rights in these countries are described in the <a href="/privacy">Privacy Policy</a>, Section 18.6.</p>
+
+        <h3>14.8 Latin America</h3>
+    <p>This sub-section applies if you are habitually resident in Argentina, Bolivia, Chile, Colombia, Costa Rica, the Dominican Republic, Ecuador, El Salvador, Guatemala, Honduras, Mexico, Nicaragua, Panama, Paraguay, Peru, or Uruguay.</p>
+    <p><strong>Your consumer law prevails.</strong> Consumer protection law in these countries is a matter of public policy (<em>orden público</em>) and cannot be waived by contract or displaced by the choice of German law in section 12. Where it grants you more than these Terms, it applies:</p>
+    <ul>
+      <li><strong>Mexico</strong> — Ley Federal de Protección al Consumidor; authority: PROFECO</li>
+      <li><strong>Colombia</strong> — Estatuto del Consumidor, Ley 1480 de 2011; authority: Superintendencia de Industria y Comercio</li>
+      <li><strong>Argentina</strong> — Ley 24.240 de Defensa del Consumidor, together with Art. 42 of the Constitution</li>
+      <li><strong>Chile</strong> — Ley 19.496; authority: SERNAC</li>
+      <li><strong>Peru</strong> — Código de Protección y Defensa del Consumidor, Ley 29571; authority: INDECOPI</li>
+      <li><strong>Ecuador</strong> — Ley Orgánica de Defensa del Consumidor</li>
+      <li><strong>Uruguay</strong> — Ley 17.250 · <strong>Paraguay</strong> — Ley 1334/98 (authority: SEDECO) · <strong>Bolivia</strong> — Ley 453</li>
+      <li><strong>Costa Rica</strong> — Ley 7472 · <strong>Panama</strong> — Ley 45 de 2007 (authority: ACODECO) · <strong>Dominican Republic</strong> — Ley 358-05 (authority: Pro Consumidor)</li>
+      <li><strong>Guatemala</strong> — Decreto 006-2003 (authority: DIACO) · <strong>El Salvador</strong> — Ley de Protección al Consumidor (authority: Defensoría del Consumidor) · <strong>Honduras</strong> — Decreto 24-2008 · <strong>Nicaragua</strong> — Ley 842</li>
+    </ul>
+    <p><strong>The cap on liability does not apply to you.</strong> These legal systems generally treat a clause limiting or excluding the supplier's liability towards a consumer as void. The cap in section 14.4 therefore does <strong>not</strong> apply to users resident in these countries, and section 9 applies only to the extent your national law permits.</p>
+    <p><strong>Interpretation and forum.</strong> Any ambiguity in these Terms is construed in your favour as the consumer. You may bring proceedings against us, and lodge a complaint with the consumer authority, at your own domicile.</p>
+    <p><strong>Language.</strong> These Terms are published in Spanish; the Spanish version governs for you (see section 14.9).</p>
+    <p>Your data protection rights in these countries are described in the <a href="/privacy">Privacy Policy</a>, Section 18.7.</p>
+
+<h3>14.9 Language</h3>
+    <p>These Terms are published in German, English, French, and Spanish. For users habitually resident in Germany, Austria, and Switzerland the German version governs; for users habitually resident in France, Quebec, Belgium, and other French-speaking territories the French version governs; for users habitually resident in Spain and in the Spanish-speaking countries of Latin America the Spanish version governs; for all other users the English version governs.</p>
+    <p><strong>Translation on request.</strong> If you would prefer these Terms in another language, write to <a href="mailto:support@simplevoc.de">support@simplevoc.de</a> and we will provide you with a translation free of charge. Where the law of your country of residence requires a version in a particular language, that version prevails over the German, English, French, and Spanish versions. Translations we provide for convenience do not otherwise alter the governing version named above.</p>
+
+    <h3>14.10 Where simplevoc is offered</h3>
+    <p>simplevoc is offered only in the countries shown as available in the App Store and on Google Play. We may add or remove countries at any time; the availability shown there is always the current list.</p>
+    <p>simplevoc is not offered in countries or territories subject to European Union or United States sanctions or embargoes, and access from such territories is prohibited.</p>
+  </section>
+
+  <section>
+    <h2>15. Contact</h2>
     <div class="card">
       <p><strong>Stefan Lehner</strong> – simplevoc<br>
-      <a href="mailto:contact@simplevoc.de">contact@simplevoc.de</a></p>
+      <a href="mailto:support@simplevoc.de">support@simplevoc.de</a></p>
     </div>
   </section>
 
@@ -419,23 +638,556 @@
 </main>
 </div>
 
+<div id="content-fr" style="display:none">
+<main>
+  <h1 class="page-title">Conditions générales d'utilisation</h1>
+  <p class="updated">Dernière mise à jour : août 2026</p>
+
+  <div class="intro">
+    Les présentes conditions générales d'utilisation régissent votre accès à l'application <strong>simplevoc</strong> et aux services associés, ainsi que votre utilisation de ceux-ci. En vous inscrivant à simplevoc, ou en utilisant simplevoc avec un compte local, vous acceptez les présentes conditions.
+  </div>
+
+  <div class="highlight">
+    <strong>Statut actuel : phase de lancement (early adopters).</strong> simplevoc se trouve dans sa phase de lancement, dont l'objet est la mise sur le marché du produit. L'intégralité des fonctionnalités est disponible gratuitement pendant cette phase. Aucun abonnement payant n'est proposé actuellement et aucun paiement n'est traité. Nous nous réservons le droit de rendre payants à l'avenir des services gratuits pendant la phase de lancement. Dans ce cas, nous vous en informerons dans l'application avec un préavis suffisant ; l'article 3.3 précise les modalités d'une telle transition.
+  </div>
+
+  <section>
+    <h2>1. Fournisseur et champ d'application</h2>
+    <p>simplevoc est fourni par :</p>
+    <div class="card" style="margin:12px 0">
+      <p><strong>Stefan Lehner</strong><br>
+      Coordonnées complètes : <a href="/impressum?lang=fr">Mentions légales</a><br>
+      Courriel : <a href="mailto:support@simplevoc.de">support@simplevoc.de</a></p>
+    </div>
+    <p>Les présentes conditions s'appliquent à l'application simplevoc et à l'ensemble des services associés (ensemble « simplevoc » ou le « Service »). Nous n'acceptons aucune condition contraire émanant des utilisateurs.</p>
+    <p><strong>CLUF standard d'Apple.</strong> Pour la version iOS, le <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener">Licensed Application End User License Agreement</a> d'Apple (le « CLUF standard ») s'applique en outre et régit la licence portant sur l'application elle-même. Les présentes conditions régissent quant à elles le contrat relatif au Service — compte, synchronisation cloud, crédits IA et assistance. En cas de chevauchement, le CLUF standard régit la licence de l'application et les présentes conditions régissent le Service ; les droits impératifs des consommateurs demeurent inchangés.</p>
+  </section>
+
+  <section>
+    <h2>2. Inscription et conditions d'accès</h2>
+
+    <h3>Âge minimum</h3>
+    <p>Vous devez être âgé d'au moins <strong>13 ans</strong> pour utiliser simplevoc. Les utilisateurs de moins de 18 ans doivent obtenir le consentement d'un parent ou tuteur. En utilisant simplevoc, vous confirmez remplir ces conditions.</p>
+    <p>Deux fonctionnalités reposent sur le consentement et non sur le présent contrat : la reconnaissance vocale dans le cloud et l'envoi de rapports d'incident. Conformément à l'art. 8 du RGPD, ce consentement ne peut être donné par l'utilisateur lui-même qu'à partir de <strong>16 ans</strong>. L'application vous demande donc une seule fois votre <strong>année de naissance</strong> et ne propose aucune de ces deux fonctionnalités en dessous de cet âge ; l'année est conservée uniquement sur votre appareil (voir la <a href="/privacy?lang=fr">politique de confidentialité</a>, section 14). Toutes les autres fonctionnalités vous sont accessibles intégralement dès 13 ans — la saisie vocale s'effectue alors au moyen de la reconnaissance vocale intégrée à votre appareil.</p>
+
+    <h3>Compte</h3>
+    <p>Vous pouvez utiliser simplevoc sans inscription, avec un compte local. Votre vocabulaire est alors enregistré uniquement sur votre appareil et n'est ni sauvegardé dans le cloud ni synchronisé. Pour sauvegarder votre vocabulaire dans le cloud et le synchroniser entre plusieurs appareils, un compte est nécessaire. Vous pouvez vous inscrire avec un compte Google ou via « Se connecter avec Apple ». Toutes les informations fournies lors de l'inscription doivent être exactes et tenues à jour.</p>
+
+    <h3>Sécurité du compte</h3>
+    <p>Il vous appartient de préserver la confidentialité de vos identifiants. Signalez immédiatement tout accès non autorisé à <a href="mailto:support@simplevoc.de">support@simplevoc.de</a>. Nous ne répondons pas des dommages résultant d'un manquement à cette obligation.</p>
+
+    <h3>Un seul compte par personne</h3>
+    <p>Chaque personne ne peut détenir qu'un seul compte. La communication des identifiants à des tiers n'est pas autorisée.</p>
+  </section>
+
+  <section>
+    <h2>3. Phases du Service, gratuité et abonnement Premium</h2>
+
+    <h3>3.1 Phase de lancement (actuelle)</h3>
+    <p>simplevoc se trouve actuellement dans sa <strong>phase de lancement</strong>. Pendant cette phase, le Service est fourni à tous les utilisateurs <strong>à titre gratuit</strong>, avec l'intégralité de ses fonctionnalités. Cela inclut le quota d'utilisation (crédits IA) décrit à l'article 3.2. Aucun abonnement payant n'est proposé pendant cette phase ; aucun paiement n'est encaissé et aucune donnée de paiement n'est traitée.</p>
+    <p>La phase de lancement sert à introduire et à développer le Service. Les fonctionnalités peuvent y être modifiées, ajoutées ou supprimées plus fréquemment ; aucun périmètre fonctionnel déterminé n'est garanti (voir également l'article 7).</p>
+
+    <h3>3.2 Quota d'utilisation (crédits IA)</h3>
+    <p>Les fonctionnalités de simplevoc reposant sur l'IA sont décomptées au moyen d'un quota mensuel, désigné dans l'application par le terme <strong>« crédits IA »</strong>. Un tel quota s'applique également pendant la phase de lancement, actuellement 300 crédits IA (sous réserve de modification). Le quota est réinitialisé chaque mois, au jour du mois correspondant à la date d'inscription de votre compte et non le 1er du mois civil ; les crédits non utilisés ne sont pas reportés sur la période suivante. Le quota qui vous est applicable et votre consommation actuelle sont affichés dans l'application. Nous nous réservons le droit d'ajuster l'étendue de l'offre gratuite pour l'avenir.</p>
+    <p><strong>Ce qui consomme des crédits :</strong></p>
+    <ul>
+      <li>Extraire et traduire des mots à partir d'une phrase dictée ou saisie (mode « Découper ») : un demi-crédit par mot reconnu, arrondi, minimum 1</li>
+      <li>Traduire une phrase complète (mode « Phrase ») : un demi-crédit par mot saisi, arrondi, minimum 1</li>
+      <li>Générer une nouvelle session d'exercice en mode Contexte : 1 crédit par mot inclus (actuellement 5 ou 10 crédits par session)</li>
+      <li>Générer un exercice de conjugaison : 1 crédit</li>
+    </ul>
+    <p><strong>Ce qui ne consomme pas de crédits :</strong></p>
+    <ul>
+      <li>Réviser du vocabulaire en mode apprentissage et en mode cartes mémoire</li>
+      <li>Poursuivre une session de contexte déjà générée</li>
+      <li>Réviser une conjugaison déjà générée — elle est enregistrée sur votre appareil et dans votre compte et n'est jamais facturée une seconde fois</li>
+      <li>Parcourir votre collection et créer des entrées manuellement sans IA</li>
+      <li>La saisie vocale, la synchronisation et la modification des paramètres ou des langues</li>
+    </ul>
+    <p>Les crédits ne sont décomptés qu'en cas de réponse IA réussie. Si une requête échoue ou ne renvoie aucun résultat, rien n'est décompté. Les tarifs ci-dessus correspondent à l'état actuel du Service ; des modifications pour l'avenir demeurent réservées conformément à l'article 11.</p>
+
+    <h3>3.3 Passage à la phase régulière</h3>
+    <p>Nous pouvons mettre fin à la phase de lancement et passer à la phase régulière, dans laquelle le Service est scindé en une formule gratuite assortie d'un quota réduit et un abonnement Premium payant assorti d'un quota plus élevé. Aucun droit à l'utilisation gratuite et permanente de l'intégralité des fonctionnalités n'existe.</p>
+    <p><strong>Préavis.</strong> Nous vous informerons de cette transition, ainsi que du quota applicable à la formule gratuite, à l'avance dans l'application — au moins <strong>30 jours</strong> avant la date d'effet. Le prix, la durée et le contenu d'un abonnement vous sont présentés dans l'application et dans la boutique d'applications concernée immédiatement avant tout achat ; ces informations font toujours foi.</p>
+    <p><strong>Aucun contrat payant automatique.</strong> La transition à elle seule n'entraîne aucun coût pour vous. Un abonnement Premium n'est conclu que par votre achat exprès dans la boutique d'applications concernée. À défaut d'achat, vous continuez à utiliser simplevoc dans la formule gratuite après la transition.</p>
+    <p><strong>Votre droit de résiliation.</strong> Si la modification affecte votre utilisation du Service de manière non négligeable, vous pouvez résilier le contrat sans frais dans un délai de 30 jours à compter du préavis — ou de la prise d'effet de la modification, si celle-ci est postérieure — en supprimant votre compte (article 10). Vous pouvez exporter votre vocabulaire à tout moment au préalable dans les paramètres.</p>
+    <p>Nous pouvons accorder aux early adopters des avantages transitoires à titre volontaire, tels que la poursuite gratuite de l'accès aux fonctionnalités Premium pendant une durée limitée. Aucun droit n'en découle ; toute date de fin vous est indiquée dans l'application.</p>
+
+    <h3>3.4 Résiliation de l'abonnement</h3>
+    <p>Dès lors qu'un abonnement Premium est proposé, vous pouvez le résilier à tout moment via les paramètres de votre compte dans la boutique d'applications. La résiliation prend effet à la fin de la période de facturation en cours. Les remboursements sont soumis aux règles de la boutique d'applications concernée.</p>
+  </section>
+
+  <section>
+    <h2>4. Droit de rétractation</h2>
+
+    <h3>4.1 Service gratuit</h3>
+    <p>En tant que consommateur résidant dans l'Union européenne ou au Royaume-Uni, vous disposez d'un droit de rétractation de 14 jours à compter de l'inscription — ce qui concerne tous ces utilisateurs pendant la phase de lancement actuelle. En dehors de ces pays, tout droit de rétractation ou d'annulation relève du droit de votre pays de résidence (article 14). Ce droit s'éteint par anticipation si vous consentez expressément à l'exécution du service avant l'expiration du délai de rétractation et reconnaissez perdre votre droit de rétractation dès le début de l'exécution. Aucun paiement n'étant prélevé pendant cette phase, la rétractation ne vous coûte rien ; vous pouvez également supprimer votre compte à tout moment sans vous rétracter (article 10).</p>
+
+    <h3>4.2 Modalités de la rétractation</h3>
+    <p>Vous pouvez exercer votre droit de rétractation par une déclaration dénuée d'ambiguïté (par exemple par courriel à <a href="mailto:support@simplevoc.de">support@simplevoc.de</a>), ou en supprimant votre compte dans l'application.</p>
+  </section>
+
+  <section>
+    <h2>5. Obligations de l'utilisateur</h2>
+
+    <h3>Utilisation autorisée</h3>
+    <p>simplevoc ne peut être utilisé qu'à des fins d'apprentissage licites et personnelles. Sont notamment interdits :</p>
+    <ul>
+      <li>L'utilisation commerciale ou l'interrogation automatisée du Service</li>
+      <li>Le contournement ou la manipulation des mécanismes de sécurité</li>
+      <li>La sollicitation disproportionnée de l'infrastructure du Service</li>
+      <li>La saisie de contenus incitant à la haine ou de nature extrémiste, ainsi que de contenus contraires au droit applicable</li>
+      <li>L'enregistrement de données personnelles sensibles de tiers en tant qu'entrées de vocabulaire</li>
+    </ul>
+
+    <h3>Responsabilité quant aux contenus</h3>
+    <p>Vous êtes seul responsable du vocabulaire et des phrases que vous saisissez dans simplevoc. Nous déclinons toute responsabilité concernant les contenus générés par les utilisateurs.</p>
+  </section>
+
+  <section>
+    <h2>6. Reconnaissance vocale et service de traduction par IA</h2>
+
+    <h3>Reconnaissance vocale</h3>
+    <p>Par défaut, simplevoc transcrit votre enregistrement au moyen du service de reconnaissance vocale dans le cloud d'<strong>AssemblyAI</strong> ; l'enregistrement est transmis directement depuis votre appareil vers son point de terminaison européen. Vous pouvez désactiver cette fonction à tout moment dans Paramètres → Saisie vocale ; la reconnaissance s'effectue alors uniquement sur votre appareil, avec une précision moindre. Les langues pour lesquelles la reconnaissance dans le cloud est utilisée et les modalités de traitement des données sont décrites dans la <a href="/privacy?lang=fr">politique de confidentialité</a> (section 4). Aucune précision de reconnaissance déterminée n'est garantie.</p>
+
+    <h3>Aucune garantie quant à la qualité des traductions</h3>
+    <p>simplevoc recourt à l'intelligence artificielle (API Google Gemini) pour l'extraction et la traduction des mots. Les traductions générées par IA peuvent comporter des erreurs. Le Service est destiné exclusivement à des <strong>fins d'apprentissage</strong> et ne se substitue pas à une traduction professionnelle ; il n'est pas adapté à des usages juridiques, médicaux ou critiques pour la sécurité.</p>
+
+    <h3>Remarque concernant la saisie de données</h3>
+    <div class="highlight">
+      Veuillez ne pas saisir de données personnelles sensibles (noms de tiers, adresses, informations de santé, etc.) en tant que vocabulaire. Le Service est conçu pour l'apprentissage des langues — non pour la conservation de documents personnels.
+    </div>
+
+    <h3>Disponibilité du service d'IA</h3>
+    <p>Les fonctionnalités d'IA (reconnaissance vocale, traduction, conjugaison) nécessitent une connexion Internet et dépendent de prestataires tiers. Les interruptions de ces services échappent à notre contrôle. Les fonctions d'apprentissage essentielles (révision par cartes mémoire) restent disponibles hors ligne.</p>
+  </section>
+
+  <section>
+    <h2>7. Disponibilité du Service</h2>
+    <p>Nous nous efforçons de maintenir simplevoc disponible en permanence, sans toutefois garantir un accès ininterrompu. Des opérations de maintenance, des incidents techniques ou des circonstances échappant à notre contrôle peuvent entraîner des interruptions temporaires. Aucune disponibilité déterminée n'est garantie.</p>
+  </section>
+
+  <section>
+    <h2>8. Propriété intellectuelle</h2>
+    <p>Tous les droits relatifs à l'application simplevoc, y compris le design, le code et les marques, appartiennent au fournisseur ou à ses concédants. La licence qui vous est accordée est limitée à un usage personnel et non commercial dans le cadre des présentes conditions.</p>
+  </section>
+
+  <section>
+    <h2>9. Responsabilité</h2>
+
+    <h3>Limitation de responsabilité</h3>
+    <p>Nous répondons sans limitation des dommages résultant d'une atteinte à la vie, à l'intégrité physique ou à la santé, ainsi que des dommages causés intentionnellement ou par négligence grave.</p>
+    <p>Pour le reste, notre responsabilité est limitée — dans la mesure permise par la loi — aux dommages prévisibles résultant de la violation d'obligations contractuelles essentielles. Pour les utilisateurs ayant leur résidence habituelle hors de l'Union européenne, les dispositions régionales de l'article 14 s'appliquent en complément ou en remplacement.</p>
+
+    <h3>Contenus générés par l'IA</h3>
+    <p>Nous déclinons toute responsabilité quant à l'exactitude des traductions générées par IA. L'utilisation de tels contenus pour des décisions juridiques, médicales ou commerciales relève de votre seule responsabilité.</p>
+
+    <h3>Services tiers</h3>
+    <p>Nous ne répondons pas des dommages causés par des services tiers (Google Firebase, API Gemini, AssemblyAI, RevenueCat, Apple) qui échappent à notre contrôle.</p>
+  </section>
+
+  <section>
+    <h2>10. Durée et résiliation</h2>
+
+    <h3>Durée</h3>
+    <p>Le contrat portant sur l'utilisation gratuite de simplevoc est conclu pour une durée indéterminée ; il ne prend pas fin avec la phase de lancement mais se poursuit dans la formule gratuite alors applicable (article 3.3). Nous nous réservons le droit de réduire sensiblement le quota d'utilisation de la formule gratuite par rapport au quota applicable aujourd'hui (article 3.2).</p>
+
+    <h3>Résiliation par vos soins</h3>
+    <p>Vous pouvez supprimer votre compte à tout moment depuis l'application (Paramètres → Supprimer le compte) ou par courriel à <a href="mailto:support@simplevoc.de">support@simplevoc.de</a>. La suppression efface définitivement toutes les données enregistrées et met fin au contrat.</p>
+
+    <h3>Résiliation de notre part</h3>
+    <p>Nous nous réservons le droit de suspendre ou de supprimer des comptes sans préavis en cas de manquements graves ou répétés aux présentes conditions. Dans les cas moins graves, un avertissement préalable est adressé.</p>
+
+    <h3>Résiliation extraordinaire</h3>
+    <p>Chacune des parties peut résilier le contrat pour un motif légitime.</p>
+  </section>
+
+  <section>
+    <h2>11. Modification des présentes conditions</h2>
+    <p>Nous pouvons modifier les présentes conditions lorsque l'évolution du Service, un changement des conditions techniques ou juridiques, ou une adaptation de notre offre le justifient. Nous vous informerons de toute modification dans l'application au moins <strong>30 jours</strong> avant sa prise d'effet et, si nous disposons de votre adresse électronique, également par courriel. Les modifications n'ont jamais d'effet rétroactif.</p>
+    <p>Si vous n'acceptez pas une modification, vous pouvez résilier le contrat sans frais à tout moment avant sa prise d'effet en supprimant votre compte (article 10) ; vous pouvez exporter vos données au préalable dans les paramètres. Si vous continuez à utiliser simplevoc après la prise d'effet, nous appliquerons la version modifiée à votre utilisation ultérieure. Les dispositions concernant exclusivement un abonnement payant vous sont présentées avant tout achat et ne s'appliquent qu'à cet achat.</p>
+  </section>
+
+  <section>
+    <h2>12. Droit applicable et règlement des litiges</h2>
+    <p>Les présentes conditions sont régies par le droit de la République fédérale d'Allemagne, à l'exclusion de la Convention des Nations unies sur les contrats de vente internationale de marchandises.</p>
+    <p><strong>Droit impératif de votre pays de résidence.</strong> Ce choix de loi ne vous prive pas de la protection des dispositions impératives de protection des consommateurs du pays dans lequel vous avez votre résidence habituelle — que ce pays appartienne ou non à l'Union européenne. Lorsqu'une disposition des présentes conditions est nulle au regard du droit de votre pays de résidence, ou que ce droit prévoit une règle qui vous est plus favorable, cette règle prévaut. Des dispositions complémentaires propres à certaines régions figurent à l'article 14.</p>
+    <p><strong>Juridiction compétente.</strong> En tant que consommateur, vous pouvez agir contre nous soit devant la juridiction de votre domicile, soit devant celle de notre siège ; nous ne pouvons agir contre vous que devant la juridiction de votre domicile. Aucune autre attribution de compétence n'est convenue.</p>
+    <p>Nous ne sommes ni disposés ni tenus de participer à une procédure de règlement des litiges devant un organisme de médiation de la consommation (§ 36 VSBG).</p>
+  </section>
+
+  <section>
+    <h2>13. Clause de sauvegarde</h2>
+    <p>Si l'une des dispositions des présentes conditions est ou devient nulle, la validité des autres dispositions demeure inchangée. La disposition nulle sera remplacée par une disposition valable se rapprochant le plus possible de sa finalité économique.</p>
+  </section>
+
+  <section>
+    <h2>14. Dispositions régionales</h2>
+
+    <h3>14.1 Articulation avec les autres dispositions</h3>
+    <p>Le présent article complète les dispositions qui précèdent pour certaines régions et prévaut sur elles en cas de contradiction. Seule la sous-section correspondant au pays dans lequel vous avez votre résidence habituelle vous est applicable. Le droit impératif de la consommation de votre pays de résidence demeure en tout état de cause inchangé (article 12). L'article 14.10 précise où simplevoc est proposé.</p>
+
+    <h3>14.2 Union européenne, EEE et Suisse</h3>
+    <p>Si vous avez votre résidence habituelle dans un État membre de l'Union européenne ou de l'EEE, le droit de la consommation de votre pays de résidence s'applique parallèlement aux présentes conditions et prévaut lorsqu'il vous est plus favorable. Cela comprend votre droit de rétractation au titre de l'article 4 et vos droits en cas de contenu numérique défectueux au titre de la directive (UE) 2019/770. Vos droits en matière de protection des données au titre du RGPD sont décrits dans la <a href="/privacy?lang=fr">politique de confidentialité</a>.</p>
+    <p>Si vous avez votre résidence habituelle en <strong>Suisse</strong>, le Code des obligations et la loi fédérale contre la concurrence déloyale s'appliquent parallèlement aux présentes conditions ; les règles suisses de protection des consommateurs prévalent lorsqu'elles vous sont plus favorables. Vos droits au titre de la loi fédérale révisée sur la protection des données (nLPD) sont décrits dans la <a href="/privacy?lang=fr">politique de confidentialité</a>, section 18.3.</p>
+
+    <h3>14.3 Royaume-Uni</h3>
+    <p>Pour les utilisateurs ayant leur résidence habituelle au Royaume-Uni, le Consumer Rights Act 2015 s'applique. Les contenus numériques doivent être d'une qualité satisfaisante, adaptés à leur finalité et conformes à leur description ; les présentes conditions n'excluent ni ne limitent ces droits. Votre droit de rétractation au titre de l'article 4 est régi par les Consumer Contracts (Information, Cancellation and Additional Charges) Regulations 2013. Vous pouvez agir contre nous devant les juridictions du Royaume-Uni. Vos droits en matière de protection des données au titre du UK GDPR sont décrits dans la <a href="/privacy?lang=fr">politique de confidentialité</a>, section 18.2.</p>
+
+    <h3>14.4 États-Unis d'Amérique</h3>
+    <p>Les dispositions suivantes s'appliquent en outre aux utilisateurs ayant leur résidence habituelle aux États-Unis :</p>
+    <div class="highlight">
+      <strong>ABSENCE DE GARANTIE.</strong> DANS TOUTE LA MESURE PERMISE PAR LA LOI, SIMPLEVOC EST FOURNI « EN L'ÉTAT » ET « SELON DISPONIBILITÉ », SANS GARANTIE D'AUCUNE SORTE, EXPRESSE, IMPLICITE OU LÉGALE. NOUS EXCLUONS EN PARTICULIER LES GARANTIES IMPLICITES DE QUALITÉ MARCHANDE (MERCHANTABILITY), D'ADÉQUATION À UN USAGE PARTICULIER (FITNESS FOR A PARTICULAR PURPOSE), D'EXACTITUDE ET D'ABSENCE DE CONTREFAÇON. NOUS NE GARANTISSONS NI QUE LE SERVICE FONCTIONNERA SANS INTERRUPTION OU SANS ERREUR, NI QUE LES TRADUCTIONS GÉNÉRÉES PAR IA SERONT EXACTES.
+    </div>
+    <p><strong>Plafond de responsabilité.</strong> Dans la mesure permise par la loi, notre responsabilité totale découlant des présentes conditions et du Service, ou s'y rapportant, est limitée au plus élevé des montants suivants : la somme des montants que vous avez versés pour simplevoc au cours des douze mois précédant le fait générateur, ou 100 dollars américains. Nous ne répondons pas des dommages indirects ou consécutifs, du manque à gagner, de la perte de données ou de l'interruption d'activité.</p>
+    <p><strong>Garantie d'indemnisation.</strong> Vous nous garantissez contre les réclamations de tiers résultant des contenus que vous saisissez dans simplevoc ou de votre utilisation du Service en violation des présentes conditions ou du droit applicable, y compris les frais raisonnables de défense en justice. Cela ne s'applique pas dans la mesure où nous avons agi intentionnellement ou par négligence grave.</p>
+    <p><strong>Contrôle des exportations et sanctions.</strong> Vous déclarez et garantissez ne pas vous trouver dans un pays soumis à un embargo du gouvernement des États-Unis ou désigné par celui-ci comme pays « soutenant le terrorisme », et ne figurer sur aucune liste de parties interdites ou soumises à restrictions du gouvernement des États-Unis, notamment la Specially Designated Nationals List du département du Trésor et les Denied Persons List et Entity List du département du Commerce. Vous n'utiliserez pas simplevoc à des fins interdites par le droit des États-Unis.</p>
+    <p><strong>Variations selon les États.</strong> Certains États américains n'admettent pas l'exclusion des garanties implicites ni la limitation de responsabilité pour les dommages accessoires ou consécutifs. Dans ce cas, les exclusions et limitations ci-dessus ne vous sont applicables que dans la mesure permise par le droit de votre État, et vos droits légaux de consommateur demeurent inchangés. Pour vos droits en matière de protection des données au titre du droit des États américains, voir la <a href="/privacy?lang=fr">politique de confidentialité</a>, section 18.1.</p>
+
+    <h3>14.5 Canada</h3>
+    <p>Les dispositions impératives du droit de la consommation de votre province ou territoire prévalent sur les présentes conditions. Pour les consommateurs du <strong>Québec</strong>, les dispositions suivantes s'appliquent en outre : la Loi sur la protection du consommateur (RLRQ c P-40.1) ne peut être écartée par contrat ; les limitations prévues aux articles 9 et 14.4 ne vous sont applicables que dans la mesure permise par cette loi, et vous pouvez agir contre nous dans le district judiciaire de votre domicile. Vos droits en matière de protection des données au titre de la LPRPDE et du droit provincial sont décrits dans la <a href="/privacy?lang=fr">politique de confidentialité</a>, section 18.4.</p>
+
+    <h3>14.6 Australie et Nouvelle-Zélande</h3>
+    <p>Pour les utilisateurs ayant leur résidence habituelle en <strong>Australie</strong>, nos biens et services sont assortis de garanties qui ne peuvent être exclues au titre de l'Australian Consumer Law (annexe 2 du Competition and Consumer Act 2010). Aucune disposition des présentes conditions n'exclut, ne restreint ni ne modifie ces garanties, et les limitations prévues aux articles 9 et 14.4 ne s'appliquent que dans la mesure permise par l'Australian Consumer Law. Lorsque notre responsabilité pour manquement à une garantie de consommation peut légalement être limitée, elle l'est à la nouvelle fourniture du service ou au remboursement du coût de celle-ci.</p>
+    <p>Pour les utilisateurs ayant leur résidence habituelle en <strong>Nouvelle-Zélande</strong>, le Consumer Guarantees Act 1993 et le Fair Trading Act 1986 s'appliquent lorsque vous utilisez simplevoc en qualité de consommateur ; les présentes conditions n'excluent ni ne limitent les droits découlant de ces lois. Vos droits en matière de protection des données sont décrits dans la <a href="/privacy?lang=fr">politique de confidentialité</a>, section 18.5.</p>
+
+    <h3>14.7 Afrique</h3>
+    <p>Les dispositions impératives du droit de la consommation et de la protection des données de votre pays de résidence prévalent sur les présentes conditions. En outre :</p>
+    <ul>
+      <li><strong>Afrique du Sud :</strong> le Consumer Protection Act 68 de 2008 et l'Electronic Communications and Transactions Act 25 de 2002 sont impératifs ; les limitations prévues aux articles 9 et 14.4 ne s'appliquent que dans la mesure permise par ces lois. Au titre du Protection of Personal Information Act (POPIA), est considérée comme un enfant toute personne de moins de 18 ans ; le consentement parental exigé à l'article 2 s'applique donc en Afrique du Sud à tous les mineurs.</li>
+      <li><strong>Nigeria :</strong> le Federal Competition and Consumer Protection Act 2018 et le Nigeria Data Protection Act 2023 s'appliquent.</li>
+      <li><strong>Kenya :</strong> le Consumer Protection Act 2012 et le Data Protection Act 2019 s'appliquent.</li>
+      <li><strong>Ghana :</strong> le Data Protection Act 2012 (Act 843) s'applique, de même que le droit ghanéen de la consommation.</li>
+    </ul>
+    <p>Vos droits en matière de protection des données dans ces pays sont décrits dans la <a href="/privacy?lang=fr">politique de confidentialité</a>, section 18.6.</p>
+
+        <h3>14.8 Amérique latine</h3>
+    <p>La présente sous-section s'applique si vous avez votre résidence habituelle en Argentine, en Bolivie, au Chili, en Colombie, au Costa Rica, en République dominicaine, en Équateur, au Salvador, au Guatemala, au Honduras, au Mexique, au Nicaragua, au Panama, au Paraguay, au Pérou ou en Uruguay.</p>
+    <p><strong>Votre droit de la consommation prévaut.</strong> Le droit de la consommation de ces pays relève de l'ordre public (<em>orden público</em>) et ne peut être écarté par contrat ni supplanté par le choix du droit allemand opéré à l'article 12. Dans la mesure où il vous accorde davantage que les présentes conditions, il s'applique :</p>
+    <ul>
+      <li><strong>Mexique</strong> — Ley Federal de Protección al Consumidor ; autorité : PROFECO</li>
+      <li><strong>Colombie</strong> — Estatuto del Consumidor, Ley 1480 de 2011 ; autorité : Superintendencia de Industria y Comercio</li>
+      <li><strong>Argentine</strong> — Ley 24.240 de Defensa del Consumidor, ainsi que l'art. 42 de la Constitution</li>
+      <li><strong>Chili</strong> — Ley 19.496 ; autorité : SERNAC</li>
+      <li><strong>Pérou</strong> — Código de Protección y Defensa del Consumidor, Ley 29571 ; autorité : INDECOPI</li>
+      <li><strong>Équateur</strong> — Ley Orgánica de Defensa del Consumidor</li>
+      <li><strong>Uruguay</strong> — Ley 17.250 · <strong>Paraguay</strong> — Ley 1334/98 (autorité : SEDECO) · <strong>Bolivie</strong> — Ley 453</li>
+      <li><strong>Costa Rica</strong> — Ley 7472 · <strong>Panama</strong> — Ley 45 de 2007 (autorité : ACODECO) · <strong>République dominicaine</strong> — Ley 358-05 (autorité : Pro Consumidor)</li>
+      <li><strong>Guatemala</strong> — Decreto 006-2003 (autorité : DIACO) · <strong>Salvador</strong> — Ley de Protección al Consumidor (autorité : Defensoría del Consumidor) · <strong>Honduras</strong> — Decreto 24-2008 · <strong>Nicaragua</strong> — Ley 842</li>
+    </ul>
+    <p><strong>Le plafond de responsabilité ne vous est pas applicable.</strong> Ces ordres juridiques tiennent généralement pour nulle toute clause limitant ou excluant la responsabilité du fournisseur envers un consommateur. Le plafond prévu à l'article 14.4 ne s'applique donc <strong>pas</strong> aux utilisateurs résidant dans ces pays, et l'article 9 ne s'applique que dans la mesure permise par votre droit national.</p>
+    <p><strong>Interprétation et juridiction.</strong> Toute ambiguïté des présentes conditions s'interprète en votre faveur en tant que consommateur. Vous pouvez agir contre nous, et saisir l'autorité de protection des consommateurs, au lieu de votre domicile.</p>
+    <p><strong>Langue.</strong> Les présentes conditions sont publiées en espagnol ; la version espagnole fait foi à votre égard (voir l'article 14.9).</p>
+    <p>Vos droits en matière de protection des données dans ces pays sont décrits dans la <a href="/privacy?lang=fr">politique de confidentialité</a>, section 18.7.</p>
+
+<h3>14.9 Langue</h3>
+    <p>Les présentes conditions sont publiées en allemand, en anglais, en français et en espagnol. Pour les utilisateurs ayant leur résidence habituelle en Allemagne, en Autriche et en Suisse, la version allemande fait foi ; pour les utilisateurs ayant leur résidence habituelle en France, au Québec, en Belgique et dans les autres territoires francophones, la version française fait foi ; pour les utilisateurs ayant leur résidence habituelle en Espagne et dans les pays hispanophones d'Amérique latine, la version espagnole fait foi ; pour tous les autres utilisateurs, la version anglaise fait foi.</p>
+    <p><strong>Traduction sur demande.</strong> Si vous préférez lire les présentes conditions dans une autre langue, écrivez-nous à <a href="mailto:support@simplevoc.de">support@simplevoc.de</a> et nous vous fournirons gratuitement une traduction. Lorsque le droit de votre pays de résidence impose une version dans une langue déterminée, cette version prévaut sur les versions allemande, anglaise, française et espagnole. Les traductions que nous fournissons à des fins de compréhension ne modifient par ailleurs pas la version faisant foi désignée ci-dessus.</p>
+
+    <h3>14.10 Pays dans lesquels simplevoc est proposé</h3>
+    <p>simplevoc n'est proposé que dans les pays affichés comme disponibles sur l'App Store et sur Google Play. Nous pouvons ajouter ou retirer des pays à tout moment ; la disponibilité qui y est affichée constitue toujours la liste applicable.</p>
+    <p>simplevoc n'est pas proposé dans les pays et territoires soumis à des sanctions ou à des embargos de l'Union européenne ou des États-Unis ; l'accès depuis ces territoires est interdit.</p>
+  </section>
+
+  <section>
+    <h2>15. Contact</h2>
+    <div class="card">
+      <p><strong>Stefan Lehner – simplevoc</strong><br>
+      <a href="mailto:support@simplevoc.de">support@simplevoc.de</a></p>
+    </div>
+  </section>
+
+  <div class="footer-links">
+    <a href="/privacy?lang=fr">Politique de confidentialité</a>
+    <a href="/impressum?lang=fr">Mentions légales</a>
+  </div>
+</main>
+</div>
+
+<div id="content-es" style="display:none">
+<main>
+  <h1 class="page-title">Condiciones de uso</h1>
+  <p class="updated">Última actualización: agosto de 2026</p>
+
+  <div class="intro">
+    Las presentes condiciones de uso rigen su acceso a la aplicación <strong>simplevoc</strong> y a los servicios asociados, así como su utilización. Al registrarse en simplevoc, o al utilizar simplevoc con una cuenta local, usted acepta estas condiciones.
+  </div>
+
+  <div class="highlight">
+    <strong>Situación actual: fase de lanzamiento (early adopters).</strong> simplevoc se encuentra en su fase de lanzamiento, cuya finalidad es la introducción del producto en el mercado. Durante esta fase, la totalidad de las funciones está disponible de forma gratuita. Actualmente no se ofrece ninguna suscripción de pago ni se procesa pago alguno. Nos reservamos el derecho de ofrecer en el futuro de forma remunerada servicios que son gratuitos durante la fase de lanzamiento. En tal caso se lo comunicaremos en la aplicación con suficiente antelación; la cláusula 3.3 regula cómo se desarrolla dicha transición.
+  </div>
+
+  <section>
+    <h2>1. Prestador y ámbito de aplicación</h2>
+    <p>simplevoc es prestado por:</p>
+    <div class="card" style="margin:12px 0">
+      <p><strong>Stefan Lehner</strong><br>
+      Datos de contacto completos: <a href="/impressum?lang=es">Aviso legal</a><br>
+      Correo electrónico: <a href="mailto:support@simplevoc.de">support@simplevoc.de</a></p>
+    </div>
+    <p>Las presentes condiciones se aplican a la aplicación simplevoc y a todos los servicios asociados (conjuntamente, «simplevoc» o el «Servicio»). No aceptamos condiciones divergentes de los usuarios.</p>
+    <p><strong>CLUF estándar de Apple.</strong> Para la versión de iOS se aplica además el <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener">Licensed Application End User License Agreement</a> de Apple (el «CLUF estándar»), que rige la licencia sobre la propia aplicación. Las presentes condiciones rigen, por su parte, el contrato relativo al Servicio: cuenta, sincronización en la nube, créditos de IA y asistencia. Cuando ambos documentos se superpongan, el CLUF estándar rige la licencia de la aplicación y las presentes condiciones rigen el Servicio; los derechos imperativos de los consumidores no se ven afectados.</p>
+  </section>
+
+  <section>
+    <h2>2. Registro y requisitos de acceso</h2>
+
+    <h3>Edad mínima</h3>
+    <p>Para utilizar simplevoc debe tener al menos <strong>13 años</strong>. Los usuarios menores de 18 años necesitan el consentimiento de un progenitor o tutor. Al utilizar simplevoc, usted confirma que cumple estos requisitos.</p>
+    <p>Dos funciones se basan en el consentimiento y no en este contrato: el reconocimiento de voz en la nube y el envío de informes de fallos. Conforme al art. 8 del RGPD, ese consentimiento solo puede prestarlo el propio usuario a partir de los <strong>16 años</strong>. Por ello, la aplicación le pregunta una sola vez su <strong>año de nacimiento</strong> y no ofrece ninguna de esas dos funciones por debajo de esa edad; el año se guarda únicamente en su dispositivo (véase la <a href="/privacy?lang=es">política de privacidad</a>, apartado 14). Todas las demás funciones están plenamente a su disposición a partir de los 13 años; la entrada por voz se realiza entonces mediante el reconocimiento de voz propio de su dispositivo.</p>
+
+    <h3>Cuenta</h3>
+    <p>Puede utilizar simplevoc sin registrarse, con una cuenta local. En ese caso, su vocabulario se almacena únicamente en su dispositivo y no se respalda en la nube ni se sincroniza. Para respaldar su vocabulario en la nube y sincronizarlo entre dispositivos se requiere una cuenta. Puede registrarse con una cuenta de Google o mediante «Iniciar sesión con Apple». Todos los datos facilitados en el registro deben ser veraces y mantenerse actualizados.</p>
+
+    <h3>Seguridad de la cuenta</h3>
+    <p>Usted es responsable de mantener la confidencialidad de sus credenciales de acceso. Comunique de inmediato cualquier acceso no autorizado a <a href="mailto:support@simplevoc.de">support@simplevoc.de</a>. No respondemos de los daños derivados del incumplimiento de este deber.</p>
+
+    <h3>Una sola cuenta por persona</h3>
+    <p>Cada persona podrá tener una única cuenta. No está permitido facilitar las credenciales de acceso a terceros.</p>
+  </section>
+
+  <section>
+    <h2>3. Fases del Servicio, uso gratuito y suscripción Premium</h2>
+
+    <h3>3.1 Fase de lanzamiento (actual)</h3>
+    <p>simplevoc se encuentra actualmente en su <strong>fase de lanzamiento</strong>. Durante esta fase, el Servicio se presta a todos los usuarios <strong>de forma gratuita</strong> y con la totalidad de sus funciones. Ello incluye la cuota de uso (créditos de IA) descrita en la cláusula 3.2. Durante esta fase no se ofrece ninguna suscripción de pago; no se cobra importe alguno ni se tratan datos de pago.</p>
+    <p>La fase de lanzamiento sirve para introducir y seguir desarrollando el Servicio. Durante esta fase las funciones pueden modificarse, añadirse o suprimirse con mayor frecuencia; no se garantiza un conjunto determinado de funciones (véase también la cláusula 7).</p>
+
+    <h3>3.2 Cuota de uso (créditos de IA)</h3>
+    <p>Las funciones de simplevoc basadas en IA se computan mediante una cuota mensual, denominada en la aplicación <strong>«créditos de IA»</strong>. Dicha cuota se aplica también durante la fase de lanzamiento, actualmente 300 créditos de IA (sujeto a modificación). La cuota se restablece mensualmente, el día del mes correspondiente a la fecha de registro de su cuenta y no el día 1 del mes natural; los créditos no utilizados no se trasladan al periodo siguiente. La cuota que le resulta aplicable y su consumo actual se muestran en la aplicación. Nos reservamos el derecho de ajustar el alcance de la oferta gratuita con efectos para el futuro.</p>
+    <p><strong>Qué consume créditos:</strong></p>
+    <ul>
+      <li>Extraer y traducir palabras de una frase dictada o escrita (modo «Separar»): medio crédito por palabra reconocida, redondeado, mínimo 1</li>
+      <li>Traducir una frase completa (modo «Frase»): medio crédito por palabra introducida, redondeado, mínimo 1</li>
+      <li>Generar una nueva sesión de práctica en el modo Contexto: 1 crédito por palabra incluida (actualmente 5 o 10 créditos por sesión)</li>
+      <li>Generar un ejercicio de conjugación: 1 crédito</li>
+    </ul>
+    <p><strong>Qué no consume créditos:</strong></p>
+    <ul>
+      <li>Repasar vocabulario en el modo de aprendizaje y en el modo de tarjetas</li>
+      <li>Continuar una sesión de contexto ya generada</li>
+      <li>Practicar una conjugación ya generada: se guarda en su dispositivo y en su cuenta y no se cobra una segunda vez</li>
+      <li>Consultar su colección y crear entradas manualmente sin IA</li>
+      <li>La entrada por voz, la sincronización y la modificación de ajustes o idiomas</li>
+    </ul>
+    <p>Los créditos solo se computan cuando la respuesta de la IA es satisfactoria. Si una solicitud falla o no devuelve resultado alguno, no se computa nada. Las tarifas indicadas corresponden al estado actual del Servicio; quedan reservadas modificaciones con efectos para el futuro conforme a la cláusula 11.</p>
+
+    <h3>3.3 Paso a la fase regular</h3>
+    <p>Podemos poner fin a la fase de lanzamiento y pasar a la fase regular, en la que el Servicio se divide en una modalidad gratuita con una cuota de uso reducida y una suscripción Premium de pago con una cuota mayor. No existe derecho al uso gratuito y permanente de la totalidad de las funciones.</p>
+    <p><strong>Preaviso.</strong> Le informaremos previamente en la aplicación de dicha transición y de la cuota que resultará aplicable a la modalidad gratuita, con al menos <strong>30 días</strong> de antelación a la fecha de efecto. El precio, la duración y el contenido de una suscripción se le muestran en la aplicación y en la tienda de aplicaciones correspondiente inmediatamente antes de cualquier compra; dicha información prevalece en todo caso.</p>
+    <p><strong>Ningún contrato de pago automático.</strong> La transición por sí sola no le genera coste alguno. Una suscripción Premium solo se perfecciona mediante su compra expresa en la tienda de aplicaciones correspondiente. Sin compra, tras la transición seguirá utilizando simplevoc en la modalidad gratuita.</p>
+    <p><strong>Su derecho de resolución.</strong> Si la modificación afecta a su uso del Servicio de forma no meramente insignificante, podrá resolver el contrato sin coste alguno en el plazo de 30 días desde el preaviso —o desde la entrada en vigor de la modificación, si esta fuera posterior— eliminando su cuenta (cláusula 10). Puede exportar previamente su vocabulario en cualquier momento desde los ajustes.</p>
+    <p>Podemos conceder a los early adopters ventajas transitorias con carácter voluntario, como la continuidad gratuita del acceso a las funciones Premium durante un tiempo limitado. Ello no genera derecho alguno; cualquier fecha de finalización se le indicará en la aplicación.</p>
+
+    <h3>3.4 Cancelación de la suscripción</h3>
+    <p>Una vez que se ofrezca una suscripción Premium, podrá cancelarla en cualquier momento a través de los ajustes de su cuenta en la tienda de aplicaciones. La cancelación surtirá efecto al finalizar el periodo de facturación en curso. Los reembolsos se rigen por las políticas de la tienda de aplicaciones correspondiente.</p>
+  </section>
+
+  <section>
+    <h2>4. Derecho de desistimiento</h2>
+
+    <h3>4.1 Servicio gratuito</h3>
+    <p>Como consumidor residente en la Unión Europea o en el Reino Unido, dispone de un derecho de desistimiento de 14 días desde el registro, lo que abarca a todos esos usuarios durante la actual fase de lanzamiento. Fuera de dichos países, cualquier derecho de desistimiento o de resolución se rige por el derecho de su país de residencia (cláusula 14). Este derecho se extingue anticipadamente si usted consiente expresamente el inicio de la ejecución del servicio antes de que finalice el plazo de desistimiento y reconoce que pierde su derecho de desistimiento al comenzar dicha ejecución. Dado que durante esta fase no se cobra importe alguno, el desistimiento no le supone coste; también puede eliminar su cuenta en cualquier momento sin desistir (cláusula 10).</p>
+
+    <h3>4.2 Forma de desistir</h3>
+    <p>Puede ejercer su derecho de desistimiento mediante una declaración inequívoca (por ejemplo, por correo electrónico a <a href="mailto:support@simplevoc.de">support@simplevoc.de</a>) o eliminando su cuenta en la aplicación.</p>
+  </section>
+
+  <section>
+    <h2>5. Obligaciones del usuario</h2>
+
+    <h3>Uso permitido</h3>
+    <p>simplevoc solo puede utilizarse con fines de aprendizaje lícitos y personales. Queda prohibido, en particular:</p>
+    <ul>
+      <li>El uso comercial o la consulta automatizada del Servicio</li>
+      <li>Eludir o manipular los mecanismos de seguridad</li>
+      <li>Someter la infraestructura del Servicio a una carga desproporcionada</li>
+      <li>Introducir contenidos que inciten al odio o de carácter extremista, así como contenidos contrarios a la legislación aplicable</li>
+      <li>Almacenar datos personales sensibles de terceros como entradas de vocabulario</li>
+    </ul>
+
+    <h3>Responsabilidad por los contenidos</h3>
+    <p>Usted es el único responsable del vocabulario y de las frases que introduce en simplevoc. No asumimos responsabilidad alguna por los contenidos generados por los usuarios.</p>
+  </section>
+
+  <section>
+    <h2>6. Reconocimiento de voz y servicio de traducción por IA</h2>
+
+    <h3>Reconocimiento de voz</h3>
+    <p>De forma predeterminada, simplevoc transcribe su grabación mediante el servicio de reconocimiento de voz en la nube de <strong>AssemblyAI</strong>; la grabación se transmite directamente desde su dispositivo a su punto de conexión europeo. Puede desactivar esta función en cualquier momento en Ajustes → Entrada por voz; en ese caso el reconocimiento se realiza únicamente en su dispositivo, con menor precisión. Los idiomas para los que se utiliza el reconocimiento en la nube y la forma en que se tratan los datos se describen en la <a href="/privacy?lang=es">política de privacidad</a> (apartado 4). No se garantiza una precisión de reconocimiento determinada.</p>
+
+    <h3>Sin garantía sobre la calidad de las traducciones</h3>
+    <p>simplevoc utiliza inteligencia artificial (API de Google Gemini) para la extracción y traducción de palabras. Las traducciones generadas por IA pueden contener errores. El Servicio está destinado exclusivamente a <strong>fines de aprendizaje</strong> y no sustituye a una traducción profesional, ni resulta adecuado para usos jurídicos, médicos o críticos para la seguridad.</p>
+
+    <h3>Advertencia sobre la introducción de datos</h3>
+    <div class="highlight">
+      Le rogamos que no introduzca datos personales sensibles (nombres de terceros, direcciones, información de salud, etc.) como vocabulario. El Servicio está concebido para el aprendizaje de idiomas, no para conservar documentos personales.
+    </div>
+
+    <h3>Disponibilidad del servicio de IA</h3>
+    <p>Las funciones de IA (reconocimiento de voz, traducción, conjugación) requieren conexión a internet y dependen de proveedores externos. Las interrupciones de dichos servicios escapan a nuestro control. Las funciones básicas de aprendizaje (repaso con tarjetas) siguen disponibles sin conexión.</p>
+  </section>
+
+  <section>
+    <h2>7. Disponibilidad del Servicio</h2>
+    <p>Nos esforzamos por mantener simplevoc disponible de forma continuada, pero no garantizamos un acceso ininterrumpido. Las tareas de mantenimiento, las incidencias técnicas o circunstancias ajenas a nuestro control pueden provocar interrupciones temporales. No se garantiza una disponibilidad determinada.</p>
+  </section>
+
+  <section>
+    <h2>8. Propiedad intelectual</h2>
+    <p>Todos los derechos sobre la aplicación simplevoc, incluidos el diseño, el código y las marcas, corresponden al prestador o a sus licenciantes. La licencia que se le concede se limita al uso personal y no comercial en el marco de las presentes condiciones.</p>
+  </section>
+
+  <section>
+    <h2>9. Responsabilidad</h2>
+
+    <h3>Limitación de responsabilidad</h3>
+    <p>Respondemos sin limitación de los daños derivados de lesiones a la vida, la integridad física o la salud, así como de los daños causados dolosamente o por negligencia grave.</p>
+    <p>Por lo demás, nuestra responsabilidad se limita —en la medida permitida por la ley— a los daños previsibles derivados del incumplimiento de obligaciones contractuales esenciales. Para los usuarios con residencia habitual fuera de la Unión Europea se aplican, de forma complementaria o sustitutiva, las disposiciones regionales de la cláusula 14.</p>
+
+    <h3>Contenidos generados por IA</h3>
+    <p>No asumimos responsabilidad alguna por la exactitud de las traducciones generadas por IA. El uso de dichos contenidos para decisiones jurídicas, médicas o empresariales corre por su cuenta y riesgo.</p>
+
+    <h3>Servicios de terceros</h3>
+    <p>No respondemos de los daños causados por servicios de terceros (Google Firebase, API de Gemini, AssemblyAI, RevenueCat, Apple) que escapen a nuestro control.</p>
+  </section>
+
+  <section>
+    <h2>10. Duración y resolución</h2>
+
+    <h3>Duración</h3>
+    <p>El contrato relativo al uso gratuito de simplevoc se celebra por tiempo indefinido; no finaliza con la fase de lanzamiento, sino que continúa en la modalidad gratuita entonces aplicable (cláusula 3.3). Nos reservamos el derecho de reducir sensiblemente la cuota de uso de la modalidad gratuita respecto de la cuota aplicable en la actualidad (cláusula 3.2).</p>
+
+    <h3>Resolución por su parte</h3>
+    <p>Puede eliminar su cuenta en cualquier momento desde la aplicación (Ajustes → Eliminar cuenta) o por correo electrónico a <a href="mailto:support@simplevoc.de">support@simplevoc.de</a>. La eliminación borra de forma irreversible todos los datos almacenados y pone fin al contrato.</p>
+
+    <h3>Resolución por nuestra parte</h3>
+    <p>Nos reservamos el derecho de suspender o eliminar cuentas sin preaviso en caso de infracciones graves o reiteradas de las presentes condiciones. En los casos menos graves se emitirá una advertencia previa.</p>
+
+    <h3>Resolución extraordinaria</h3>
+    <p>Cualquiera de las partes podrá resolver el contrato por causa justificada.</p>
+  </section>
+
+  <section>
+    <h2>11. Modificación de las presentes condiciones</h2>
+    <p>Podemos modificar las presentes condiciones cuando así lo justifiquen el desarrollo del Servicio, un cambio de las circunstancias técnicas o jurídicas, o una adaptación de nuestra oferta. Le informaremos de cualquier modificación en la aplicación con al menos <strong>30 días</strong> de antelación a su entrada en vigor y, si disponemos de su dirección de correo electrónico, también por ese medio. Las modificaciones nunca tienen efecto retroactivo.</p>
+    <p>Si no acepta una modificación, podrá resolver el contrato sin coste alguno en cualquier momento antes de su entrada en vigor eliminando su cuenta (cláusula 10); previamente puede exportar sus datos desde los ajustes. Si continúa utilizando simplevoc tras la entrada en vigor, aplicaremos la versión modificada a su uso posterior. Las disposiciones que se refieren exclusivamente a una suscripción de pago se le mostrarán antes de cualquier compra y solo se aplicarán a esa compra.</p>
+  </section>
+
+  <section>
+    <h2>12. Derecho aplicable y resolución de litigios</h2>
+    <p>Las presentes condiciones se rigen por el derecho de la República Federal de Alemania, con exclusión de la Convención de las Naciones Unidas sobre los Contratos de Compraventa Internacional de Mercaderías.</p>
+    <p><strong>Derecho imperativo de su país de residencia.</strong> Esta elección de ley no le priva de la protección de las disposiciones imperativas de protección de los consumidores del país en el que tenga su residencia habitual, pertenezca o no dicho país a la Unión Europea. Cuando una disposición de las presentes condiciones sea nula conforme al derecho de su país de residencia, o dicho derecho prevea una regla más favorable para usted, prevalecerá esta última. La cláusula 14 contiene disposiciones complementarias para determinadas regiones.</p>
+    <p><strong>Fuero.</strong> Como consumidor, puede demandarnos ante los tribunales de su domicilio o ante los de nuestra sede; nosotros solo podemos demandarle ante los tribunales de su domicilio. No se pacta ningún fuero distinto.</p>
+    <p>No estamos dispuestos ni obligados a participar en procedimientos de resolución de litigios ante un organismo de arbitraje de consumo (§ 36 VSBG).</p>
+  </section>
+
+  <section>
+    <h2>13. Cláusula de salvaguarda</h2>
+    <p>Si alguna de las disposiciones de las presentes condiciones fuera o deviniera nula, la validez de las restantes disposiciones no se verá afectada. La disposición nula se sustituirá por otra válida que más se aproxime a su finalidad económica.</p>
+  </section>
+
+  <section>
+    <h2>14. Disposiciones regionales</h2>
+
+    <h3>14.1 Relación con las demás disposiciones</h3>
+    <p>La presente cláusula complementa las disposiciones anteriores para determinadas regiones y prevalece sobre ellas en caso de contradicción. Solo le resulta aplicable el apartado correspondiente al país en el que tenga su residencia habitual. El derecho imperativo de consumo de su país de residencia no se ve afectado en ningún caso (cláusula 12). La cláusula 14.10 indica dónde se ofrece simplevoc.</p>
+
+    <h3>14.2 Unión Europea, EEE y Suiza</h3>
+    <p>Si tiene su residencia habitual en un Estado miembro de la Unión Europea o del EEE, el derecho de consumo de su país de residencia se aplica junto con las presentes condiciones y prevalece cuando le resulte más favorable. Ello comprende su derecho de desistimiento conforme a la cláusula 4 y sus derechos en caso de contenidos digitales defectuosos conforme a la Directiva (UE) 2019/770. Sus derechos en materia de protección de datos conforme al RGPD se describen en la <a href="/privacy?lang=es">política de privacidad</a>.</p>
+    <p>Si tiene su residencia habitual en <strong>Suiza</strong>, se aplican el Código de Obligaciones y la Ley federal contra la competencia desleal junto con las presentes condiciones; las normas suizas de protección de los consumidores prevalecen cuando le resulten más favorables. Sus derechos conforme a la Ley federal revisada de protección de datos (nLPD) se describen en la <a href="/privacy?lang=es">política de privacidad</a>, apartado 18.3.</p>
+
+    <h3>14.3 Reino Unido</h3>
+    <p>Para los usuarios con residencia habitual en el Reino Unido se aplica la Consumer Rights Act 2015. Los contenidos digitales deben ser de calidad satisfactoria, aptos para su finalidad y conformes a su descripción; las presentes condiciones no excluyen ni limitan dichos derechos. Su derecho de desistimiento conforme a la cláusula 4 se rige por las Consumer Contracts (Information, Cancellation and Additional Charges) Regulations 2013. Puede demandarnos ante los tribunales del Reino Unido. Sus derechos en materia de protección de datos conforme al UK GDPR se describen en la <a href="/privacy?lang=es">política de privacidad</a>, apartado 18.2.</p>
+
+    <h3>14.4 Estados Unidos de América</h3>
+    <p>Para los usuarios con residencia habitual en los Estados Unidos se aplica además lo siguiente:</p>
+    <div class="highlight">
+      <strong>AUSENCIA DE GARANTÍA.</strong> EN LA MÁXIMA MEDIDA PERMITIDA POR LA LEY, SIMPLEVOC SE PRESTA «TAL CUAL» Y «SEGÚN DISPONIBILIDAD», SIN GARANTÍA DE NINGÚN TIPO, EXPRESA, IMPLÍCITA O LEGAL. EXCLUIMOS EN PARTICULAR LAS GARANTÍAS IMPLÍCITAS DE COMERCIABILIDAD (MERCHANTABILITY), IDONEIDAD PARA UN FIN DETERMINADO (FITNESS FOR A PARTICULAR PURPOSE), EXACTITUD Y NO INFRACCIÓN DE DERECHOS DE TERCEROS. NO GARANTIZAMOS QUE EL SERVICIO FUNCIONE DE FORMA ININTERRUMPIDA O SIN ERRORES, NI QUE LAS TRADUCCIONES GENERADAS POR IA SEAN CORRECTAS.
+    </div>
+    <p><strong>Límite de responsabilidad.</strong> En la medida permitida por la ley, nuestra responsabilidad total derivada de las presentes condiciones y del Servicio, o relacionada con ellos, se limita al mayor de los siguientes importes: la suma de las cantidades que usted haya abonado por simplevoc en los doce meses anteriores al hecho generador, o 100 dólares estadounidenses. No respondemos de daños indirectos o consecuenciales, lucro cesante, pérdida de datos ni interrupción de la actividad.</p>
+    <p><strong>Indemnidad.</strong> Usted nos mantendrá indemnes frente a reclamaciones de terceros derivadas de los contenidos que introduzca en simplevoc o de su uso del Servicio en infracción de las presentes condiciones o de la legislación aplicable, incluidos los costes razonables de defensa jurídica. Ello no se aplica en la medida en que hayamos actuado con dolo o negligencia grave.</p>
+    <p><strong>Control de exportaciones y sanciones.</strong> Usted declara y garantiza que no se encuentra en un país sometido a embargo del Gobierno de los Estados Unidos ni designado por este como país «que apoya el terrorismo», y que no figura en ninguna lista de partes prohibidas o restringidas del Gobierno de los Estados Unidos, incluidas la Specially Designated Nationals List del Departamento del Tesoro y las Denied Persons List y Entity List del Departamento de Comercio. Usted no utilizará simplevoc con fines prohibidos por el derecho estadounidense.</p>
+    <p><strong>Variaciones estatales.</strong> Algunos estados de EE. UU. no admiten la exclusión de garantías implícitas ni la limitación de responsabilidad por daños incidentales o consecuenciales. En tal caso, las exclusiones y limitaciones anteriores solo le resultarán aplicables en la medida permitida por el derecho de su estado, y sus derechos legales como consumidor no se verán afectados. Para sus derechos en materia de privacidad conforme al derecho de los estados de EE. UU., véase la <a href="/privacy?lang=es">política de privacidad</a>, apartado 18.1.</p>
+
+    <h3>14.5 Canadá</h3>
+    <p>Las disposiciones imperativas de protección de los consumidores de su provincia o territorio prevalecen sobre las presentes condiciones. Para los consumidores de <strong>Quebec</strong> se aplica además lo siguiente: la Ley de protección del consumidor (RLRQ c P-40.1) no puede excluirse por contrato; las limitaciones de las cláusulas 9 y 14.4 solo le resultan aplicables en la medida en que dicha ley lo permita, y puede demandarnos en el distrito judicial de su domicilio. Sus derechos en materia de protección de datos conforme a la PIPEDA y al derecho provincial se describen en la <a href="/privacy?lang=es">política de privacidad</a>, apartado 18.4.</p>
+
+    <h3>14.6 Australia y Nueva Zelanda</h3>
+    <p>Para los usuarios con residencia habitual en <strong>Australia</strong>, nuestros bienes y servicios llevan aparejadas garantías que no pueden excluirse conforme a la Australian Consumer Law (anexo 2 de la Competition and Consumer Act 2010). Ninguna disposición de las presentes condiciones excluye, restringe ni modifica dichas garantías, y las limitaciones de las cláusulas 9 y 14.4 solo se aplican en la medida permitida por la Australian Consumer Law. Cuando nuestra responsabilidad por el incumplimiento de una garantía de consumo pueda limitarse lícitamente, quedará limitada a la nueva prestación del servicio o al reembolso del coste de dicha nueva prestación.</p>
+    <p>Para los usuarios con residencia habitual en <strong>Nueva Zelanda</strong> se aplican la Consumer Guarantees Act 1993 y la Fair Trading Act 1986 cuando utilice simplevoc en condición de consumidor; las presentes condiciones no excluyen ni limitan los derechos derivados de dichas leyes. Sus derechos en materia de protección de datos se describen en la <a href="/privacy?lang=es">política de privacidad</a>, apartado 18.5.</p>
+
+    <h3>14.7 África</h3>
+    <p>Las disposiciones imperativas de protección de los consumidores y de protección de datos de su país de residencia prevalecen sobre las presentes condiciones. Además:</p>
+    <ul>
+      <li><strong>Sudáfrica:</strong> la Consumer Protection Act 68 de 2008 y la Electronic Communications and Transactions Act 25 de 2002 son imperativas; las limitaciones de las cláusulas 9 y 14.4 solo se aplican en la medida en que dichas leyes lo permitan. Conforme a la Protection of Personal Information Act (POPIA), se considera menor a toda persona de menos de 18 años, por lo que el consentimiento parental exigido en la cláusula 2 se aplica en Sudáfrica a todos los menores de edad.</li>
+      <li><strong>Nigeria:</strong> se aplican la Federal Competition and Consumer Protection Act 2018 y la Nigeria Data Protection Act 2023.</li>
+      <li><strong>Kenia:</strong> se aplican la Consumer Protection Act 2012 y la Data Protection Act 2019.</li>
+      <li><strong>Ghana:</strong> se aplica la Data Protection Act 2012 (Act 843), así como el derecho ghanés de consumo.</li>
+    </ul>
+    <p>Sus derechos en materia de protección de datos en estos países se describen en la <a href="/privacy?lang=es">política de privacidad</a>, apartado 18.6.</p>
+
+    <h3>14.8 América Latina</h3>
+    <p>El presente apartado se aplica si tiene su residencia habitual en Argentina, Bolivia, Chile, Colombia, Costa Rica, Ecuador, El Salvador, Guatemala, Honduras, México, Nicaragua, Panamá, Paraguay, Perú, la República Dominicana o Uruguay.</p>
+    <p><strong>Su derecho de consumo prevalece.</strong> El derecho de protección al consumidor de estos países es de <em>orden público</em> y no puede renunciarse por contrato ni desplazarse mediante la elección del derecho alemán de la cláusula 12. En la medida en que le conceda más que las presentes condiciones, se aplicará:</p>
+    <ul>
+      <li><strong>México</strong> — Ley Federal de Protección al Consumidor; autoridad: PROFECO</li>
+      <li><strong>Colombia</strong> — Estatuto del Consumidor, Ley 1480 de 2011; autoridad: Superintendencia de Industria y Comercio</li>
+      <li><strong>Argentina</strong> — Ley 24.240 de Defensa del Consumidor, junto con el art. 42 de la Constitución</li>
+      <li><strong>Chile</strong> — Ley 19.496; autoridad: SERNAC</li>
+      <li><strong>Perú</strong> — Código de Protección y Defensa del Consumidor, Ley 29571; autoridad: INDECOPI</li>
+      <li><strong>Ecuador</strong> — Ley Orgánica de Defensa del Consumidor</li>
+      <li><strong>Uruguay</strong> — Ley 17.250 · <strong>Paraguay</strong> — Ley 1334/98 (autoridad: SEDECO) · <strong>Bolivia</strong> — Ley 453</li>
+      <li><strong>Costa Rica</strong> — Ley 7472 · <strong>Panamá</strong> — Ley 45 de 2007 (autoridad: ACODECO) · <strong>República Dominicana</strong> — Ley 358-05 (autoridad: Pro Consumidor)</li>
+      <li><strong>Guatemala</strong> — Decreto 006-2003 (autoridad: DIACO) · <strong>El Salvador</strong> — Ley de Protección al Consumidor (autoridad: Defensoría del Consumidor) · <strong>Honduras</strong> — Decreto 24-2008 · <strong>Nicaragua</strong> — Ley 842</li>
+    </ul>
+    <p><strong>El límite de responsabilidad no le resulta aplicable.</strong> Estos ordenamientos consideran por lo general nula toda cláusula que limite o excluya la responsabilidad del proveedor frente al consumidor. Por consiguiente, el límite de la cláusula 14.4 <strong>no</strong> se aplica a los usuarios residentes en estos países, y la cláusula 9 solo se aplica en la medida en que su derecho nacional lo permita.</p>
+    <p><strong>Interpretación y fuero.</strong> Cualquier ambigüedad de las presentes condiciones se interpretará a su favor en su condición de consumidor. Puede demandarnos y presentar reclamación ante la autoridad de consumo en su propio domicilio.</p>
+    <p><strong>Idioma.</strong> Las presentes condiciones se publican en español; la versión española es la que rige para usted (véase la cláusula 14.9).</p>
+    <p>Sus derechos en materia de protección de datos en estos países se describen en la <a href="/privacy?lang=es">política de privacidad</a>, apartado 18.7.</p>
+
+    <h3>14.9 Idioma</h3>
+    <p>Las presentes condiciones se publican en alemán, inglés, francés y español. Para los usuarios con residencia habitual en Alemania, Austria y Suiza rige la versión alemana; para los usuarios con residencia habitual en Francia, Quebec, Bélgica y los demás territorios francófonos rige la versión francesa; para los usuarios con residencia habitual en España y en los países hispanohablantes de América Latina rige la versión española; para todos los demás usuarios rige la versión inglesa.</p>
+    <p><strong>Traducción a petición.</strong> Si prefiere leer las presentes condiciones en otro idioma, escríbanos a <a href="mailto:support@simplevoc.de">support@simplevoc.de</a> y le facilitaremos gratuitamente una traducción. Cuando el derecho de su país de residencia exija una versión en un idioma determinado, dicha versión prevalecerá sobre las versiones alemana, inglesa, francesa y española. Por lo demás, las traducciones que facilitemos para facilitar la comprensión no alteran la versión aplicable indicada anteriormente.</p>
+
+    <h3>14.10 Países en los que se ofrece simplevoc</h3>
+    <p>simplevoc solo se ofrece en los países que figuran como disponibles en la App Store y en Google Play. Podemos añadir o retirar países en cualquier momento; la disponibilidad allí mostrada constituye siempre la lista aplicable.</p>
+    <p>simplevoc no se ofrece en países ni territorios sometidos a sanciones o embargos de la Unión Europea o de los Estados Unidos; queda prohibido el acceso desde dichos territorios.</p>
+  </section>
+
+  <section>
+    <h2>15. Contacto</h2>
+    <div class="card">
+      <p><strong>Stefan Lehner</strong> – simplevoc<br>
+      <a href="mailto:support@simplevoc.de">support@simplevoc.de</a></p>
+    </div>
+  </section>
+
+  <div class="footer-links">
+    <a href="/privacy?lang=es">Política de privacidad</a>
+    <a href="/impressum?lang=es">Aviso legal</a>
+  </div>
+</main>
+</div>
+
 <script>
+  const LANGS = ['de', 'en', 'fr', 'es'];
   const DEFAULT_LANG = 'de';
   function getLang() {
     const p = new URLSearchParams(window.location.search).get('lang');
-    return (p === 'en' || p === 'de') ? p : DEFAULT_LANG;
+    return LANGS.includes(p) ? p : DEFAULT_LANG;
   }
   function setLang(lang) {
-    document.getElementById('content-de').style.display = lang === 'de' ? 'block' : 'none';
-    document.getElementById('content-en').style.display = lang === 'en' ? 'block' : 'none';
-    document.getElementById('btn-de').classList.toggle('active', lang === 'de');
-    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    for (const l of LANGS) {
+      document.getElementById('content-' + l).style.display = l === lang ? 'block' : 'none';
+      document.getElementById('btn-' + l).classList.toggle('active', l === lang);
+    }
     document.documentElement.lang = lang;
     const url = new URL(window.location);
     url.searchParams.set('lang', lang);
     history.replaceState({}, '', url);
   }
-  setLang(getLang());
+setLang(getLang());
 </script>
 </body>
 </html>

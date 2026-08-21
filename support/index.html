@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="light" data-lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support &amp; FAQ – simplevoc</title>
+  <meta name="description" content="Support and frequently asked questions for simplevoc — vocabulary learning with speech recognition. Contact support@simplevoc.de.">
+  <link rel="canonical" href="https://simplevoc.de/support">
+  <meta property="og:title" content="Support &amp; FAQ – simplevoc">
+  <meta property="og:description" content="Frequently asked questions and contact information for simplevoc.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://simplevoc.de/support">
+  <link rel="alternate" hreflang="en" href="https://simplevoc.de/support?lang=en">
+  <link rel="alternate" hreflang="de" href="https://simplevoc.de/support?lang=de">
+  <link rel="alternate" hreflang="x-default" href="https://simplevoc.de/support">
+  <link rel="icon" href="/favicon.png">
+
+  <!-- Detect language before body renders to avoid flash — same logic as the landing page. -->
+  <script>
+    (function() {
+      var p = new URLSearchParams(location.search).get('lang');
+      var stored = localStorage.getItem('sv-lang');
+      var lang = (p === 'en' || p === 'de') ? p
+               : (stored === 'en' || stored === 'de') ? stored
+               : 'de';
+      document.documentElement.setAttribute('data-lang', lang);
+      document.documentElement.lang = lang;
+      var theme = localStorage.getItem('sv-theme') === 'dark' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+
+  <style>
+    /* ── Tokens — identical to the landing page, so the two feel like one site ── */
+    :root {
+      --bg:      #F5EFE0;
+      --bg2:     #EDE6D3;
+      --surface: #FEFCF7;
+      --border:  rgba(0,0,0,.12);
+      --text:    #1A1A2E;
+      --text2:   #5F6472;
+      --text3:   #8A8A99;
+      --accent:  #4F3FBF;
+      --accent2: rgba(79,63,191,.10);
+      --green:   #1B9764;
+      --card:    #FEFCF7;
+      --nav-bg:  rgba(245,239,224,.92);
+      --accent-line: rgba(79,63,191,.20);
+      --accent-edge: rgba(79,63,191,.25);
+      --accent-wash: rgba(79,63,191,.07);
+    }
+    [data-theme="dark"] {
+      --bg:      #0a0e1a;
+      --bg2:     #0f1522;
+      --surface: #131d2e;
+      --border:  #1e2f48;
+      --text:    #e8edf5;
+      --text2:   #8a9bb5;
+      --text3:   #3d4f66;
+      --accent:  #1db4ff;
+      --accent2: rgba(29,180,255,.12);
+      --green:   #22c55e;
+      --card:    #111827;
+      --nav-bg:  rgba(10,14,26,.88);
+      --accent-line: rgba(29,180,255,.2);
+      --accent-edge: rgba(29,180,255,.25);
+      --accent-wash: rgba(29,180,255,.07);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg); color: var(--text);
+      line-height: 1.65; font-size: 16px;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .t-de { display: none; }
+    [data-lang="de"] .t-de { display: revert; }
+    [data-lang="de"] .t-en { display: none; }
+
+    /* ── Nav — same markup/classes as the landing page ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--nav-bg);
+      backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      height: 58px; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 1.05rem; font-weight: 700; color: var(--text);
+    }
+    .nav-logo:hover { text-decoration: none; }
+    .logo-mark {
+      width: 32px; height: 32px; border-radius: 8px;
+      display: block; object-fit: cover;
+      border: 1px solid var(--border);
+    }
+    .nav-right { display: flex; align-items: center; gap: 6px; }
+    .btn-icon {
+      width: 34px; height: 34px; border-radius: 8px;
+      border: 1px solid var(--border); background: transparent;
+      color: var(--text2); cursor: pointer; font-size: 14px;
+      display: flex; align-items: center; justify-content: center;
+      transition: all .15s;
+    }
+    .btn-icon:hover { background: var(--accent2); color: var(--accent); border-color: var(--accent); }
+    .lang-btn {
+      height: 34px; padding: 0 11px; border-radius: 8px;
+      border: 1px solid var(--border); background: transparent;
+      color: var(--text2); cursor: pointer; font-size: .78rem; font-weight: 600;
+      transition: all .15s;
+    }
+    .lang-btn:hover, .lang-btn.active { background: var(--accent2); color: var(--accent); border-color: var(--accent); }
+
+    .wrap { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+    .sec  { padding: 56px 0; }
+
+    .eyebrow {
+      font-size: .7rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 10px;
+    }
+    .sec-title {
+      font-size: clamp(1.55rem, 3vw, 2.2rem);
+      font-weight: 800; letter-spacing: -.8px; color: var(--text);
+      line-height: 1.18; margin-bottom: 12px;
+    }
+    .sec-sub { font-size: .97rem; color: var(--text2); max-width: 620px; line-height: 1.7; }
+
+    /* ── Page intro ─────────────────────────────── */
+    .page-hero { padding: 56px 24px 8px; max-width: 900px; margin: 0 auto; }
+
+    /* ── FAQ ─────────────────────────────────────── */
+    .faq-group { margin-top: 40px; }
+    .faq-group:first-of-type { margin-top: 44px; }
+    .faq-cat {
+      font-size: .78rem; font-weight: 700; letter-spacing: .8px;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 14px;
+    }
+    .faq-item {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; margin-bottom: 10px; overflow: hidden;
+    }
+    .faq-item summary {
+      list-style: none; cursor: pointer; padding: 18px 22px;
+      font-size: .95rem; font-weight: 700; color: var(--text);
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: "+"; font-size: 1.35rem; font-weight: 400; color: var(--text3);
+      flex-shrink: 0; transition: transform .2s; line-height: 1;
+    }
+    .faq-item[open] summary::after { transform: rotate(45deg); color: var(--accent); }
+    .faq-item .faq-a {
+      padding: 0 22px 20px; font-size: .9rem; color: var(--text2); line-height: 1.7;
+    }
+
+    /* ── Contact ─────────────────────────────────── */
+    .contact-box {
+      margin-top: 8px;
+      background: linear-gradient(135deg, var(--accent-wash) 0%, transparent 60%);
+      border: 1px solid var(--accent-line); border-radius: 20px;
+      padding: 40px; text-align: center;
+    }
+    .contact-box h2 {
+      font-size: 1.5rem; font-weight: 800; letter-spacing: -.6px; margin-bottom: 10px;
+    }
+    .contact-box p {
+      font-size: .93rem; color: var(--text2); margin: 0 auto 22px; max-width: 480px; line-height: 1.7;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 14px 26px; border-radius: 12px;
+      background: var(--accent); color: #fff;
+      font-size: .97rem; font-weight: 700;
+      transition: opacity .15s, transform .15s;
+    }
+    .btn-primary:hover { opacity: .87; transform: translateY(-1px); text-decoration: none; color: #fff; }
+
+    /* ── Footer — same markup/classes as the landing page ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 24px;
+      display: flex; flex-wrap: wrap; gap: 16px;
+      justify-content: space-between; align-items: center;
+    }
+    .foot-logo { font-size: .9rem; font-weight: 700; color: var(--text2); }
+    .foot-links { display: flex; gap: 18px; flex-wrap: wrap; }
+    .foot-links a { color: var(--text2); font-size: .85rem; }
+    .foot-links a:hover { color: var(--accent); }
+    .foot-copy { color: var(--text3); font-size: .78rem; }
+
+    @media (max-width: 600px) {
+      .contact-box { padding: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════ NAV ══════════════════ -->
+<nav>
+  <a href="/" class="nav-logo">
+    <img src="../media/icon.png" class="logo-mark" width="1024" height="1024" alt="simplevoc app icon">
+    simplevoc
+  </a>
+  <div class="nav-right">
+    <button class="btn-icon" id="theme-toggle" title="Toggle theme" onclick="toggleTheme()">☀</button>
+    <button class="lang-btn" id="btn-de" onclick="setLang('de')">DE</button>
+    <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+  </div>
+</nav>
+
+<!-- ══════════════════ INTRO ══════════════════ -->
+<div class="page-hero">
+  <div class="eyebrow">
+    <span class="t-en">Support</span>
+    <span class="t-de">Support</span>
+  </div>
+  <div class="sec-title">
+    <span class="t-en">Support &amp; FAQ</span>
+    <span class="t-de">Support &amp; Häufige Fragen</span>
+  </div>
+  <p class="sec-sub">
+    <span class="t-en">Answers to the questions we hear most. Can't find what you're looking for? Just email us — see below.</span>
+    <span class="t-de">Antworten auf die häufigsten Fragen. Nicht gefunden, wonach du suchst? Schreib uns einfach — Kontakt unten.</span>
+  </p>
+</div>
+
+<!-- ══════════════════ FAQ ══════════════════ -->
+<section class="sec">
+  <div class="wrap">
+
+    <div class="faq-group">
+      <div class="faq-cat">
+        <span class="t-en">General</span>
+        <span class="t-de">Allgemein</span>
+      </div>
+
+      <details class="faq-item">
+        <summary>
+          <span class="t-en">What is simplevoc?</span>
+          <span class="t-de">Was ist simplevoc?</span>
+        </summary>
+        <div class="faq-a">
+          <span class="t-en">simplevoc is a vocabulary trainer app. The basic idea is to learn words you really need, instead of pre-made vocabulary lists. You can easily add words or entire sentences (by speaking or typing). The app extracts and translates the words in context, but you can also add full sentences and save them. You can then review your personalized vocabulary collection in different learning modes, e.g., FSRS-supported spaced repetition of vocabulary cards, learning your vocabulary in everyday sentences or verb conjugation in various tenses.</span>
+          <span class="t-de">simplevoc ist eine Vokabeltrainer-App. Die grundlegende Idee ist, im Gegensatz zu vorgefertigten Vokabellisten die Wörter zu lernen, die du wirklich brauchst. Hierfür kannst du auf einfache Weise (Sprechen oder Tippen) Wörter oder ganze Sätze erfassen. Die App extrahiert und übersetzt die Wörter im Kontext, du kannst aber auch ganze Sätze erfassen und speichern. Deinen dadurch aufgebauten persönlichen Vokabelkatalog kannst du in verschiedenen Lernmodi lernen, z.B FSRS-unterstütztes Wiederholen von Vokabelkarten, Lernen deiner Vokabeln in alltäglichen Sätzen oder Verbkonjugation in verschiedenen Zeiten </span>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span class="t-en">Which languages does simplevoc support?</span>
+          <span class="t-de">Welche Sprachen unterstützt simplevoc?</span>
+        </summary>
+        <div class="faq-a">
+          <span class="t-en">German, English, Spanish, French, Italian and Portuguese — as both the language you're learning and your own mother tongue, in any combination.</span>
+          <span class="t-de">Deutsch, Englisch, Spanisch, Französisch, Italienisch und Portugiesisch — sowohl als Zielsprache als auch als deine Muttersprache, in beliebiger Kombination.</span>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span class="t-en">Is it possible to learn multiple languages at once?</span>
+          <span class="t-de">Ist es möglich, gleichzeitig mehrere Sprachen zu lernen?</span>
+        </summary>
+        <div class="faq-a">
+          <span class="t-en">Yes, you can learn multiple languages at once. You can define up to two target languages. All words and sentences you add will be translated into the selected target languages.</span>
+          <span class="t-de">Ja, du kannst gleichzeitig mehrere Sprachen lernen. Du kannst bis zu zwei Zielsprachen definieren. Alle Wörter und Sätze, die du hinzufügst, werden in die ausgewählten Zielsprachen übersetzt.</span>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span class="t-en">Which platforms is simplevoc available on?</span>
+          <span class="t-de">Auf welchen Plattformen ist simplevoc verfügbar?</span>
+        </summary>
+        <div class="faq-a">
+          <span class="t-en">simplevoc is available now on the App Store for iPhone. An Android version is in development.</span>
+          <span class="t-de">simplevoc ist jetzt im App Store für iPhone erhältlich. Eine Android-Version befindet sich in Entwicklung.</span>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span class="t-en">Does simplevoc work offline?</span>
+          <span class="t-de">Funktioniert simplevoc offline?</span>
+        </summary>
+        <div class="faq-a">
+          <span class="t-en">Yes, except for features that require an internet connection. Your vocabulary is always stored on your device first, so reviewing flashcards works without an internet connection. Creating new vocabulary and learning in "context" and "verb conjugation" modes require an internet connection, but already created learning sets are available offline for review.</span>
+          <span class="t-de">Ja, mit Ausnahme der Features, die eine Internetverbindung erfordern. Deine Vokabeln werden immer zuerst auf deinem Gerät gespeichert, das Wiederholen von Karteikarten funktioniert also auch ohne Internetverbindung. Das Erzeugen von neuen Vokabeln sowie das Lernen in den Modi "im Kontext" und "Verbkonjugation" erfordern eine Internetverbindung, wobei bereits erzeugte Lernsets auch offline zur Wiederholung verfügbar sind.</span>
+        </div>
+      </details>
+    </div>
+
+    <div class="faq-group">
+      <div class="faq-cat">
+        <span class="t-en">Account &amp; data</span>
+        <span class="t-de">Konto &amp; Daten</span>
+      </div>
+
+      <details class="faq-item">
+        <summary>
+          <span class="t-en">Do I need to create an account?</span>
+          <span class="t-de">Muss ich ein Konto erstellen?</span>
+        </summary>
+        <div class="faq-a">
+          <span class="t-en">No — you can start learning right away with a local, anonymous account. Sign in with an email or another provider later if you want your vocabulary to sync with the cloud.</span>
+          <span class="t-de">Nein — du kannst sofort mit einem lokalen, anonymen Konto loslegen. Melde dich später mit E-Mail oder einem anderen Anbieter an, wenn deine Vokabeln mit der Cloud synchronisiert werden sollen.</span>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span class="t-en">Can I export or back up my vocabulary?</span>
+          <span class="t-de">Kann ich meine Vokabeln exportieren oder sichern?</span>
+        </summary>
+        <div class="faq-a">
+          <span class="t-en">Yes. Settings → Export saves your full vocabulary and progress to a file you can keep as a backup or move to another device. Settings → Import restores it from there.</span>
+          <span class="t-de">Ja. Einstellungen → Exportieren speichert deine gesamten Vokabeln und Fortschritte in einer Datei, die du als Backup aufbewahren oder auf ein anderes Gerät übertragen kannst. Einstellungen → Importieren stellt sie von dort wieder her.</span>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span class="t-en">How do I delete my account and data?</span>
+          <span class="t-de">Wie lösche ich mein Konto und meine Daten?</span>
+        </summary>
+        <div class="faq-a">
+          <span class="t-en">In the app, go to Settings and choose "Delete account". You'll be asked to confirm, and everything tied to your account is then permanently deleted. If you run into trouble, email us and we'll take care of it.</span>
+          <span class="t-de">Öffne in der App Einstellungen und wähle "Konto löschen". Nach einer Bestätigung wird alles, was zu deinem Konto gehört, dauerhaft gelöscht. Falls dabei etwas nicht klappt, schreib uns — wir kümmern uns darum.</span>
+        </div>
+      </details>
+    </div>
+
+    <div class="faq-group">
+      <div class="faq-cat">
+        <span class="t-en">Pricing &amp; early access</span>
+        <span class="t-de">Preise &amp; Early Access</span>
+      </div>
+
+      <details class="faq-item">
+        <summary>
+          <span class="t-en">Is simplevoc free?</span>
+          <span class="t-de">Ist simplevoc kostenlos?</span>
+        </summary>
+        <div class="faq-a">
+          <span class="t-en">Yes — simplevoc is currently in its early-adopter phase, and the full app is free: no subscription, no ads, no tracking. Free accounts get a monthly AI-credit allowance for capturing and translating sentences, shown in the app under Settings → Usage.</span>
+          <span class="t-de">Ja — simplevoc befindet sich derzeit in der Early-Adopter-Phase, die ganze App ist kostenlos: kein Abo, keine Werbung, kein Tracking. Kostenlose Konten erhalten ein monatliches KI-Credit-Kontingent zum Erfassen und Übersetzen von Sätzen, einsehbar unter Einstellungen → Nutzung.</span>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span class="t-en">What does early adopter mean?</span>
+          <span class="t-de">Was bedeutet Early Adopter?</span>
+        </summary>
+        <div class="faq-a">
+          <span class="t-en">simplevoc is an indie app. Early adopters are users who decide to use the app early on. During the early adopter phase, usage is free with generous usage limits. We reserve the right to introduce paid subscriptions in the future. In such a case, we will ensure a fair transition.</span>
+          <span class="t-de">simplevoc ist eine Indie-App. Early Adopter sind Nutzer, die sich frühzeitig für die App entscheiden. Während der early adoptber Phase ist die Nutzung  kostenlos unter Bereitstellung großzügiger Nutzungslimits. Wir behalten uns vor, simplevoc in Zukunft mit kostenpflichtigen Abos zu versehen. In diesem Falle werden wir für einen fairen Übergang sorgen.</span>
+        </div>
+      </details>
+    </div>
+
+    <div class="faq-group">
+      <div class="faq-cat">
+        <span class="t-en">Privacy &amp; permissions</span>
+        <span class="t-de">Datenschutz &amp; Berechtigungen</span>
+      </div>
+
+      <details class="faq-item">
+        <summary>
+          <span class="t-en">Why does simplevoc need microphone access?</span>
+          <span class="t-de">Warum benötigt simplevoc Mikrofonzugriff?</span>
+        </summary>
+        <div class="faq-a">
+          <span class="t-en">Microphone access lets you capture sentences by speaking instead of typing. By default your recording is streamed to our speech provider AssemblyAI, transcribed in the EU and never stored. You can switch this off any time in Settings → Speech input, so recognition runs on your device only and audio never leaves your phone.</span>
+          <span class="t-de">Der Mikrofonzugriff ermöglicht das Erfassen von Sätzen per Sprache statt Tippen. Standardmäßig wird deine Aufnahme an unseren Sprachdienst AssemblyAI gestreamt, in der EU transkribiert und nicht gespeichert. Du kannst das jederzeit unter Einstellungen → Spracheingabe abschalten, dann läuft die Erkennung nur auf deinem Gerät und die Aufnahme verlässt es nie.</span>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span class="t-en">Where can I read the full Privacy Policy and Terms of Use?</span>
+          <span class="t-de">Wo finde ich die vollständige Datenschutzerklärung und die AGB?</span>
+        </summary>
+        <div class="faq-a">
+          <span class="t-en">
+            <a href="/privacy?lang=en">Privacy Policy</a> ·
+            <a href="/agb?lang=en">Terms of Use</a> ·
+            <a href="/impressum?lang=en">Legal Notice</a>
+          </span>
+          <span class="t-de">
+            <a href="/privacy?lang=de">Datenschutzerklärung</a> ·
+            <a href="/agb?lang=de">AGB</a> ·
+            <a href="/impressum">Impressum</a>
+          </span>
+        </div>
+      </details>
+    </div>
+
+    <div class="faq-group">
+      <div class="faq-cat">
+        <span class="t-en">Troubleshooting</span>
+        <span class="t-de">Problembehebung</span>
+      </div>
+
+      <details class="faq-item">
+        <summary>
+          <span class="t-en">I found a bug or have feedback — what's the best way to reach you?</span>
+          <span class="t-de">Ich habe einen Fehler gefunden oder möchte Feedback geben — wie erreiche ich euch am besten?</span>
+        </summary>
+        <div class="faq-a">
+          <span class="t-en">Email us at support@simplevoc.de. For the fastest help, first open Settings → App/Support Info in the app and copy that into your email — it includes your app version and other details we'll need.</span>
+          <span class="t-de">Schreib uns an support@simplevoc.de. Für die schnellste Hilfe öffne zuerst in der App Einstellungen → App-/Support-Info und kopiere die Angaben in deine E-Mail — sie enthalten deine App-Version und weitere Details, die wir brauchen.</span>
+        </div>
+      </details>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════ CONTACT ══════════════════ -->
+<section class="sec wrap" style="padding-top:0">
+  <div class="contact-box">
+    <h2>
+      <span class="t-en">Still need help?</span>
+      <span class="t-de">Noch Fragen?</span>
+    </h2>
+    <p>
+      <span class="t-en">We read every message ourselves and usually reply within a day or two.</span>
+      <span class="t-de">Wir lesen jede Nachricht persönlich und antworten meist innerhalb von ein bis zwei Tagen.</span>
+    </p>
+    <a href="mailto:support@simplevoc.de" class="btn-primary">
+      <span class="t-en">✉ support@simplevoc.de</span>
+      <span class="t-de">✉ support@simplevoc.de</span>
+    </a>
+  </div>
+</section>
+
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<footer>
+  <div class="foot-logo">simplevoc</div>
+  <div class="foot-links">
+    <a href="/privacy?lang=en" class="t-en">Privacy Policy</a>
+    <a href="/privacy?lang=de" class="t-de">Datenschutzerklärung</a>
+    <a href="/impressum?lang=en" class="t-en">Legal Notice</a>
+    <a href="/impressum" class="t-de">Impressum</a>
+    <a href="/agb?lang=en" class="t-en">Terms of Use</a>
+    <a href="/agb?lang=de" class="t-de">AGB</a>
+    <a href="mailto:support@simplevoc.de">support@simplevoc.de</a>
+  </div>
+  <div class="foot-copy">© 2026 Stefan Lehner</div>
+</footer>
+
+<script>
+  // ── Theme ───────────────────────────────────────
+  function applyTheme(t) {
+    document.documentElement.setAttribute('data-theme', t);
+    document.getElementById('theme-toggle').textContent = t === 'dark' ? '☀' : '☾';
+    localStorage.setItem('sv-theme', t);
+  }
+  function toggleTheme() {
+    applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  }
+
+  // ── Language ────────────────────────────────────
+  function setLang(lang) {
+    document.documentElement.setAttribute('data-lang', lang);
+    document.documentElement.lang = lang;
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.getElementById('btn-de').classList.toggle('active', lang === 'de');
+    localStorage.setItem('sv-lang', lang);
+    const url = new URL(window.location);
+    url.searchParams.set('lang', lang);
+    history.replaceState({}, '', url);
+  }
+
+  // ── Init ────────────────────────────────────────
+  (function() {
+    var theme = document.documentElement.getAttribute('data-theme') || 'light';
+    applyTheme(theme);
+    var lang = document.documentElement.getAttribute('data-lang') || 'de';
+    setLang(lang);
+  })();
+</script>
+</body>
+</html>

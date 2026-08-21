@@ -5,47 +5,70 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Impressum / Legal Notice – simplevoc</title>
   <style>
+    /* ── Palette — mirrors the app's light (warm beige) theme,
+          lib/theme/app_theme.dart → AppTheme.lightColors ───────── */
+    :root {
+      --bg:         #F5EFE0;            /* background   — warm beige   */
+      --surface:    #EDE6D3;            /* surface      — deeper beige */
+      --card:       #FEFCF7;            /* cardBg       — cream white  */
+      --text:       #1A1A2E;            /* textPrimary  — near black   */
+      --text-body:  #3C3D49;            /* prose, one step lighter     */
+      --text-mute:  #5F6472;            /* textSecondary, darkened for */
+                                        /* AA on beige (app: #6B7080)  */
+      --accent:     #4F3FBF;            /* accent       — indigo       */
+      --accent-dk:  #3B2D9A;            /* accentDark   — hover        */
+      --accent-bg:  rgba(79,63,191,.10);
+      --border:     rgba(0,0,0,.12);    /* borderDefault               */
+      --border-sub: rgba(0,0,0,.08);    /* borderSubtle                */
+      --row-alt:    #FBF7EC;            /* zebra stripe on beige       */
+      --warn-bg:    #F7EFD6;
+      --warn-bar:   #A66A00;
+    }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: #f7f8fa; color: #1a1d23; line-height: 1.7; font-size: 16px;
+      background: var(--bg); color: var(--text); line-height: 1.7; font-size: 16px;
     }
     header {
-      background: #0a0e1a; color: #fff;
+      background: var(--surface); color: var(--text);
+      border-bottom: 1px solid var(--border);
       padding: 32px 24px 28px;
       display: flex; align-items: center; justify-content: space-between;
       flex-wrap: wrap; gap: 16px;
     }
     .header-left { display: flex; align-items: center; gap: 12px; }
+    /* Real app icon, matching the landing page nav lockup. */
     .logo-icon {
-      width: 40px; height: 40px; background: rgba(29,180,255,.15);
-      border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;
+      width: 40px; height: 40px; border-radius: 10px;
+      display: block; object-fit: cover;
+      border: 1px solid var(--border);
     }
-    .header-left h1 { font-size: 1.1rem; font-weight: 700; color: #fff; }
-    .header-left p { font-size: 0.82rem; color: #8a9bb5; }
+    .header-left h1 { font-size: 1.1rem; font-weight: 700; color: var(--text); }
+    .header-left p { font-size: 0.82rem; color: var(--text-mute); }
     .lang-switcher { display: flex; gap: 6px; }
     .lang-btn {
-      padding: 6px 14px; border-radius: 20px; border: 1.5px solid #2a3550;
-      background: transparent; color: #8a9bb5; font-size: 0.82rem; font-weight: 600;
+      padding: 6px 14px; border-radius: 20px; border: 1.5px solid var(--border);
+      background: transparent; color: var(--text-mute); font-size: 0.82rem; font-weight: 600;
       cursor: pointer; transition: all 0.15s;
     }
-    .lang-btn.active { background: #1db4ff; border-color: #1db4ff; color: #fff; }
+    .lang-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
     main { max-width: 780px; margin: 0 auto; padding: 40px 24px 80px; }
-    .page-title { font-size: 1.9rem; font-weight: 700; color: #0a0e1a; margin-bottom: 36px; }
+    .page-title { font-size: 1.9rem; font-weight: 700; color: var(--text); margin-bottom: 36px; }
     section { margin-bottom: 32px; }
-    h2 { font-size: 0.75rem; font-weight: 700; color: #6b7a90; letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 12px; }
-    .card { background: #fff; border: 1px solid #e3e8f0; border-radius: 12px; padding: 20px 24px; }
-    .card p { color: #3a4455; margin-bottom: 4px; font-size: 0.95rem; }
+    h2 { font-size: 0.75rem; font-weight: 700; color: var(--text-mute); letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 12px; }
+    .card { background: var(--card); border: 1px solid var(--border-sub); border-radius: 12px; padding: 20px 24px; }
+    .card p { color: var(--text-body); margin-bottom: 4px; font-size: 0.95rem; }
     .card p:last-child { margin-bottom: 0; }
-    .card a { color: #1db4ff; text-decoration: none; }
-    .card a:hover { text-decoration: underline; }
-    .prose p { color: #3a4455; margin-bottom: 10px; font-size: 0.95rem; }
+    .card a { color: var(--accent); text-decoration: none; }
+    .card a:hover { color: var(--accent-dk); text-decoration: underline; }
+    .prose p { color: var(--text-body); margin-bottom: 10px; font-size: 0.95rem; }
     .prose p:last-child { margin-bottom: 0; }
-    .prose a { color: #1db4ff; text-decoration: none; }
-    .prose a:hover { text-decoration: underline; }
-    .footer-links { margin-top: 48px; padding-top: 24px; border-top: 1px solid #e3e8f0; display: flex; gap: 20px; flex-wrap: wrap; }
-    .footer-links a { color: #6b7a90; font-size: 0.875rem; text-decoration: none; }
-    .footer-links a:hover { color: #1db4ff; }
+    .prose a { color: var(--accent); text-decoration: none; }
+    .prose a:hover { color: var(--accent-dk); text-decoration: underline; }
+    .footer-links { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border-sub); display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer-links a { color: var(--text-mute); font-size: 0.875rem; text-decoration: none; }
+    .footer-links a:hover { color: var(--accent); }
     @media (max-width: 600px) { .page-title { font-size: 1.5rem; } }
   </style>
 </head>
@@ -53,7 +76,8 @@
 
 <header>
   <div class="header-left">
-    <div class="logo-icon">🌐</div>
+    <a href="/"><img src="../media/icon.png" class="logo-icon" width="1024" height="1024"
+         alt="simplevoc app icon"></a>
     <div>
       <h1>simplevoc</h1>
       <p>Vocabulary learning with speech recognition</p>
@@ -62,6 +86,8 @@
   <div class="lang-switcher">
     <button class="lang-btn" id="btn-de" onclick="setLang('de')">DE</button>
     <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" id="btn-fr" onclick="setLang('fr')">FR</button>
+    <button class="lang-btn" id="btn-es" onclick="setLang('es')">ES</button>
   </div>
 </header>
 
@@ -84,14 +110,13 @@
     <h2>Kontakt</h2>
     <div class="card">
       <p>Telefon: +49 89 97306659</p>
-      <p>E-Mail: <a href="mailto:contact@simplevoc.de">contact@simplevoc.de</a></p>
+      <p>E-Mail: <a href="mailto:support@simplevoc.de">support@simplevoc.de</a></p>
     </div>
   </section>
 
   <section>
-    <h2>EU-Streitschlichtung</h2>
+    <h2>Verbraucherstreitbeilegung</h2>
     <div class="card prose">
-      <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a></p>
       <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
     </div>
   </section>
@@ -146,14 +171,13 @@
     <h2>Contact</h2>
     <div class="card">
       <p>Phone: +49 89 97306659</p>
-      <p>Email: <a href="mailto:contact@simplevoc.de">contact@simplevoc.de</a></p>
+      <p>Email: <a href="mailto:support@simplevoc.de">support@simplevoc.de</a></p>
     </div>
   </section>
 
   <section>
-    <h2>EU Dispute Resolution</h2>
+    <h2>Consumer Dispute Resolution</h2>
     <div class="card prose">
-      <p>The European Commission provides a platform for online dispute resolution (ODR): <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a></p>
       <p>We are not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board.</p>
     </div>
   </section>
@@ -189,23 +213,145 @@
 </main>
 </div>
 
+<div id="content-fr" style="display:none">
+<main>
+  <h1 class="page-title">Mentions légales</h1>
+
+  <section>
+    <h2>Informations conformément au § 5 TMG / § 5 ECG</h2>
+    <div class="card">
+      <p><strong>Stefan Lehner</strong></p>
+      <p>Hörwarthstr. 6</p>
+      <p>80804 Munich</p>
+      <p>Allemagne</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <div class="card">
+      <p>Téléphone : +49 89 97306659</p>
+      <p>Courriel : <a href="mailto:support@simplevoc.de">support@simplevoc.de</a></p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Règlement des litiges de consommation</h2>
+    <div class="card prose">
+      <p>Nous ne sommes ni disposés ni tenus de participer à une procédure de règlement des litiges devant un organisme de médiation de la consommation.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Responsabilité concernant les contenus</h2>
+    <div class="card prose">
+      <p>En tant que prestataire de services, nous sommes responsables de nos propres contenus sur ces pages conformément au droit commun (§ 7 al. 1 TMG). En vertu des §§ 8 à 10 TMG, nous ne sommes toutefois pas tenus de surveiller les informations de tiers transmises ou stockées, ni de rechercher des circonstances révélant une activité illicite.</p>
+      <p>Les obligations de retrait ou de blocage de l'utilisation d'informations en vertu du droit commun demeurent inchangées. Une responsabilité à ce titre ne peut cependant être engagée qu'à compter de la connaissance d'une violation concrète du droit. Dès que de telles violations nous sont signalées, nous retirons les contenus concernés sans délai.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Responsabilité concernant les liens</h2>
+    <div class="card prose">
+      <p>Notre site contient des liens vers des sites externes de tiers dont nous ne maîtrisons pas le contenu. Nous ne pouvons donc assumer aucune responsabilité pour ces contenus externes. Le fournisseur ou l'exploitant des pages liées est toujours responsable de leur contenu.</p>
+      <p>Les pages liées ont été vérifiées au moment de la création du lien afin de détecter d'éventuelles violations du droit. Aucun contenu illicite n'était décelable à ce moment. Un contrôle permanent du contenu des pages liées ne saurait être raisonnablement exigé en l'absence d'indices concrets de violation. Dès que de telles violations nous sont signalées, nous retirons les liens concernés sans délai.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Droit d'auteur</h2>
+    <div class="card prose">
+      <p>Les contenus et œuvres créés par l'exploitant du site sur ces pages sont soumis au droit d'auteur allemand. La reproduction, la modification, la diffusion et toute forme d'exploitation en dehors des limites du droit d'auteur requièrent l'accord écrit de leur auteur ou créateur respectif.</p>
+      <p>Les téléchargements et copies de ces pages ne sont autorisés que pour un usage privé et non commercial. Si vous constatez néanmoins une violation du droit d'auteur, nous vous prions de nous en informer. Dès que de telles violations nous sont signalées, nous retirons les contenus concernés sans délai.</p>
+    </div>
+  </section>
+
+  <div class="footer-links">
+    <a href="/privacy?lang=fr">Politique de confidentialité</a>
+    <a href="/agb?lang=fr">Conditions générales d'utilisation</a>
+  </div>
+</main>
+</div>
+
+<div id="content-es" style="display:none">
+<main>
+  <h1 class="page-title">Aviso legal</h1>
+
+  <section>
+    <h2>Información conforme al § 5 TMG / § 5 ECG</h2>
+    <div class="card">
+      <p><strong>Stefan Lehner</strong></p>
+      <p>Hörwarthstr. 6</p>
+      <p>80804 Múnich</p>
+      <p>Alemania</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Contacto</h2>
+    <div class="card">
+      <p>Teléfono: +49 89 97306659</p>
+      <p>Correo electrónico: <a href="mailto:support@simplevoc.de">support@simplevoc.de</a></p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Resolución de litigios de consumo</h2>
+    <div class="card prose">
+      <p>No estamos dispuestos ni obligados a participar en procedimientos de resolución de litigios ante un organismo de arbitraje de consumo.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Responsabilidad por los contenidos</h2>
+    <div class="card prose">
+      <p>Como prestador de servicios, somos responsables de nuestros propios contenidos en estas páginas conforme al derecho general (§ 7, apdo. 1, TMG). No obstante, en virtud de los §§ 8 a 10 TMG no estamos obligados a supervisar la información de terceros transmitida o almacenada, ni a investigar circunstancias que indiquen una actividad ilícita.</p>
+      <p>Las obligaciones de retirar o bloquear el uso de información conforme al derecho general no se ven afectadas. Sin embargo, la responsabilidad a este respecto solo puede exigirse a partir del momento en que se tiene conocimiento de una infracción concreta. En cuanto tengamos noticia de tales infracciones, retiraremos los contenidos correspondientes de inmediato.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Responsabilidad por los enlaces</h2>
+    <div class="card prose">
+      <p>Nuestro sitio contiene enlaces a sitios web externos de terceros sobre cuyo contenido no tenemos control alguno. Por ello no podemos asumir responsabilidad alguna por dichos contenidos externos. Del contenido de las páginas enlazadas responde siempre su respectivo proveedor u operador.</p>
+      <p>Las páginas enlazadas fueron revisadas en el momento de crear el enlace para detectar posibles infracciones. En ese momento no se apreciaron contenidos ilícitos. No obstante, no cabe exigir razonablemente un control permanente del contenido de las páginas enlazadas sin indicios concretos de infracción. En cuanto tengamos noticia de tales infracciones, retiraremos los enlaces correspondientes de inmediato.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Derechos de autor</h2>
+    <div class="card prose">
+      <p>Los contenidos y las obras creados por el operador del sitio en estas páginas están sujetos a la legislación alemana sobre derechos de autor. La reproducción, modificación, distribución y cualquier forma de explotación fuera de los límites de los derechos de autor requieren el consentimiento por escrito de su respectivo autor o creador.</p>
+      <p>Las descargas y copias de estas páginas solo están permitidas para uso privado y no comercial. Si, aun así, detecta una infracción de derechos de autor, le rogamos que nos lo comunique. En cuanto tengamos noticia de tales infracciones, retiraremos los contenidos correspondientes de inmediato.</p>
+    </div>
+  </section>
+
+  <div class="footer-links">
+    <a href="/privacy?lang=es">Política de privacidad</a>
+    <a href="/agb?lang=es">Condiciones de uso</a>
+  </div>
+</main>
+</div>
+
+
 <script>
+  const LANGS = ['de', 'en', 'fr', 'es'];
   const DEFAULT_LANG = 'de';
   function getLang() {
     const p = new URLSearchParams(window.location.search).get('lang');
-    return (p === 'en' || p === 'de') ? p : DEFAULT_LANG;
+    return LANGS.includes(p) ? p : DEFAULT_LANG;
   }
   function setLang(lang) {
-    document.getElementById('content-de').style.display = lang === 'de' ? 'block' : 'none';
-    document.getElementById('content-en').style.display = lang === 'en' ? 'block' : 'none';
-    document.getElementById('btn-de').classList.toggle('active', lang === 'de');
-    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    for (const l of LANGS) {
+      document.getElementById('content-' + l).style.display = l === lang ? 'block' : 'none';
+      document.getElementById('btn-' + l).classList.toggle('active', l === lang);
+    }
     document.documentElement.lang = lang;
     const url = new URL(window.location);
     url.searchParams.set('lang', lang);
     history.replaceState({}, '', url);
   }
-  setLang(getLang());
+setLang(getLang());
 </script>
 </body>
 </html>
