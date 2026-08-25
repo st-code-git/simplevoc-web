@@ -4,6 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Privacy Policy / Datenschutzerklärung – simplevoc</title>
+  <!-- Which published version of this document this file is. Kept in step
+       with versions.json beside it and with the frozen copy under /vN/ —
+       `make legal-freeze` refuses to freeze a version these disagree on.
+       See docs/SETUP.md § Legal pages. -->
+  <meta name="document-version" content="1" />
+  <meta name="document-date" content="2026-08" />
   <style>
     /* ── Palette — mirrors the app's light (warm beige) theme,
           lib/theme/app_theme.dart → AppTheme.lightColors ───────── */
@@ -131,7 +137,7 @@
 <div id="content-en" style="display:none">
 <main>
   <h1 class="page-title">Privacy Policy</h1>
-  <p class="updated">Last updated: August 2026</p>
+  <p class="updated">Last updated: August 2026 · Version 1</p>
 
   <div class="intro">
     simplevoc is a vocabulary trainer app. You can use simplevoc without registering, in anonymous guest mode, or sign up
@@ -185,7 +191,7 @@
         </tr>
         <tr>
           <td><strong>Transcribed or typed text</strong></td>
-          <td>AI word extraction and translation via the Gemini Developer API (global endpoint — processing is not limited to the EU/EEA, see Section 4.2)</td>
+          <td>AI word extraction and translation via Vertex AI (Gemini) in Google's EU region — see Section 4.2</td>
           <td><span class="basis-tag">Art. 6(1)(b) GDPR</span></td>
         </tr>
         <tr>
@@ -258,12 +264,12 @@
     </ul>
     <p>Legal basis for transcription: Art. 6(1)(b) GDPR — processing your recording is how the service you requested is provided. Microphone access itself is based on your consent via the system permission dialog (Art. 6(1)(a) GDPR) and can be withdrawn at any time.</p>
 
-    <h3 style="font-size:0.95rem;font-weight:600;margin:14px 0 6px;">4.2 Step 2 — Word extraction &amp; translation (Google Gemini)</h3>
-    <p>The transcribed text — or the text you typed instead of speaking — is sent to our backend (Firebase Cloud Functions in europe-west1), which forwards it to the <strong>Google Gemini API</strong> for word extraction and translation.
+    <h3 style="font-size:0.95rem;font-weight:600;margin:14px 0 6px;">4.2 Step 2 — Word extraction &amp; translation (Google Vertex AI)</h3>
+    <p>The transcribed text — or the text you typed instead of speaking — is sent to our backend (Firebase Cloud Functions in europe-west1), which forwards it to <strong>Google Vertex AI</strong> for word extraction and translation.
       For some languages the text first passes through our own linguistic pre-processing service (based on spaCy and Wiktionary) running on Google Cloud Run in europe-west1.
     Dictionary data used for word sense disambiguation is partly based on Wiktionary content, provided by the <a href="https://wikdict.com" target="_blank" rel="noopener">WikDict project</a> and published under the <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">Creative Commons licence CC BY-SA</a>. No personal data is processed in the course of this.</p>
-    <p>We use the <strong>Gemini Developer API</strong>, which Google operates on a <strong>global endpoint</strong>. This means the processing region is not restricted to the EU/EEA: Google may process the transmitted text in its infrastructure outside the EU/EEA, including in the United States. Our own backend components (Cloud Functions, Cloud Run) remain in europe-west1; only the AI step leaves that region.</p>
-    <p>Google has committed contractually not to use submitted data to train its AI models. For transfers outside the EU/EEA, Google relies on the EU–US Data Privacy Framework and on Standard Contractual Clauses (SCCs) approved by the European Commission. Legal basis: Art. 6(1)(b) GDPR.</p>
+    <p>We use <strong>Vertex AI</strong> on Google Cloud, pinned to Google's <strong>EU multi-region</strong>. The text is therefore processed inside the EU, as are our own backend components (Cloud Functions, Cloud Run), which remain in europe-west1. Our backend enforces this rather than merely intending it: it refuses to start at all if it is configured for any region outside the EU.</p>
+    <p>Google has committed contractually not to use submitted data to train its AI models. Google Cloud EMEA Limited engages Google LLC and other Google affiliates as subprocessors, so access from outside the EU/EEA — for support and administration — cannot be ruled out; those onward transfers are covered by Google's Cloud Data Processing Addendum, which incorporates the Standard Contractual Clauses approved by the European Commission, and Google LLC is certified under the EU–US Data Privacy Framework. Legal basis: Art. 6(1)(b) GDPR.</p>
     <p><strong>Important:</strong> Please do not include sensitive personal data (names, addresses, health information, or identification numbers) in vocabulary you record. The app is designed for learning words and sentences, not for storing personal documents.</p>
 
     <h3 style="font-size:0.95rem;font-weight:600;margin:14px 0 6px;">4.3 What the AI does — and where it can be wrong</h3>
@@ -339,7 +345,7 @@
     <h2>11. International Data Transfers</h2>
     <p>Most processing takes place within the EU/EEA (europe-west1; speech transcription via AssemblyAI's EU endpoint), and our contract for the Google services is itself with an EU entity. Data can nevertheless reach the United States — either because a provider is based there, or because an EU provider engages US affiliates as subprocessors:</p>
     <ul>
-      <li><strong>Google Cloud EMEA Limited</strong> (Dublin, Ireland) — our processor for Firebase, Firebase Authentication, Crashlytics, Cloud Functions, Cloud Run and the Gemini API. That contract is intra-EU and needs no Art. 46 safeguard of its own. Google Cloud EMEA Limited engages Google LLC and other Google affiliates as subprocessors, so data can still be processed in the United States; those onward transfers are covered by Google's Cloud Data Processing Addendum, which incorporates the Standard Contractual Clauses, and Google LLC is certified under the EU–US Data Privacy Framework (adequacy decision)</li>
+      <li><strong>Google Cloud EMEA Limited</strong> (Dublin, Ireland) — our processor for Firebase, Firebase Authentication, Crashlytics, Cloud Functions, Cloud Run and Vertex AI. That contract is intra-EU and needs no Art. 46 safeguard of its own. Google Cloud EMEA Limited engages Google LLC and other Google affiliates as subprocessors, so data can still be processed in the United States; those onward transfers are covered by Google's Cloud Data Processing Addendum, which incorporates the Standard Contractual Clauses, and Google LLC is certified under the EU–US Data Privacy Framework (adequacy decision)</li>
       <li><strong>AssemblyAI, Inc.</strong> (cloud speech-to-text) — processing takes place on the EU endpoint; for the company's US-based access, Standard Contractual Clauses and a data processing agreement apply</li>
       <li><strong>Apple Inc.</strong> (Sign in with Apple, App Attest) — Apple acts as an <strong>independent controller</strong> for these services rather than as our processor: you authenticate with Apple directly, and Apple's own terms and transfer safeguards govern that processing. We do not pass your data to Apple under a contract of ours.</li>
       <li><strong>RevenueCat, Inc.</strong> — Standard Contractual Clauses</li>
@@ -452,7 +458,7 @@
         <tr><td>Google Sign-In</td><td>Google LLC</td><td><a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
         <tr><td>AssemblyAI (cloud speech-to-text, EU endpoint — can be switched off in Settings)</td><td>AssemblyAI, Inc.</td><td><a href="https://www.assemblyai.com/legal/privacy-policy" target="_blank">assemblyai.com/legal/privacy-policy</a></td></tr>
         <tr><td>Sign in with Apple</td><td>Apple Inc.</td><td><a href="https://www.apple.com/privacy/" target="_blank">apple.com/privacy</a></td></tr>
-        <tr><td>Gemini API (AI word extraction &amp; translation)</td><td>Google Cloud EMEA Limited (Ireland)</td><td><a href="https://ai.google.dev/gemini-api/terms" target="_blank">ai.google.dev/gemini-api/terms</a> · <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
+        <tr><td>Vertex AI – Gemini (AI word extraction &amp; translation, EU region)</td><td>Google Cloud EMEA Limited (Ireland)</td><td><a href="https://cloud.google.com/terms/data-processing-addendum" target="_blank">cloud.google.com/terms/data-processing-addendum</a> · <a href="https://cloud.google.com/privacy" target="_blank">cloud.google.com/privacy</a></td></tr>
         <tr><td>RevenueCat</td><td>RevenueCat, Inc.</td><td><a href="https://www.revenuecat.com/privacy" target="_blank">revenuecat.com/privacy</a></td></tr>
         <tr><td>System speech recognition (fallback when cloud speech-to-text is off) — iOS: Apple SFSpeechRecognizer; Android: system SpeechRecognizer</td><td>Apple Inc. (iOS), Google (Android)</td><td><a href="https://www.apple.com/privacy/" target="_blank">apple.com/privacy</a> · <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
         <tr><td>App Store / Play Store (app distribution, updates, and the platform's own install and crash statistics — collected by the platform independently of the app)</td><td>Apple Inc. (iOS), Google LLC (Android)</td><td><a href="https://www.apple.com/legal/privacy/data/en/app-store/" target="_blank">apple.com/legal/privacy</a> · <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
@@ -570,7 +576,7 @@
 <div id="content-de">
 <main>
   <h1 class="page-title">Datenschutzerklärung</h1>
-  <p class="updated">Zuletzt aktualisiert: August 2026</p>
+  <p class="updated">Zuletzt aktualisiert: August 2026 · Fassung 1</p>
 
   <div class="intro">
     simplevoc ist eine Vokabeltrainer-App. Du kannst simplevoc ohne Registrierung im anonymen Gast-Modus verwenden oder dich via
@@ -624,7 +630,7 @@
         </tr>
         <tr>
           <td><strong>Transkribierter oder getippter Text</strong></td>
-          <td>KI-gestützte Wortextraktion und Übersetzung via Gemini Developer API (globaler Endpunkt – die Verarbeitung ist nicht auf die EU/den EWR beschränkt, siehe Abschnitt 4.2)</td>
+          <td>KI-gestützte Wortextraktion und Übersetzung via Vertex AI (Gemini) in der EU-Region von Google – siehe Abschnitt 4.2</td>
           <td><span class="basis-tag">Art. 6 Abs. 1 lit. b DSGVO</span></td>
         </tr>
         <tr>
@@ -697,12 +703,12 @@
     </ul>
     <p>Rechtsgrundlage der Transkription: Art. 6 Abs. 1 lit. b DSGVO – die Verarbeitung deiner Aufnahme ist die von dir angeforderte Leistung. Der Mikrofonzugriff selbst beruht auf deiner Einwilligung über den System-Berechtigungsdialog (Art. 6 Abs. 1 lit. a DSGVO) und ist jederzeit widerrufbar.</p>
 
-    <h3 style="font-size:0.95rem;font-weight:600;margin:14px 0 6px;">4.2 Schritt 2 – Wortextraktion &amp; Übersetzung (Google Gemini)</h3>
-    <p>Der transkribierte Text – oder der Text, den du statt zu sprechen eingetippt hast – wird an unser Backend (Firebase Cloud Functions in europe-west1) gesendet und von dort zur Wortextraktion und Übersetzung an die <strong>Google Gemini API</strong> weitergeleitet. 
+    <h3 style="font-size:0.95rem;font-weight:600;margin:14px 0 6px;">4.2 Schritt 2 – Wortextraktion &amp; Übersetzung (Google Vertex AI)</h3>
+    <p>Der transkribierte Text – oder der Text, den du statt zu sprechen eingetippt hast – wird an unser Backend (Firebase Cloud Functions in europe-west1) gesendet und von dort zur Wortextraktion und Übersetzung an <strong>Google Vertex AI</strong> weitergeleitet. 
       Für einige Sprachen durchläuft der Text zuvor unseren eigenen linguistischen Vorverarbeitungsdienst (basierend auf spaCy und Wiktionary) auf Google Cloud Run in europe-west1.
     Wörterbuchdaten für die Bedeutungserkennung von Wörtern basieren teilweise auf Inhalten aus Wiktionary, bereitgestellt durch das <a href="https://wikdict.com" target="_blank" rel="noopener">WikDict-Projekt</a> und veröffentlicht unter der <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">Creative-Commons-Lizenz CC BY-SA</a>. Dabei werden keine personenbezogenen Daten verarbeitet.</p>
-    <p>Wir nutzen die <strong>Gemini Developer API</strong>, die Google über einen <strong>globalen Endpunkt</strong> betreibt. Die Verarbeitungsregion ist damit nicht auf die EU/den EWR beschränkt: Google kann den übermittelten Text in seiner Infrastruktur außerhalb der EU/des EWR verarbeiten, einschließlich in den USA. Unsere eigenen Backend-Komponenten (Cloud Functions, Cloud Run) verbleiben in europe-west1; nur der KI-Schritt verlässt diese Region.</p>
-    <p>Google hat vertraglich zugesichert, übermittelte Daten nicht zum Training seiner KI-Modelle zu verwenden. Für Übermittlungen außerhalb der EU/des EWR stützt sich Google auf das EU-US Data Privacy Framework sowie auf Standardvertragsklauseln (SCC) der Europäischen Kommission. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO.</p>
+    <p>Wir nutzen <strong>Vertex AI</strong> auf Google Cloud, fest auf die <strong>EU-Multiregion</strong> von Google gesetzt. Der Text wird damit innerhalb der EU verarbeitet – ebenso wie unsere eigenen Backend-Komponenten (Cloud Functions, Cloud Run), die in europe-west1 verbleiben. Unser Backend erzwingt das, statt es nur zu beabsichtigen: Es startet gar nicht erst, wenn es auf eine Region außerhalb der EU konfiguriert ist.</p>
+    <p>Google hat vertraglich zugesichert, übermittelte Daten nicht zum Training seiner KI-Modelle zu verwenden. Google Cloud EMEA Limited setzt Google LLC und weitere Google-Konzerngesellschaften als Unterauftragsverarbeiter ein, sodass ein Zugriff aus Ländern außerhalb der EU/des EWR – etwa zu Support- und Administrationszwecken – nicht ausgeschlossen werden kann; für diese Weiterübermittlungen gilt das Cloud Data Processing Addendum von Google, das die Standardvertragsklauseln der Europäischen Kommission einbezieht, und Google LLC ist unter dem EU-US Data Privacy Framework zertifiziert. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO.</p>
     <p><strong>Wichtiger Hinweis:</strong> Bitte gib keine sensiblen personenbezogenen Daten (Namen, Adressen, Gesundheitsinformationen oder Ausweisnummern) als Vokabeln ein. Die App ist für das Lernen von Wörtern und Sätzen konzipiert – nicht zur Speicherung persönlicher Dokumente.</p>
 
     <h3 style="font-size:0.95rem;font-weight:600;margin:14px 0 6px;">4.3 Was die KI tut – und wo sie falschliegen kann</h3>
@@ -778,7 +784,7 @@
     <h2>11. Internationale Datentransfers</h2>
     <p>Der Großteil der Verarbeitung findet innerhalb der EU/des EWR statt (europe-west1; die Sprachtranskription über den EU-Endpunkt von AssemblyAI); der Vertrag über die Google-Dienste besteht zudem mit einer EU-Gesellschaft. Dennoch können Daten in die USA gelangen – entweder weil ein Anbieter dort ansässig ist oder weil ein EU-Anbieter US-Konzerngesellschaften als Unterauftragsverarbeiter einsetzt:</p>
     <ul>
-      <li><strong>Google Cloud EMEA Limited</strong> (Dublin, Irland) – unser Auftragsverarbeiter für Firebase, Firebase Authentication, Crashlytics, Cloud Functions, Cloud Run und die Gemini API. Dieser Vertrag ist innereuropäisch und bedarf keiner eigenen Garantie nach Art. 46 DSGVO. Google Cloud EMEA Limited setzt Google LLC und weitere Google-Konzerngesellschaften als Unterauftragsverarbeiter ein, sodass Daten weiterhin in den USA verarbeitet werden können; für diese Weiterübermittlungen gilt das Cloud Data Processing Addendum von Google, das die Standardvertragsklauseln einbezieht, und Google LLC ist unter dem EU-US Data Privacy Framework (Angemessenheitsbeschluss) zertifiziert</li>
+      <li><strong>Google Cloud EMEA Limited</strong> (Dublin, Irland) – unser Auftragsverarbeiter für Firebase, Firebase Authentication, Crashlytics, Cloud Functions, Cloud Run und Vertex AI. Dieser Vertrag ist innereuropäisch und bedarf keiner eigenen Garantie nach Art. 46 DSGVO. Google Cloud EMEA Limited setzt Google LLC und weitere Google-Konzerngesellschaften als Unterauftragsverarbeiter ein, sodass Daten weiterhin in den USA verarbeitet werden können; für diese Weiterübermittlungen gilt das Cloud Data Processing Addendum von Google, das die Standardvertragsklauseln einbezieht, und Google LLC ist unter dem EU-US Data Privacy Framework (Angemessenheitsbeschluss) zertifiziert</li>
       <li><strong>AssemblyAI, Inc.</strong> (Cloud-Spracherkennung) – die Verarbeitung erfolgt über den EU-Endpunkt; für den Zugriff des US-Unternehmens gelten Standardvertragsklauseln und ein Auftragsverarbeitungsvertrag</li>
       <li><strong>Apple Inc.</strong> (Sign in with Apple, App Attest) – Apple ist für diese Dienste <strong>eigenständig Verantwortlicher</strong> und nicht unser Auftragsverarbeiter: Du authentifizierst dich direkt gegenüber Apple, und für diese Verarbeitung gelten Apples eigene Bedingungen und Übermittlungsgarantien. Eine Weitergabe deiner Daten an Apple aufgrund eines Vertrags von uns findet nicht statt.</li>
       <li><strong>RevenueCat, Inc.</strong> – Standardvertragsklauseln</li>
@@ -891,7 +897,7 @@
         <tr><td>Google-Anmeldung</td><td>Google LLC</td><td><a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
         <tr><td>AssemblyAI (Cloud-Spracherkennung, EU-Endpunkt – in den Einstellungen abschaltbar)</td><td>AssemblyAI, Inc.</td><td><a href="https://www.assemblyai.com/legal/privacy-policy" target="_blank">assemblyai.com/legal/privacy-policy</a></td></tr>
         <tr><td>Mit Apple anmelden</td><td>Apple Inc.</td><td><a href="https://www.apple.com/de/privacy/" target="_blank">apple.com/de/privacy</a></td></tr>
-        <tr><td>Gemini API (KI-Wortextraktion &amp; Übersetzung)</td><td>Google Cloud EMEA Limited (Irland)</td><td><a href="https://ai.google.dev/gemini-api/terms" target="_blank">ai.google.dev/gemini-api/terms</a> · <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
+        <tr><td>Vertex AI – Gemini (KI-Wortextraktion &amp; Übersetzung, EU-Region)</td><td>Google Cloud EMEA Limited (Irland)</td><td><a href="https://cloud.google.com/terms/data-processing-addendum" target="_blank">cloud.google.com/terms/data-processing-addendum</a> · <a href="https://cloud.google.com/privacy" target="_blank">cloud.google.com/privacy</a></td></tr>
         <tr><td>RevenueCat</td><td>RevenueCat, Inc.</td><td><a href="https://www.revenuecat.com/privacy" target="_blank">revenuecat.com/privacy</a></td></tr>
         <tr><td>System-Spracherkennung (Rückfallebene bei ausgeschalteter Cloud-Spracherkennung) – iOS: Apple SFSpeechRecognizer; Android: System-SpeechRecognizer</td><td>Apple Inc. (iOS), Google (Android)</td><td><a href="https://www.apple.com/de/privacy/" target="_blank">apple.com/de/privacy</a> · <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
         <tr><td>App Store / Play Store (Auslieferung der App, Updates sowie die plattformeigenen Installations- und Absturzstatistiken – von der Plattform unabhängig von der App erhoben)</td><td>Apple Inc. (iOS), Google LLC (Android)</td><td><a href="https://www.apple.com/legal/privacy/data/de/app-store/" target="_blank">apple.com/legal/privacy</a> · <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
@@ -1008,7 +1014,7 @@
 <div id="content-fr" style="display:none">
 <main>
   <h1 class="page-title">Politique de confidentialité</h1>
-  <p class="updated">Dernière mise à jour : août 2026</p>
+  <p class="updated">Dernière mise à jour : août 2026 · Version 1</p>
 
   <div class="intro">
     simplevoc est une application d'apprentissage du vocabulaire. Vous pouvez l'utiliser sans inscription, en mode
@@ -1062,7 +1068,7 @@
         </tr>
         <tr>
           <td><strong>Texte transcrit ou saisi</strong></td>
-          <td>Extraction et traduction des mots par IA via l'API Gemini Developer (point de terminaison mondial — le traitement n'est pas limité à l'UE/EEE, voir section 4.2)</td>
+          <td>Extraction et traduction des mots par IA via Vertex AI (Gemini) dans la région UE de Google — voir section 4.2</td>
           <td><span class="basis-tag">Art. 6, § 1, b) RGPD</span></td>
         </tr>
         <tr>
@@ -1135,12 +1141,12 @@
     </ul>
     <p>Base juridique de la transcription : art. 6, § 1, b) du RGPD — le traitement de votre enregistrement constitue le mode de fourniture du service que vous avez demandé. L'accès au microphone lui-même repose sur votre consentement donné via la boîte de dialogue d'autorisation du système (art. 6, § 1, a) du RGPD) et peut être retiré à tout moment.</p>
 
-    <h3 style="font-size:0.95rem;font-weight:600;margin:14px 0 6px;">4.2 Étape 2 — Extraction et traduction des mots (Google Gemini)</h3>
-    <p>Le texte transcrit — ou le texte que vous avez saisi au lieu de le dicter — est transmis à notre backend (Firebase Cloud Functions en europe-west1), qui le transfère à l'<strong>API Google Gemini</strong> pour extraction et traduction des mots.
+    <h3 style="font-size:0.95rem;font-weight:600;margin:14px 0 6px;">4.2 Étape 2 — Extraction et traduction des mots (Google Vertex AI)</h3>
+    <p>Le texte transcrit — ou le texte que vous avez saisi au lieu de le dicter — est transmis à notre backend (Firebase Cloud Functions en europe-west1), qui le transfère à <strong>Google Vertex AI</strong> pour extraction et traduction des mots.
       Pour certaines langues, le texte passe d'abord par notre propre service de prétraitement linguistique (fondé sur spaCy et Wiktionary) exécuté sur Google Cloud Run en europe-west1.
     Les données de dictionnaire utilisées pour la désambiguïsation du sens des mots reposent en partie sur des contenus de Wiktionary, fournis par le <a href="https://wikdict.com" target="_blank" rel="noopener">projet WikDict</a> et publiés sous <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">licence Creative Commons CC BY-SA</a>. Aucune donnée personnelle n'est traitée à cette occasion.</p>
-    <p>Nous utilisons l'<strong>API Gemini Developer</strong>, que Google exploite sur un <strong>point de terminaison mondial</strong>. La région de traitement n'est donc pas limitée à l'UE/EEE : Google peut traiter le texte transmis dans son infrastructure hors de l'UE/EEE, y compris aux États-Unis. Nos propres composants backend (Cloud Functions, Cloud Run) demeurent en europe-west1 ; seule l'étape d'IA quitte cette région.</p>
-    <p>Google s'est engagé contractuellement à ne pas utiliser les données transmises pour entraîner ses modèles d'IA. Pour les transferts hors de l'UE/EEE, Google s'appuie sur le cadre de protection des données UE–États-Unis (Data Privacy Framework) et sur les clauses contractuelles types approuvées par la Commission européenne. Base juridique : art. 6, § 1, b) du RGPD.</p>
+    <p>Nous utilisons <strong>Vertex AI</strong> sur Google Cloud, fixé à la <strong>multirégion UE</strong> de Google. Le texte est donc traité au sein de l'UE, tout comme nos propres composants backend (Cloud Functions, Cloud Run), qui demeurent en europe-west1. Notre backend l'impose au lieu de simplement le viser : il refuse de démarrer s'il est configuré sur une région hors UE.</p>
+    <p>Google s'est engagé contractuellement à ne pas utiliser les données transmises pour entraîner ses modèles d'IA. Google Cloud EMEA Limited recourt à Google LLC et à d'autres sociétés du groupe Google en qualité de sous-traitants ultérieurs, de sorte qu'un accès depuis l'extérieur de l'UE/EEE — à des fins d'assistance et d'administration — ne peut être exclu ; ces transferts ultérieurs sont couverts par le Cloud Data Processing Addendum de Google, qui intègre les clauses contractuelles types approuvées par la Commission européenne, et Google LLC est certifiée au titre du cadre de protection des données UE–États-Unis. Base juridique : art. 6, § 1, b) du RGPD.</p>
     <p><strong>Important :</strong> veuillez ne pas faire figurer de données personnelles sensibles (noms, adresses, informations de santé ou numéros d'identification) dans le vocabulaire que vous enregistrez. L'application est conçue pour l'apprentissage de mots et de phrases, non pour la conservation de documents personnels.</p>
 
     <h3 style="font-size:0.95rem;font-weight:600;margin:14px 0 6px;">4.3 Ce que fait l'IA — et où elle peut se tromper</h3>
@@ -1216,7 +1222,7 @@
     <h2>11. Transferts internationaux de données</h2>
     <p>L'essentiel des traitements a lieu au sein de l'UE/EEE (europe-west1 ; transcription vocale via le point de terminaison européen d'AssemblyAI), et notre contrat pour les services Google est lui-même conclu avec une entité européenne. Des données peuvent néanmoins parvenir aux États-Unis — soit parce qu'un prestataire y est établi, soit parce qu'un prestataire européen recourt à des sociétés affiliées américaines en qualité de sous-traitants ultérieurs :</p>
     <ul>
-      <li><strong>Google Cloud EMEA Limited</strong> (Dublin, Irlande) — notre sous-traitant pour Firebase, Firebase Authentication, Crashlytics, Cloud Functions, Cloud Run et l'API Gemini. Ce contrat est intra-européen et ne nécessite pas de garantie propre au titre de l'art. 46. Google Cloud EMEA Limited recourt à Google LLC et à d'autres sociétés du groupe Google en qualité de sous-traitants ultérieurs, de sorte que des données peuvent malgré tout être traitées aux États-Unis ; ces transferts ultérieurs sont couverts par le Cloud Data Processing Addendum de Google, qui intègre les clauses contractuelles types, et Google LLC est certifiée au titre du cadre de protection des données UE–États-Unis (décision d'adéquation)</li>
+      <li><strong>Google Cloud EMEA Limited</strong> (Dublin, Irlande) — notre sous-traitant pour Firebase, Firebase Authentication, Crashlytics, Cloud Functions, Cloud Run et Vertex AI. Ce contrat est intra-européen et ne nécessite pas de garantie propre au titre de l'art. 46. Google Cloud EMEA Limited recourt à Google LLC et à d'autres sociétés du groupe Google en qualité de sous-traitants ultérieurs, de sorte que des données peuvent malgré tout être traitées aux États-Unis ; ces transferts ultérieurs sont couverts par le Cloud Data Processing Addendum de Google, qui intègre les clauses contractuelles types, et Google LLC est certifiée au titre du cadre de protection des données UE–États-Unis (décision d'adéquation)</li>
       <li><strong>AssemblyAI, Inc.</strong> (reconnaissance vocale dans le cloud) — le traitement a lieu sur le point de terminaison européen ; pour les accès depuis les États-Unis par la société, des clauses contractuelles types et un accord de sous-traitance s'appliquent</li>
       <li><strong>Apple Inc.</strong> (Se connecter avec Apple, App Attest) — Apple agit pour ces services en qualité de <strong>responsable de traitement indépendant</strong> et non de sous-traitant : vous vous authentifiez directement auprès d'Apple, et les propres conditions et garanties de transfert d'Apple régissent ce traitement. Nous ne transmettons pas vos données à Apple au titre d'un contrat qui nous lierait.</li>
       <li><strong>RevenueCat, Inc.</strong> — clauses contractuelles types</li>
@@ -1329,7 +1335,7 @@
         <tr><td>Google Sign-In</td><td>Google LLC</td><td><a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
         <tr><td>AssemblyAI (reconnaissance vocale dans le cloud, point de terminaison européen — désactivable dans les paramètres)</td><td>AssemblyAI, Inc.</td><td><a href="https://www.assemblyai.com/legal/privacy-policy" target="_blank">assemblyai.com/legal/privacy-policy</a></td></tr>
         <tr><td>Se connecter avec Apple</td><td>Apple Inc.</td><td><a href="https://www.apple.com/privacy/" target="_blank">apple.com/privacy</a></td></tr>
-        <tr><td>API Gemini (extraction et traduction des mots par IA)</td><td>Google Cloud EMEA Limited (Irlande)</td><td><a href="https://ai.google.dev/gemini-api/terms" target="_blank">ai.google.dev/gemini-api/terms</a> · <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
+        <tr><td>Vertex AI – Gemini (extraction et traduction des mots par IA, région UE)</td><td>Google Cloud EMEA Limited (Irlande)</td><td><a href="https://cloud.google.com/terms/data-processing-addendum" target="_blank">cloud.google.com/terms/data-processing-addendum</a> · <a href="https://cloud.google.com/privacy" target="_blank">cloud.google.com/privacy</a></td></tr>
         <tr><td>RevenueCat</td><td>RevenueCat, Inc.</td><td><a href="https://www.revenuecat.com/privacy" target="_blank">revenuecat.com/privacy</a></td></tr>
         <tr><td>Reconnaissance vocale du système (solution de repli lorsque la reconnaissance dans le cloud est désactivée) — iOS : Apple SFSpeechRecognizer ; Android : SpeechRecognizer du système</td><td>Apple Inc. (iOS), Google (Android)</td><td><a href="https://www.apple.com/privacy/" target="_blank">apple.com/privacy</a> · <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
         <tr><td>App Store / Play Store (distribution de l'application, mises à jour et statistiques d'installation et de plantage propres à la plateforme — collectées par celle-ci indépendamment de l'application)</td><td>Apple Inc. (iOS), Google LLC (Android)</td><td><a href="https://www.apple.com/legal/privacy/data/en/app-store/" target="_blank">apple.com/legal/privacy</a> · <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
@@ -1445,7 +1451,7 @@
 <div id="content-es" style="display:none">
 <main>
   <h1 class="page-title">Política de privacidad</h1>
-  <p class="updated">Última actualización: agosto de 2026</p>
+  <p class="updated">Última actualización: agosto de 2026 · Versión 1</p>
 
   <div class="intro">
     simplevoc es una aplicación para aprender vocabulario. Puede utilizarla sin registrarse, en modo invitado anónimo,
@@ -1499,7 +1505,7 @@
         </tr>
         <tr>
           <td><strong>Texto transcrito o escrito</strong></td>
-          <td>Extracción y traducción de palabras por IA a través de la API Gemini Developer (punto de conexión global: el tratamiento no se limita a la UE/EEE, véase el apartado 4.2)</td>
+          <td>Extracción y traducción de palabras por IA a través de Vertex AI (Gemini) en la región de la UE de Google (véase el apartado 4.2)</td>
           <td><span class="basis-tag">Art. 6.1.b RGPD</span></td>
         </tr>
         <tr>
@@ -1572,12 +1578,12 @@
     </ul>
     <p>Base jurídica de la transcripción: art. 6.1.b del RGPD, el tratamiento de su grabación es el modo en que se presta el servicio que usted ha solicitado. El acceso al micrófono se basa en su consentimiento prestado mediante el cuadro de diálogo de permisos del sistema (art. 6.1.a del RGPD) y puede retirarse en cualquier momento.</p>
 
-    <h3 style="font-size:0.95rem;font-weight:600;margin:14px 0 6px;">4.2 Paso 2 — Extracción y traducción de palabras (Google Gemini)</h3>
-    <p>El texto transcrito —o el texto que usted haya escrito en lugar de dictarlo— se transmite a nuestro backend (Firebase Cloud Functions en europe-west1), que lo remite a la <strong>API de Google Gemini</strong> para la extracción y traducción de palabras.
+    <h3 style="font-size:0.95rem;font-weight:600;margin:14px 0 6px;">4.2 Paso 2 — Extracción y traducción de palabras (Google Vertex AI)</h3>
+    <p>El texto transcrito —o el texto que usted haya escrito en lugar de dictarlo— se transmite a nuestro backend (Firebase Cloud Functions en europe-west1), que lo remite a <strong>Google Vertex AI</strong> para la extracción y traducción de palabras.
       Para algunos idiomas, el texto pasa primero por nuestro propio servicio de preprocesamiento lingüístico (basado en spaCy y Wiktionary) ejecutado en Google Cloud Run en europe-west1.
     Los datos de diccionario utilizados para la desambiguación del significado de las palabras se basan en parte en contenidos de Wiktionary, facilitados por el <a href="https://wikdict.com" target="_blank" rel="noopener">proyecto WikDict</a> y publicados bajo <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">licencia Creative Commons CC BY-SA</a>. En este proceso no se tratan datos personales.</p>
-    <p>Utilizamos la <strong>API Gemini Developer</strong>, que Google opera en un <strong>punto de conexión global</strong>. Ello significa que la región de tratamiento no se limita a la UE/EEE: Google puede tratar el texto transmitido en su infraestructura fuera de la UE/EEE, incluidos los Estados Unidos. Nuestros propios componentes de backend (Cloud Functions, Cloud Run) permanecen en europe-west1; solo el paso de IA sale de esa región.</p>
-    <p>Google se ha comprometido contractualmente a no utilizar los datos transmitidos para entrenar sus modelos de IA. Para las transferencias fuera de la UE/EEE, Google se apoya en el Marco de Privacidad de Datos UE-EE. UU. y en las cláusulas contractuales tipo aprobadas por la Comisión Europea. Base jurídica: art. 6.1.b del RGPD.</p>
+    <p>Utilizamos <strong>Vertex AI</strong> en Google Cloud, fijado a la <strong>multirregión de la UE</strong> de Google. El texto se trata, por tanto, dentro de la UE, al igual que nuestros propios componentes de backend (Cloud Functions, Cloud Run), que permanecen en europe-west1. Nuestro backend lo impone en lugar de solo pretenderlo: no arranca si está configurado en una región fuera de la UE.</p>
+    <p>Google se ha comprometido contractualmente a no utilizar los datos transmitidos para entrenar sus modelos de IA. Google Cloud EMEA Limited recurre a Google LLC y a otras sociedades del grupo Google como subencargados, por lo que no puede descartarse un acceso desde fuera de la UE/EEE —con fines de soporte y administración—; esas transferencias ulteriores están cubiertas por el Cloud Data Processing Addendum de Google, que incorpora las cláusulas contractuales tipo aprobadas por la Comisión Europea, y Google LLC está certificada conforme al Marco de Privacidad de Datos UE-EE. UU. Base jurídica: art. 6.1.b del RGPD.</p>
     <p><strong>Importante:</strong> le rogamos que no incluya datos personales sensibles (nombres, direcciones, información de salud o números de identificación) en el vocabulario que registre. La aplicación está concebida para aprender palabras y frases, no para conservar documentos personales.</p>
 
     <h3 style="font-size:0.95rem;font-weight:600;margin:14px 0 6px;">4.3 Qué hace la IA y en qué puede equivocarse</h3>
@@ -1653,7 +1659,7 @@
     <h2>11. Transferencias internacionales de datos</h2>
     <p>La mayor parte del tratamiento se realiza dentro de la UE/EEE (europe-west1; transcripción de voz a través del punto de conexión europeo de AssemblyAI), y nuestro contrato para los servicios de Google se celebra con una entidad de la UE. No obstante, los datos pueden llegar a los Estados Unidos, bien porque un proveedor esté allí establecido, bien porque un proveedor europeo recurra a filiales estadounidenses como subencargados:</p>
     <ul>
-      <li><strong>Google Cloud EMEA Limited</strong> (Dublín, Irlanda) — nuestro encargado para Firebase, Firebase Authentication, Crashlytics, Cloud Functions, Cloud Run y la API de Gemini. Ese contrato es intracomunitario y no requiere garantía propia conforme al art. 46. Google Cloud EMEA Limited recurre a Google LLC y a otras sociedades del grupo Google como subencargados, por lo que los datos aún pueden tratarse en los Estados Unidos; esas transferencias ulteriores están cubiertas por el Cloud Data Processing Addendum de Google, que incorpora las cláusulas contractuales tipo, y Google LLC está certificada conforme al Marco de Privacidad de Datos UE-EE. UU. (decisión de adecuación)</li>
+      <li><strong>Google Cloud EMEA Limited</strong> (Dublín, Irlanda) — nuestro encargado para Firebase, Firebase Authentication, Crashlytics, Cloud Functions, Cloud Run y Vertex AI. Ese contrato es intracomunitario y no requiere garantía propia conforme al art. 46. Google Cloud EMEA Limited recurre a Google LLC y a otras sociedades del grupo Google como subencargados, por lo que los datos aún pueden tratarse en los Estados Unidos; esas transferencias ulteriores están cubiertas por el Cloud Data Processing Addendum de Google, que incorpora las cláusulas contractuales tipo, y Google LLC está certificada conforme al Marco de Privacidad de Datos UE-EE. UU. (decisión de adecuación)</li>
       <li><strong>AssemblyAI, Inc.</strong> (reconocimiento de voz en la nube) — el tratamiento se realiza en el punto de conexión europeo; para el acceso desde los Estados Unidos por parte de la empresa se aplican cláusulas contractuales tipo y un contrato de encargo del tratamiento</li>
       <li><strong>Apple Inc.</strong> (Iniciar sesión con Apple, App Attest) — Apple actúa respecto de estos servicios como <strong>responsable independiente</strong> y no como encargado nuestro: usted se autentica directamente ante Apple, y son las propias condiciones y garantías de transferencia de Apple las que rigen ese tratamiento. No cedemos sus datos a Apple en virtud de un contrato nuestro.</li>
       <li><strong>RevenueCat, Inc.</strong> — cláusulas contractuales tipo</li>
@@ -1766,7 +1772,7 @@
         <tr><td>Google Sign-In</td><td>Google LLC</td><td><a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
         <tr><td>AssemblyAI (reconocimiento de voz en la nube, punto de conexión europeo; puede desactivarse en los ajustes)</td><td>AssemblyAI, Inc.</td><td><a href="https://www.assemblyai.com/legal/privacy-policy" target="_blank">assemblyai.com/legal/privacy-policy</a></td></tr>
         <tr><td>Iniciar sesión con Apple</td><td>Apple Inc.</td><td><a href="https://www.apple.com/privacy/" target="_blank">apple.com/privacy</a></td></tr>
-        <tr><td>API de Gemini (extracción y traducción de palabras por IA)</td><td>Google Cloud EMEA Limited (Irlanda)</td><td><a href="https://ai.google.dev/gemini-api/terms" target="_blank">ai.google.dev/gemini-api/terms</a> · <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
+        <tr><td>Vertex AI – Gemini (extracción y traducción de palabras por IA, región UE)</td><td>Google Cloud EMEA Limited (Irlanda)</td><td><a href="https://cloud.google.com/terms/data-processing-addendum" target="_blank">cloud.google.com/terms/data-processing-addendum</a> · <a href="https://cloud.google.com/privacy" target="_blank">cloud.google.com/privacy</a></td></tr>
         <tr><td>RevenueCat</td><td>RevenueCat, Inc.</td><td><a href="https://www.revenuecat.com/privacy" target="_blank">revenuecat.com/privacy</a></td></tr>
         <tr><td>Reconocimiento de voz del sistema (alternativa cuando el reconocimiento en la nube está desactivado) — iOS: Apple SFSpeechRecognizer; Android: SpeechRecognizer del sistema</td><td>Apple Inc. (iOS), Google (Android)</td><td><a href="https://www.apple.com/privacy/" target="_blank">apple.com/privacy</a> · <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
         <tr><td>App Store / Play Store (distribución de la aplicación, actualizaciones y estadísticas propias de la plataforma sobre instalaciones y bloqueos, recopiladas por esta con independencia de la aplicación)</td><td>Apple Inc. (iOS), Google LLC (Android)</td><td><a href="https://www.apple.com/legal/privacy/data/en/app-store/" target="_blank">apple.com/legal/privacy</a> · <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
