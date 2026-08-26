@@ -3,12 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>simplevoc – Vocabulary Learning with Speech Recognition</title>
-  <meta name="description" content="Learn vocabulary the natural way. Speak a sentence, let AI extract and translate the words, then master them with smart spaced repetition.">
-  <meta name="keywords" content="vocabulary learning, speech recognition, spaced repetition, language learning, FSRS, AI translation, Vokabeln lernen, Spracherkennung">
+  <!-- German in the markup, because the page renders German by default and the
+       canonical URL is the German one — so this is what a crawler indexes and
+       what a link preview shows. setLang() swaps both to English when the
+       visitor switches; see META below. -->
+  <title>simplevoc – Vokabeln lernen mit Spracherkennung</title>
+  <meta name="description" content="Vokabeln lernen wie von selbst: Sprich einen Satz, die KI extrahiert die Wörter und übersetzt sie im Kontext — gelernt wird mit klugem Spaced Repetition.">
+  <meta name="keywords" content="Vokabeln lernen, Spracherkennung, Karteikarten, Sprachen lernen, FSRS, KI-Übersetzung, vocabulary learning, speech recognition, spaced repetition">
   <link rel="canonical" href="https://simplevoc.de">
-  <meta property="og:title" content="simplevoc – Vocabulary Learning with Speech Recognition">
-  <meta property="og:description" content="Speak a sentence. AI extracts the vocabulary. Smart repetition makes it stick.">
+  <meta property="og:title" content="simplevoc – Vokabeln lernen mit Spracherkennung">
+  <meta property="og:description" content="Sprich einen Satz. Die KI extrahiert die Vokabeln. Kluge Wiederholung lässt sie sitzen.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://simplevoc.de">
   <meta name="twitter:card" content="summary_large_image">
@@ -374,8 +378,8 @@
       <span class="t-de">Lerne die Wörter,<br><em>die du wirklich nutzt.</em></span>
     </h1>
     <p class="hero-sub">
-      <span class="t-en">Speak or type a sentence in any language. simplevoc picks out the vocabulary, translates each word in context, and reminds you to review at the right moment. Collect words from your daily life — not from random word lists.</span>
-      <span class="t-de">Sag oder tippe einen Satz in deiner Zielsprache. simplevoc extrahiert die Vokabeln, übersetzt jedes Wort im Kontext und erinnert dich genau dann ans Wiederholen. Sammle Wörter aus deinem Alltag – keine vorgefertigten Wortlisten.</span>
+      <span class="t-en">Speak a sentence — in your own language or the one you are learning. simplevoc does not just translate the sentence: it picks out the individual words, translates each one in context, and turns them into your personal flashcards. That is how you build vocabulary sets from the words you actually use — and several study modes let you learn both the words and the sentences you collected.</span>
+      <span class="t-de">Sprich einen Satz in deiner Muttersprache oder in der Sprache, die du lernst, ein. simplevoc übersetzt nicht nur den Satz, simplevoc extrahiert einzelne Vokabeln und übersetzt diese im Kontext und erstellt daraus automatisch deine persönlichen Vokabelkarten. So erstellst du spielend Vokabelsets mit Vokabeln, die du wirklich nutzt. In verschiedenen Lernmodi kannst du die so erstellten Wörter und Sätze lernen.</span>
     </p>
     <div class="hero-actions">
       <!-- Replace href with the actual App Store URL once live -->
@@ -385,14 +389,12 @@
       </a>
     </div>
     <div class="hero-trust">
-      <span class="t-en">iOS — free, no subscription yet</span>
-      <span class="t-de">iOS – kostenlos, noch kein Abo</span>
-      <span class="t-en">Works offline</span>
-      <span class="t-de">Offline nutzbar</span>
-      <span class="t-en">GDPR compliant</span>
-      <span class="t-de">DSGVO-konform</span>
-      <span class="t-en">Recordings never stored</span>
-      <span class="t-de">Aufnahmen werden nicht gespeichert</span>
+      <span class="t-en">Available for iPhone</span>
+      <span class="t-de">Verfügbar für iPhone</span>
+      <span class="t-en">Just try it — free right now</span>
+      <span class="t-de">Einfach ausprobieren — derzeit kostenlos</span>
+      <span class="t-en">High privacy standards</span>
+      <span class="t-de">Hohe Datenschutzstandards</span>
     </div>
   </div>
 </div>
@@ -551,10 +553,36 @@
           </p>
         </div>
       </div>
+      <div class="feat">
+        <div class="feat-icon">✌️</div>
+        <div>
+          <h3>
+            <span class="t-en">Two target languages at once</span>
+            <span class="t-de">Bis zu zwei Zielsprachen gleichzeitig</span>
+          </h3>
+          <p>
+            <span class="t-en">Translations appear in both languages automatically. Learn up to two target languages side by side.</span>
+            <span class="t-de">Übersetzungen erscheinen automatisch in beiden Sprachen. Lerne bis zu zwei Zielsprachen simultan.</span>
+          </p>
+        </div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">🛡️</div>
+        <div>
+          <h3>
+            <span class="t-en">Strong privacy</span>
+            <span class="t-de">Hoher Datenschutz</span>
+          </h3>
+          <p>
+            <span class="t-en">Your voice, your choice: switch from cloud transcription to on-device processing whenever you like. No ads, no tracking IDs.</span>
+            <span class="t-de">Deine Stimme, deine Entscheidung: Statt der Cloud-basierten Verarbeitung deiner Stimme kannst du jederzeit die lokale Verarbeitung nutzen. Keine Werbung, keine Tracking-IDs.</span>
+          </p>
+        </div>
+      </div>
     </div>
+  
   </div>
 </section>
-
 
 <!-- ══════════════════ PLATFORMS ══════════════════ -->
 <section class="sec-sm" id="platforms">
@@ -585,78 +613,6 @@
           <span class="t-en">Coming soon</span>
           <span class="t-de">Bald verfügbar</span>
         </span>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ══════════════════ PRIVACY ══════════════════ -->
-<section class="sec">
-  <div class="wrap">
-    <div class="eyebrow">
-      <span class="t-en">Privacy</span>
-      <span class="t-de">Datenschutz</span>
-    </div>
-    <div class="priv-box">
-      <div>
-        <h2>
-          <span class="t-en">Your voice,<br>your choice.</span>
-          <span class="t-de">Deine Stimme,<br>deine Entscheidung.</span>
-        </h2>
-        <p>
-          <span class="t-en">For the best accuracy, your recording is streamed straight from your device to our speech provider AssemblyAI, transcribed in the EU and never stored. Prefer to keep it local? One switch in Settings and recognition runs on your device alone — the audio then never leaves your phone.</span>
-          <span class="t-de">Für die beste Genauigkeit wird deine Aufnahme direkt von deinem Gerät an unseren Sprachdienst AssemblyAI gestreamt, in der EU transkribiert und nicht gespeichert. Lieber lokal? Ein Schalter in den Einstellungen – und die Erkennung läuft allein auf deinem Gerät, die Aufnahme verlässt es dann nicht.</span>
-        </p>
-        <ul class="priv-list">
-          <li>
-            <span class="t-en">Recordings are never stored — by us or our speech provider</span>
-            <span class="t-de">Aufnahmen werden nicht gespeichert — weder von uns noch vom Sprachdienst</span>
-          </li>
-          <li>
-            <span class="t-en">Cloud transcription can be switched off at any time</span>
-            <span class="t-de">Cloud-Transkription jederzeit abschaltbar</span>
-          </li>
-          <li>
-            <span class="t-en">No advertising IDs collected</span>
-            <span class="t-de">Keine Werbe-IDs gesammelt</span>
-          </li>
-          <li>
-            <span class="t-en">No location, contacts or browser history</span>
-            <span class="t-de">Kein Standort, keine Kontakte, kein Verlauf</span>
-          </li>
-          <li>
-            <span class="t-en">Data stored in EU / EEA (Frankfurt, Germany)</span>
-            <span class="t-de">Datenspeicherung in der EU / dem EWR (Frankfurt)</span>
-          </li>
-          <li>
-            <span class="t-en">Fully GDPR compliant</span>
-            <span class="t-de">Vollständig DSGVO-konform</span>
-          </li>
-        </ul>
-      </div>
-      <div>
-        <div class="engine-label">
-          <span class="t-en">Where speech-to-text runs</span>
-          <span class="t-de">Wo die Spracherkennung läuft</span>
-        </div>
-        <div class="engine-list">
-          <div class="engine-row">
-            <div class="ep">
-              <span class="t-en">Cloud (default)</span>
-              <span class="t-de">Cloud (Standard)</span>
-            </div>
-            <div class="ev">AssemblyAI — EU</div>
-          </div>
-          <div class="engine-row">
-            <div class="ep">iOS</div>
-            <div class="ev">Apple SFSpeechRecognizer</div>
-          </div>
-          <div class="engine-row">
-            <div class="ep">Android</div>
-            <div class="ev">Android SpeechRecognizer API</div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -714,9 +670,39 @@
   }
 
   // ── Language ────────────────────────────────────
+  // The head is German in the markup (see the comment there). These are the
+  // English equivalents, applied when the visitor switches — otherwise an
+  // English reader keeps a German browser tab, and anything they share
+  // previews in a language they did not choose.
+  var META = {
+    de: {
+      title: 'simplevoc – Vokabeln lernen mit Spracherkennung',
+      desc:  'Vokabeln lernen wie von selbst: Sprich einen Satz, die KI extrahiert die Wörter und übersetzt sie im Kontext — gelernt wird mit klugem Spaced Repetition.',
+      og:    'Sprich einen Satz. Die KI extrahiert die Vokabeln. Kluge Wiederholung lässt sie sitzen.'
+    },
+    en: {
+      title: 'simplevoc – Vocabulary Learning with Speech Recognition',
+      desc:  'Learn vocabulary the natural way. Speak a sentence, let AI extract and translate the words, then master them with smart spaced repetition.',
+      og:    'Speak a sentence. AI extracts the vocabulary. Smart repetition makes it stick.'
+    }
+  };
+
+  function setMeta(lang) {
+    var m = META[lang] || META.de;
+    document.title = m.title;
+    var set = function(selector, value) {
+      var el = document.querySelector(selector);
+      if (el) el.setAttribute('content', value);
+    };
+    set('meta[name="description"]', m.desc);
+    set('meta[property="og:title"]', m.title);
+    set('meta[property="og:description"]', m.og);
+  }
+
   function setLang(lang) {
     document.documentElement.setAttribute('data-lang', lang);
     document.documentElement.lang = lang;
+    setMeta(lang);
     document.getElementById('btn-en').classList.toggle('active', lang === 'en');
     document.getElementById('btn-de').classList.toggle('active', lang === 'de');
     localStorage.setItem('sv-lang', lang);
