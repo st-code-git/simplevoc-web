@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="light" data-lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Musik-Nachweise – simplevoc</title>
+  <meta name="description" content="Credits for the background music in simplevoc's listening mode — tracks from Pixabay.">
+  <link rel="canonical" href="https://simplevoc.de/audio">
+  <link rel="alternate" hreflang="en" href="https://simplevoc.de/audio?lang=en">
+  <link rel="alternate" hreflang="de" href="https://simplevoc.de/audio?lang=de">
+  <link rel="alternate" hreflang="x-default" href="https://simplevoc.de/audio">
+  <link rel="icon" href="/favicon.png">
+
+  <!-- Detect language before body renders to avoid flash — same logic as the landing page. -->
+  <script>
+    (function() {
+      var p = new URLSearchParams(location.search).get('lang');
+      var stored = localStorage.getItem('sv-lang');
+      var lang = (p === 'en' || p === 'de') ? p
+               : (stored === 'en' || stored === 'de') ? stored
+               : 'de';
+      document.documentElement.setAttribute('data-lang', lang);
+      document.documentElement.lang = lang;
+      var theme = localStorage.getItem('sv-theme') === 'dark' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+
+  <style>
+    /* ── Tokens — identical to the landing page, so the two feel like one site ── */
+    :root {
+      --bg:      #F5EFE0;
+      --bg2:     #EDE6D3;
+      --surface: #FEFCF7;
+      --border:  rgba(0,0,0,.12);
+      --text:    #1A1A2E;
+      --text2:   #5F6472;
+      --text3:   #8A8A99;
+      --accent:  #4F3FBF;
+      --accent2: rgba(79,63,191,.10);
+      --card:    #FEFCF7;
+      --nav-bg:  rgba(245,239,224,.92);
+    }
+    [data-theme="dark"] {
+      --bg:      #0a0e1a;
+      --bg2:     #0f1522;
+      --surface: #131d2e;
+      --border:  #1e2f48;
+      --text:    #e8edf5;
+      --text2:   #8a9bb5;
+      --text3:   #3d4f66;
+      --accent:  #1db4ff;
+      --accent2: rgba(29,180,255,.12);
+      --card:    #111827;
+      --nav-bg:  rgba(10,14,26,.88);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg); color: var(--text);
+      line-height: 1.65; font-size: 16px;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .t-de { display: none; }
+    [data-lang="de"] .t-de { display: revert; }
+    [data-lang="de"] .t-en { display: none; }
+
+    /* ── Nav — same markup/classes as the landing page ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--nav-bg);
+      backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      height: 58px; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 1.05rem; font-weight: 700; color: var(--text);
+    }
+    .nav-logo:hover { text-decoration: none; }
+    .logo-mark {
+      width: 32px; height: 32px; border-radius: 8px;
+      display: block; object-fit: cover;
+      border: 1px solid var(--border);
+    }
+    .nav-right { display: flex; align-items: center; gap: 6px; }
+    .btn-icon {
+      width: 34px; height: 34px; border-radius: 8px;
+      border: 1px solid var(--border); background: transparent;
+      color: var(--text2); cursor: pointer; font-size: 14px;
+      display: flex; align-items: center; justify-content: center;
+      transition: all .15s;
+    }
+    .btn-icon:hover { background: var(--accent2); color: var(--accent); border-color: var(--accent); }
+    .lang-btn {
+      height: 34px; padding: 0 11px; border-radius: 8px;
+      border: 1px solid var(--border); background: transparent;
+      color: var(--text2); cursor: pointer; font-size: .78rem; font-weight: 600;
+      transition: all .15s;
+    }
+    .lang-btn:hover, .lang-btn.active { background: var(--accent2); color: var(--accent); border-color: var(--accent); }
+
+    .wrap { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+    .eyebrow {
+      font-size: .7rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 10px;
+    }
+    .sec-title {
+      font-size: clamp(1.55rem, 3vw, 2.2rem);
+      font-weight: 800; letter-spacing: -.8px; color: var(--text);
+      line-height: 1.18; margin-bottom: 12px;
+    }
+    .sec-sub { font-size: .97rem; color: var(--text2); max-width: 620px; line-height: 1.7; }
+
+    .page-hero { padding: 56px 24px 8px; max-width: 900px; margin: 0 auto; }
+
+    /* ── Track list ─────────────────────────────── */
+    .tracks { list-style: none; margin: 36px 0 56px; display: grid; gap: 12px; }
+    .track {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 16px 20px;
+      display: flex; flex-wrap: wrap; align-items: baseline;
+      justify-content: space-between; gap: 4px 16px;
+    }
+    .track-app { font-weight: 700; color: var(--text); }
+    .track-src { color: var(--text2); font-size: .92rem; }
+    .licence { color: var(--text2); font-size: .92rem; max-width: 680px; margin-bottom: 56px; }
+
+    /* ── Footer — same markup/classes as the landing page ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 24px;
+      display: flex; flex-wrap: wrap; gap: 16px;
+      justify-content: space-between; align-items: center;
+    }
+    .foot-logo { font-size: .9rem; font-weight: 700; color: var(--text2); }
+    .foot-links { display: flex; gap: 18px; flex-wrap: wrap; }
+    .foot-links a { color: var(--text2); font-size: .85rem; }
+    .foot-links a:hover { color: var(--accent); }
+    .foot-copy { color: var(--text3); font-size: .78rem; }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════ NAV ══════════════════ -->
+<nav>
+  <a href="/" class="nav-logo">
+    <img src="../media/icon.png" class="logo-mark" width="1024" height="1024" alt="simplevoc app icon">
+    simplevoc
+  </a>
+  <div class="nav-right">
+    <button class="btn-icon" id="theme-toggle" title="Toggle theme" onclick="toggleTheme()">☀</button>
+    <button class="lang-btn" id="btn-de" onclick="setLang('de')">DE</button>
+    <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+  </div>
+</nav>
+
+<!-- ══════════════════ INTRO ══════════════════ -->
+<div class="page-hero">
+  <div class="eyebrow">
+    <span class="t-en">Listening mode</span>
+    <span class="t-de">Hörmodus</span>
+  </div>
+  <div class="sec-title">
+    <span class="t-en">Music credits</span>
+    <span class="t-de">Musik-Nachweise</span>
+  </div>
+  <p class="sec-sub">
+    <span class="t-en">The relaxing study music in the listening mode comes from Pixabay. Thanks to the artists who share their work there.</span>
+    <span class="t-de">Die entspannte Lernmusik im Hörmodus stammt von Pixabay. Danke an die Künstlerinnen und Künstler, die ihre Musik dort teilen.</span>
+  </p>
+</div>
+
+<!-- ══════════════════ TRACKS ══════════════════ -->
+<!-- One entry per track in lib/models/listening_config.dart (ListeningMusic);
+     sources also in docs/LISTENING_MODE_CONCEPT.md. -->
+<div class="wrap">
+  <ul class="tracks">
+    <li class="track">
+      <span class="track-app">Peaceful</span>
+      <span class="track-src"><a href="https://pixabay.com/music/folk-peaceful-peaceful-music-551480/">Peaceful – Peaceful Music</a> · andriig</span>
+    </li>
+    <li class="track">
+      <span class="track-app">Study</span>
+      <span class="track-src"><a href="https://pixabay.com/music/lofi-study-music-602504/">Study Music</a> · Luceris</span>
+    </li>
+    <li class="track">
+      <span class="track-app">Piano</span>
+      <span class="track-src"><a href="https://pixabay.com/music/small-drama-piano-study-piano-study-music-602062/">Piano Study – Piano Study Music</a> · leberch</span>
+    </li>
+    <li class="track">
+      <span class="track-app">Concentration</span>
+      <span class="track-src"><a href="https://pixabay.com/music/ambient-deep-concentration-263073/">Deep Concentration</a> · leberch</span>
+    </li>
+    <li class="track">
+      <span class="track-app">Fall asleep</span>
+      <span class="track-src"><a href="https://pixabay.com/music/ambient-fall-asleep-595466/">Fall Asleep</a> · 331music</span>
+    </li>
+  </ul>
+
+  <p class="licence">
+    <span class="t-en">All tracks are used under the <a href="https://pixabay.com/service/license-summary/">Pixabay Content License</a>. In the app they are shortened to a loop, re-encoded and adjusted in volume.</span>
+    <span class="t-de">Alle Titel werden unter der <a href="https://pixabay.com/service/license-summary/">Pixabay-Inhaltslizenz</a> verwendet. In der App sind sie zu einer Schleife gekürzt, neu kodiert und in der Lautstärke angepasst.</span>
+  </p>
+</div>
+
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<footer>
+  <div class="foot-logo">simplevoc</div>
+  <div class="foot-links">
+    <a href="/privacy?lang=en" class="t-en">Privacy Policy</a>
+    <a href="/privacy?lang=de" class="t-de">Datenschutzerklärung</a>
+    <a href="/impressum?lang=en" class="t-en">Legal Notice</a>
+    <a href="/impressum" class="t-de">Impressum</a>
+    <a href="/agb?lang=en" class="t-en">Terms of Use</a>
+    <a href="/agb?lang=de" class="t-de">AGB</a>
+    <a href="mailto:support@simplevoc.de">support@simplevoc.de</a>
+  </div>
+  <div class="foot-copy">© 2026 Stefan Lehner</div>
+</footer>
+
+<script>
+  // ── Theme ───────────────────────────────────────
+  function applyTheme(t) {
+    document.documentElement.setAttribute('data-theme', t);
+    document.getElementById('theme-toggle').textContent = t === 'dark' ? '☀' : '☾';
+    localStorage.setItem('sv-theme', t);
+  }
+  function toggleTheme() {
+    applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  }
+
+  // ── Language ────────────────────────────────────
+  function setLang(lang) {
+    document.documentElement.setAttribute('data-lang', lang);
+    document.documentElement.lang = lang;
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.getElementById('btn-de').classList.toggle('active', lang === 'de');
+    localStorage.setItem('sv-lang', lang);
+    const url = new URL(window.location);
+    url.searchParams.set('lang', lang);
+    history.replaceState({}, '', url);
+  }
+
+  // ── Init ────────────────────────────────────────
+  (function() {
+    var theme = document.documentElement.getAttribute('data-theme') || 'light';
+    applyTheme(theme);
+    var lang = document.documentElement.getAttribute('data-lang') || 'de';
+    setLang(lang);
+  })();
+</script>
+</body>
+</html>
