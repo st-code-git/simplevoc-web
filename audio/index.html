@@ -121,14 +121,24 @@
 
     /* ── Track list ─────────────────────────────── */
     .tracks { list-style: none; margin: 36px 0 56px; display: grid; gap: 12px; }
+    /* Fixed grid instead of wrapping flex: every entry breaks the same way,
+       whatever the length of its title. Phone: name, title, artist stacked.
+       Wider: name in a fixed left column, title + artist on the right. */
     .track {
       background: var(--card); border: 1px solid var(--border);
-      border-radius: 12px; padding: 16px 20px;
-      display: flex; flex-wrap: wrap; align-items: baseline;
-      justify-content: space-between; gap: 4px 16px;
+      border-radius: 12px; padding: 14px 18px;
+      display: grid; grid-template-columns: 1fr; gap: 2px;
     }
     .track-app { font-weight: 700; color: var(--text); }
-    .track-src { color: var(--text2); font-size: .92rem; }
+    .track-src { color: var(--text2); font-size: .92rem; min-width: 0; }
+    .track-title { display: block; overflow-wrap: anywhere; }
+    .track-artist { display: block; color: var(--text3); font-size: .85rem; }
+    @media (min-width: 600px) {
+      .track {
+        grid-template-columns: 160px 1fr; column-gap: 20px;
+        align-items: baseline; padding: 16px 20px;
+      }
+    }
     .licence { color: var(--text2); font-size: .92rem; max-width: 680px; margin-bottom: 56px; }
 
     /* ── Footer — same markup/classes as the landing page ── */
@@ -183,23 +193,23 @@
   <ul class="tracks">
     <li class="track">
       <span class="track-app">Peaceful</span>
-      <span class="track-src"><a href="https://pixabay.com/music/folk-peaceful-peaceful-music-551480/">Peaceful – Peaceful Music</a> · andriig</span>
+      <span class="track-src"><a class="track-title" href="https://pixabay.com/music/folk-peaceful-peaceful-music-551480/">Peaceful – Peaceful Music</a><span class="track-artist">andriig</span></span>
     </li>
     <li class="track">
       <span class="track-app">Study</span>
-      <span class="track-src"><a href="https://pixabay.com/music/lofi-study-music-602504/">Study Music</a> · Luceris</span>
+      <span class="track-src"><a class="track-title" href="https://pixabay.com/music/lofi-study-music-602504/">Study Music</a><span class="track-artist">Luceris</span></span>
     </li>
     <li class="track">
       <span class="track-app">Piano</span>
-      <span class="track-src"><a href="https://pixabay.com/music/small-drama-piano-study-piano-study-music-602062/">Piano Study – Piano Study Music</a> · leberch</span>
+      <span class="track-src"><a class="track-title" href="https://pixabay.com/music/small-drama-piano-study-piano-study-music-602062/">Piano Study – Piano Study Music</a><span class="track-artist">leberch</span></span>
     </li>
     <li class="track">
       <span class="track-app">Concentration</span>
-      <span class="track-src"><a href="https://pixabay.com/music/ambient-deep-concentration-263073/">Deep Concentration</a> · leberch</span>
+      <span class="track-src"><a class="track-title" href="https://pixabay.com/music/ambient-deep-concentration-263073/">Deep Concentration</a><span class="track-artist">leberch</span></span>
     </li>
     <li class="track">
       <span class="track-app">Fall asleep</span>
-      <span class="track-src"><a href="https://pixabay.com/music/ambient-fall-asleep-595466/">Fall Asleep</a> · 331music</span>
+      <span class="track-src"><a class="track-title" href="https://pixabay.com/music/ambient-fall-asleep-595466/">Fall Asleep</a><span class="track-artist">331music</span></span>
     </li>
   </ul>
 
