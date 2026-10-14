@@ -8,8 +8,9 @@
        with versions.json beside it and with the frozen copy under /vN/ —
        `make legal-freeze` refuses to freeze a version these disagree on.
        See docs/SETUP.md § Legal pages. -->
-  <meta name="document-version" content="1" />
-  <meta name="document-date" content="2026-08" />
+  <meta name="document-id" content="privacy" />
+  <meta name="document-version" content="2" />
+  <meta name="document-date" content="2026-10" />
   <style>
     /* ── Palette — mirrors the app's light (warm beige) theme,
           lib/theme/app_theme.dart → AppTheme.lightColors ───────── */
@@ -103,6 +104,12 @@
       border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 12px 0;
       font-size: 0.9rem; color: var(--text-body);
     }
+    .doc-versions { margin-top: 40px; }
+    .doc-versions h2 { font-size: 1rem; }
+    .doc-versions ul { list-style: none; padding: 0; margin: 8px 0 0; }
+    .doc-versions li { padding: 6px 0; border-bottom: 1px solid var(--border-sub); font-size: 0.9rem; }
+    .doc-versions li:last-child { border-bottom: none; }
+    .doc-versions .tag { color: var(--text-mute); font-size: 0.82rem; margin-left: 6px; }
     .footer-links { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border-sub); display: flex; gap: 20px; flex-wrap: wrap; }
     .footer-links a { color: var(--text-mute); font-size: 0.875rem; }
     .footer-links a:hover { color: var(--accent); }
@@ -118,7 +125,7 @@
 
 <header>
   <div class="header-left">
-    <a href="/"><img src="../media/icon.png" class="logo-icon" width="1024" height="1024"
+    <a href="/"><img src="/media/icon.png" class="logo-icon" width="1024" height="1024"
          alt="simplevoc app icon"></a>
     <div>
       <h1>simplevoc</h1>
@@ -137,7 +144,7 @@
 <div id="content-en" style="display:none">
 <main>
   <h1 class="page-title">Privacy Policy</h1>
-  <p class="updated">Last updated: August 2026 · Version 1</p>
+  <p class="updated">Last updated: October 2026 · Version 2</p>
 
   <div class="intro">
     simplevoc is a vocabulary trainer app. You can use simplevoc without registering, in anonymous guest mode, or sign up
@@ -192,6 +199,11 @@
         <tr>
           <td><strong>Transcribed or typed text</strong></td>
           <td>AI word extraction and translation via Vertex AI (Gemini) in Google's EU region — see Section 4.2</td>
+          <td><span class="basis-tag">Art. 6(1)(b) GDPR</span></td>
+        </tr>
+        <tr>
+          <td><strong>Text of saved words</strong> (listening mode)</td>
+          <td>Speech synthesis via Google Cloud Text-to-Speech on the EU regional endpoint — only when the natural voice is switched on (see Section 4.2a)</td>
           <td><span class="basis-tag">Art. 6(1)(b) GDPR</span></td>
         </tr>
         <tr>
@@ -272,6 +284,18 @@
     <p>Google has committed contractually not to use submitted data to train its AI models. Google Cloud EMEA Limited engages Google LLC and other Google affiliates as subprocessors, so access from outside the EU/EEA — for support and administration — cannot be ruled out; those onward transfers are covered by Google's Cloud Data Processing Addendum, which incorporates the Standard Contractual Clauses approved by the European Commission, and Google LLC is certified under the EU–US Data Privacy Framework. Legal basis: Art. 6(1)(b) GDPR.</p>
     <p><strong>Important:</strong> Please do not include sensitive personal data (names, addresses, health information, or identification numbers) in vocabulary you record. The app is designed for learning words and sentences, not for storing personal documents.</p>
 
+    <h3 style="font-size:0.95rem;font-weight:600;margin:14px 0 6px;">4.2a Listening mode — synthetic voice (Google Cloud Text-to-Speech)</h3>
+    <div class="highlight">
+      <strong>You choose where the voice comes from.</strong> The listening mode reads your saved words aloud. With <em>“Natural voice for listening (Cloud AI)”</em> switched on (Settings → Speech input, on by default), the <strong>text</strong> of each word — never a recording, and nothing about you — is sent to our backend, which has <strong>Google Cloud Text-to-Speech</strong> turn it into a short audio clip. Switch it off and your device's built-in voice reads instead; nothing is sent.
+    </div>
+    <p><strong>Under 16 there is no choice to make:</strong> the setting is not offered and the device voice is used. See Section 14.</p>
+    <ul>
+      <li>The request carries the word, its language and your account's sign-in token. It goes to our Cloud Functions in europe-west1, which call Text-to-Speech on Google's <strong>EU regional endpoint</strong>; our backend refuses to call any other.</li>
+      <li><strong>Clips are cached, not you.</strong> Each clip is stored in our Cloud Storage bucket (europe-west1) under a key derived only from the text, language and voice, so a word is generated once for everyone who saves it. Nothing in the cache is linked to an account. Your phone keeps its own copy so a session plays offline.</li>
+      <li>To keep costs bounded we count how many clips your account has generated per day; the counter lives in your account record and is deleted with it.</li>
+      <li>Google's Data Processing Addendum and its commitment not to use submitted data for model training apply as described in Section 4.2.</li>
+    </ul>
+    <p>Legal basis: Art. 6(1)(b) GDPR — reading your words aloud is the feature you switched on.</p>
     <h3 style="font-size:0.95rem;font-weight:600;margin:14px 0 6px;">4.3 What the AI does — and where it can be wrong</h3>
     <p><strong>You are interacting with an AI system.</strong> It reads the words and sentences you record, works out which words to save, translates them into your target language, and generates practice material such as example sentences and conjugation exercises.</p>
     <p><strong>AI output can be wrong.</strong> A translation may be inaccurate, miss a shade of meaning, choose the wrong sense of an ambiguous word, or simply be confidently mistaken. Treat what you see as a study aid, not as an authoritative translation — where it matters, check a dictionary or ask someone who speaks the language.</p>
@@ -459,6 +483,7 @@
         <tr><td>AssemblyAI (cloud speech-to-text, EU endpoint — can be switched off in Settings)</td><td>AssemblyAI, Inc.</td><td><a href="https://www.assemblyai.com/legal/privacy-policy" target="_blank">assemblyai.com/legal/privacy-policy</a></td></tr>
         <tr><td>Sign in with Apple</td><td>Apple Inc.</td><td><a href="https://www.apple.com/privacy/" target="_blank">apple.com/privacy</a></td></tr>
         <tr><td>Vertex AI – Gemini (AI word extraction &amp; translation, EU region)</td><td>Google Cloud EMEA Limited (Ireland)</td><td><a href="https://cloud.google.com/terms/data-processing-addendum" target="_blank">cloud.google.com/terms/data-processing-addendum</a> · <a href="https://cloud.google.com/privacy" target="_blank">cloud.google.com/privacy</a></td></tr>
+        <tr><td>Cloud Text-to-Speech (synthetic voice for the listening mode, EU regional endpoint — can be switched off in Settings)</td><td>Google Cloud EMEA Limited (Ireland)</td><td><a href="https://cloud.google.com/terms/data-processing-addendum" target="_blank">cloud.google.com/terms/data-processing-addendum</a> · <a href="https://cloud.google.com/privacy" target="_blank">cloud.google.com/privacy</a></td></tr>
         <tr><td>RevenueCat</td><td>RevenueCat, Inc.</td><td><a href="https://www.revenuecat.com/privacy" target="_blank">revenuecat.com/privacy</a></td></tr>
         <tr><td>System speech recognition (fallback when cloud speech-to-text is off) — iOS: Apple SFSpeechRecognizer; Android: system SpeechRecognizer</td><td>Apple Inc. (iOS), Google (Android)</td><td><a href="https://www.apple.com/privacy/" target="_blank">apple.com/privacy</a> · <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
         <tr><td>App Store / Play Store (app distribution, updates, and the platform's own install and crash statistics — collected by the platform independently of the app)</td><td>Apple Inc. (iOS), Google LLC (Android)</td><td><a href="https://www.apple.com/legal/privacy/data/en/app-store/" target="_blank">apple.com/legal/privacy</a> · <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
@@ -554,7 +579,7 @@
 
   <section>
     <h2>19. Changes to This Policy</h2>
-    <p>We may update this policy to reflect changes in the service or legal requirements. The date at the top of this page shows the latest revision. For significant changes we will notify users within the app.</p>
+    <p>We may update this policy to reflect changes in the service or legal requirements. The date at the top of this page shows the latest revision; all published versions are listed at the end of this page. For significant changes we will notify users within the app.</p>
   </section>
 
   <section>
@@ -564,6 +589,8 @@
       <a href="mailto:privacy@simplevoc.de">privacy@simplevoc.de</a></p>
     </div>
   </section>
+
+  <section class="doc-versions" data-lang="en" hidden></section>
 
   <div class="footer-links">
     <a href="/impressum?lang=en">Legal Notice</a>
@@ -576,7 +603,7 @@
 <div id="content-de">
 <main>
   <h1 class="page-title">Datenschutzerklärung</h1>
-  <p class="updated">Zuletzt aktualisiert: August 2026 · Fassung 1</p>
+  <p class="updated">Zuletzt aktualisiert: Oktober 2026 · Fassung 2</p>
 
   <div class="intro">
     simplevoc ist eine Vokabeltrainer-App. Du kannst simplevoc ohne Registrierung im anonymen Gast-Modus verwenden oder dich via
@@ -631,6 +658,11 @@
         <tr>
           <td><strong>Transkribierter oder getippter Text</strong></td>
           <td>KI-gestützte Wortextraktion und Übersetzung via Vertex AI (Gemini) in der EU-Region von Google – siehe Abschnitt 4.2</td>
+          <td><span class="basis-tag">Art. 6 Abs. 1 lit. b DSGVO</span></td>
+        </tr>
+        <tr>
+          <td><strong>Text gespeicherter Wörter</strong> (Anhören-Modus)</td>
+          <td>Sprachsynthese via Google Cloud Text-to-Speech über den EU-Regionalendpunkt – nur bei eingeschalteter natürlicher Stimme (siehe Abschnitt 4.2a)</td>
           <td><span class="basis-tag">Art. 6 Abs. 1 lit. b DSGVO</span></td>
         </tr>
         <tr>
@@ -711,6 +743,18 @@
     <p>Google hat vertraglich zugesichert, übermittelte Daten nicht zum Training seiner KI-Modelle zu verwenden. Google Cloud EMEA Limited setzt Google LLC und weitere Google-Konzerngesellschaften als Unterauftragsverarbeiter ein, sodass ein Zugriff aus Ländern außerhalb der EU/des EWR – etwa zu Support- und Administrationszwecken – nicht ausgeschlossen werden kann; für diese Weiterübermittlungen gilt das Cloud Data Processing Addendum von Google, das die Standardvertragsklauseln der Europäischen Kommission einbezieht, und Google LLC ist unter dem EU-US Data Privacy Framework zertifiziert. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO.</p>
     <p><strong>Wichtiger Hinweis:</strong> Bitte gib keine sensiblen personenbezogenen Daten (Namen, Adressen, Gesundheitsinformationen oder Ausweisnummern) als Vokabeln ein. Die App ist für das Lernen von Wörtern und Sätzen konzipiert – nicht zur Speicherung persönlicher Dokumente.</p>
 
+    <h3 style="font-size:0.95rem;font-weight:600;margin:14px 0 6px;">4.2a Anhören-Modus – synthetische Stimme (Google Cloud Text-to-Speech)</h3>
+    <div class="highlight">
+      <strong>Du entscheidest, woher die Stimme kommt.</strong> Der Anhören-Modus liest dir deine gespeicherten Wörter vor. Ist <em>„Natürliche Stimme fürs Anhören (Cloud-KI)"</em> eingeschaltet (Einstellungen → Spracheingabe, standardmäßig aktiv), wird der <strong>Text</strong> jedes Wortes – nie eine Aufnahme und nichts über dich – an unser Backend gesendet, das ihn von <strong>Google Cloud Text-to-Speech</strong> in einen kurzen Audioclip umwandeln lässt. Schaltest du die Option aus, liest die eingebaute Stimme deines Geräts; es wird nichts gesendet.
+    </div>
+    <p><strong>Unter 16 Jahren gibt es hier nichts zu entscheiden:</strong> Die Einstellung wird nicht angeboten, es wird die Gerätestimme verwendet. Siehe Abschnitt 14.</p>
+    <ul>
+      <li>Die Anfrage enthält das Wort, seine Sprache und das Anmelde-Token deines Kontos. Sie geht an unsere Cloud Functions in europe-west1, die Text-to-Speech über den <strong>EU-Regionalendpunkt</strong> von Google aufrufen; einen anderen ruft unser Backend nicht auf.</li>
+      <li><strong>Gespeichert werden Clips, nicht du.</strong> Jeder Clip liegt in unserem Cloud-Storage-Bucket (europe-west1) unter einem Schlüssel, der nur aus Text, Sprache und Stimme gebildet wird – ein Wort wird also einmal für alle erzeugt, die es speichern. Nichts im Cache ist mit einem Konto verknüpft. Dein Handy behält eine eigene Kopie, damit eine Sitzung offline läuft.</li>
+      <li>Um die Kosten zu begrenzen, zählen wir, wie viele Clips dein Konto pro Tag erzeugt hat; der Zähler liegt in deinem Kontodatensatz und wird mit ihm gelöscht.</li>
+      <li>Das Data Processing Addendum von Google und seine Zusicherung, übermittelte Daten nicht zum Modelltraining zu verwenden, gelten wie in Abschnitt 4.2 beschrieben.</li>
+    </ul>
+    <p>Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO – das Vorlesen deiner Wörter ist die Funktion, die du eingeschaltet hast.</p>
     <h3 style="font-size:0.95rem;font-weight:600;margin:14px 0 6px;">4.3 Was die KI tut – und wo sie falschliegen kann</h3>
     <p><strong>Du interagierst mit einem KI-System.</strong> Es liest die Wörter und Sätze, die du erfasst, ermittelt, welche Wörter gespeichert werden, übersetzt sie in deine Zielsprache und erzeugt Übungsmaterial wie Beispielsätze und Konjugationsübungen.</p>
     <p><strong>KI-Ausgaben können falsch sein.</strong> Eine Übersetzung kann ungenau sein, eine Bedeutungsnuance verfehlen, bei mehrdeutigen Wörtern die falsche Lesart wählen oder schlicht überzeugend danebenliegen. Betrachte das Ergebnis als Lernhilfe, nicht als verbindliche Übersetzung – wo es darauf ankommt, sieh in einem Wörterbuch nach oder frage jemanden, der die Sprache spricht.</p>
@@ -898,6 +942,7 @@
         <tr><td>AssemblyAI (Cloud-Spracherkennung, EU-Endpunkt – in den Einstellungen abschaltbar)</td><td>AssemblyAI, Inc.</td><td><a href="https://www.assemblyai.com/legal/privacy-policy" target="_blank">assemblyai.com/legal/privacy-policy</a></td></tr>
         <tr><td>Mit Apple anmelden</td><td>Apple Inc.</td><td><a href="https://www.apple.com/de/privacy/" target="_blank">apple.com/de/privacy</a></td></tr>
         <tr><td>Vertex AI – Gemini (KI-Wortextraktion &amp; Übersetzung, EU-Region)</td><td>Google Cloud EMEA Limited (Irland)</td><td><a href="https://cloud.google.com/terms/data-processing-addendum" target="_blank">cloud.google.com/terms/data-processing-addendum</a> · <a href="https://cloud.google.com/privacy" target="_blank">cloud.google.com/privacy</a></td></tr>
+        <tr><td>Cloud Text-to-Speech (synthetische Stimme des Anhören-Modus, EU-Regionalendpunkt – in den Einstellungen abschaltbar)</td><td>Google Cloud EMEA Limited (Irland)</td><td><a href="https://cloud.google.com/terms/data-processing-addendum" target="_blank">cloud.google.com/terms/data-processing-addendum</a> · <a href="https://cloud.google.com/privacy" target="_blank">cloud.google.com/privacy</a></td></tr>
         <tr><td>RevenueCat</td><td>RevenueCat, Inc.</td><td><a href="https://www.revenuecat.com/privacy" target="_blank">revenuecat.com/privacy</a></td></tr>
         <tr><td>System-Spracherkennung (Rückfallebene bei ausgeschalteter Cloud-Spracherkennung) – iOS: Apple SFSpeechRecognizer; Android: System-SpeechRecognizer</td><td>Apple Inc. (iOS), Google (Android)</td><td><a href="https://www.apple.com/de/privacy/" target="_blank">apple.com/de/privacy</a> · <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
         <tr><td>App Store / Play Store (Auslieferung der App, Updates sowie die plattformeigenen Installations- und Absturzstatistiken – von der Plattform unabhängig von der App erhoben)</td><td>Apple Inc. (iOS), Google LLC (Android)</td><td><a href="https://www.apple.com/legal/privacy/data/de/app-store/" target="_blank">apple.com/legal/privacy</a> · <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
@@ -993,7 +1038,7 @@
 
   <section>
     <h2>19. Änderungen dieser Erklärung</h2>
-    <p>Wir können diese Erklärung aktualisieren, um Änderungen am Dienst oder rechtliche Anforderungen widerzuspiegeln. Das Datum oben auf dieser Seite zeigt die aktuelle Fassung. Bei wesentlichen Änderungen werden wir Nutzer innerhalb der App informieren.</p>
+    <p>Wir können diese Erklärung aktualisieren, um Änderungen am Dienst oder rechtliche Anforderungen widerzuspiegeln. Das Datum oben auf dieser Seite zeigt die aktuelle Fassung; alle veröffentlichten Fassungen sind am Ende dieser Seite aufgeführt. Bei wesentlichen Änderungen werden wir Nutzer innerhalb der App informieren.</p>
   </section>
 
   <section>
@@ -1003,6 +1048,8 @@
       <a href="mailto:privacy@simplevoc.de">privacy@simplevoc.de</a></p>
     </div>
   </section>
+
+  <section class="doc-versions" data-lang="de" hidden></section>
 
   <div class="footer-links">
     <a href="/impressum">Impressum</a>
@@ -1014,7 +1061,7 @@
 <div id="content-fr" style="display:none">
 <main>
   <h1 class="page-title">Politique de confidentialité</h1>
-  <p class="updated">Dernière mise à jour : août 2026 · Version 1</p>
+  <p class="updated">Dernière mise à jour : octobre 2026 · Version 2</p>
 
   <div class="intro">
     simplevoc est une application d'apprentissage du vocabulaire. Vous pouvez l'utiliser sans inscription, en mode
@@ -1069,6 +1116,11 @@
         <tr>
           <td><strong>Texte transcrit ou saisi</strong></td>
           <td>Extraction et traduction des mots par IA via Vertex AI (Gemini) dans la région UE de Google — voir section 4.2</td>
+          <td><span class="basis-tag">Art. 6, § 1, b) RGPD</span></td>
+        </tr>
+        <tr>
+          <td><strong>Texte des mots enregistrés</strong> (mode écoute)</td>
+          <td>Synthèse vocale via Google Cloud Text-to-Speech sur le point de terminaison régional UE — uniquement lorsque la voix naturelle est activée (voir section 4.2a)</td>
           <td><span class="basis-tag">Art. 6, § 1, b) RGPD</span></td>
         </tr>
         <tr>
@@ -1149,6 +1201,18 @@
     <p>Google s'est engagé contractuellement à ne pas utiliser les données transmises pour entraîner ses modèles d'IA. Google Cloud EMEA Limited recourt à Google LLC et à d'autres sociétés du groupe Google en qualité de sous-traitants ultérieurs, de sorte qu'un accès depuis l'extérieur de l'UE/EEE — à des fins d'assistance et d'administration — ne peut être exclu ; ces transferts ultérieurs sont couverts par le Cloud Data Processing Addendum de Google, qui intègre les clauses contractuelles types approuvées par la Commission européenne, et Google LLC est certifiée au titre du cadre de protection des données UE–États-Unis. Base juridique : art. 6, § 1, b) du RGPD.</p>
     <p><strong>Important :</strong> veuillez ne pas faire figurer de données personnelles sensibles (noms, adresses, informations de santé ou numéros d'identification) dans le vocabulaire que vous enregistrez. L'application est conçue pour l'apprentissage de mots et de phrases, non pour la conservation de documents personnels.</p>
 
+    <h3 style="font-size:0.95rem;font-weight:600;margin:14px 0 6px;">4.2a Mode écoute — voix de synthèse (Google Cloud Text-to-Speech)</h3>
+    <div class="highlight">
+      <strong>Vous choisissez d'où vient la voix.</strong> Le mode écoute vous lit vos mots enregistrés. Lorsque <em>« Voix naturelle pour l'écoute (IA cloud) »</em> est activé (Paramètres → Saisie vocale, activé par défaut), le <strong>texte</strong> de chaque mot — jamais un enregistrement, et rien à votre sujet — est envoyé à notre backend, qui le fait transformer en un court extrait audio par <strong>Google Cloud Text-to-Speech</strong>. Désactivez l'option et c'est la voix intégrée de votre appareil qui lit ; rien n'est envoyé.
+    </div>
+    <p><strong>Avant 16 ans, il n'y a rien à choisir :</strong> le réglage n'est pas proposé et la voix de l'appareil est utilisée. Voir la section 14.</p>
+    <ul>
+      <li>La requête contient le mot, sa langue et le jeton de connexion de votre compte. Elle est envoyée à nos Cloud Functions à europe-west1, qui appellent Text-to-Speech sur le <strong>point de terminaison régional UE</strong> de Google ; notre backend refuse d'en appeler un autre.</li>
+      <li><strong>Ce sont les extraits qui sont mis en cache, pas vous.</strong> Chaque extrait est stocké dans notre bucket Cloud Storage (europe-west1) sous une clé dérivée uniquement du texte, de la langue et de la voix : un mot n'est généré qu'une fois pour tous ceux qui l'enregistrent. Rien dans le cache n'est lié à un compte. Votre téléphone garde sa propre copie pour qu'une session fonctionne hors ligne.</li>
+      <li>Pour limiter les coûts, nous comptons le nombre d'extraits générés par votre compte chaque jour ; ce compteur se trouve dans l'enregistrement de votre compte et est supprimé avec lui.</li>
+      <li>L'addendum de traitement des données de Google et son engagement à ne pas utiliser les données soumises pour entraîner ses modèles s'appliquent comme décrit à la section 4.2.</li>
+    </ul>
+    <p>Base juridique : art. 6, § 1, b) RGPD — la lecture de vos mots à voix haute est la fonction que vous avez activée.</p>
     <h3 style="font-size:0.95rem;font-weight:600;margin:14px 0 6px;">4.3 Ce que fait l'IA — et où elle peut se tromper</h3>
     <p><strong>Vous interagissez avec un système d'IA.</strong> Il lit les mots et les phrases que vous enregistrez, détermine les mots à conserver, les traduit dans votre langue cible et génère du matériel d'exercice tel que des phrases d'exemple et des exercices de conjugaison.</p>
     <p><strong>Les résultats de l'IA peuvent être erronés.</strong> Une traduction peut être inexacte, manquer une nuance, retenir le mauvais sens d'un mot ambigu ou tout simplement se tromper avec assurance. Considérez ce que vous voyez comme une aide à l'apprentissage et non comme une traduction faisant autorité — lorsque cela compte, vérifiez dans un dictionnaire ou demandez à une personne qui parle la langue.</p>
@@ -1336,6 +1400,7 @@
         <tr><td>AssemblyAI (reconnaissance vocale dans le cloud, point de terminaison européen — désactivable dans les paramètres)</td><td>AssemblyAI, Inc.</td><td><a href="https://www.assemblyai.com/legal/privacy-policy" target="_blank">assemblyai.com/legal/privacy-policy</a></td></tr>
         <tr><td>Se connecter avec Apple</td><td>Apple Inc.</td><td><a href="https://www.apple.com/privacy/" target="_blank">apple.com/privacy</a></td></tr>
         <tr><td>Vertex AI – Gemini (extraction et traduction des mots par IA, région UE)</td><td>Google Cloud EMEA Limited (Irlande)</td><td><a href="https://cloud.google.com/terms/data-processing-addendum" target="_blank">cloud.google.com/terms/data-processing-addendum</a> · <a href="https://cloud.google.com/privacy" target="_blank">cloud.google.com/privacy</a></td></tr>
+        <tr><td>Cloud Text-to-Speech (voix de synthèse du mode écoute, point de terminaison régional UE — désactivable dans les paramètres)</td><td>Google Cloud EMEA Limited (Irlande)</td><td><a href="https://cloud.google.com/terms/data-processing-addendum" target="_blank">cloud.google.com/terms/data-processing-addendum</a> · <a href="https://cloud.google.com/privacy" target="_blank">cloud.google.com/privacy</a></td></tr>
         <tr><td>RevenueCat</td><td>RevenueCat, Inc.</td><td><a href="https://www.revenuecat.com/privacy" target="_blank">revenuecat.com/privacy</a></td></tr>
         <tr><td>Reconnaissance vocale du système (solution de repli lorsque la reconnaissance dans le cloud est désactivée) — iOS : Apple SFSpeechRecognizer ; Android : SpeechRecognizer du système</td><td>Apple Inc. (iOS), Google (Android)</td><td><a href="https://www.apple.com/privacy/" target="_blank">apple.com/privacy</a> · <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
         <tr><td>App Store / Play Store (distribution de l'application, mises à jour et statistiques d'installation et de plantage propres à la plateforme — collectées par celle-ci indépendamment de l'application)</td><td>Apple Inc. (iOS), Google LLC (Android)</td><td><a href="https://www.apple.com/legal/privacy/data/en/app-store/" target="_blank">apple.com/legal/privacy</a> · <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
@@ -1430,7 +1495,7 @@
 
   <section>
     <h2>19. Modifications de la présente politique</h2>
-    <p>Nous pouvons mettre à jour la présente politique afin de refléter des évolutions du service ou des exigences légales. La date figurant en haut de cette page indique la dernière révision. En cas de modification significative, nous en informerons les utilisateurs dans l'application.</p>
+    <p>Nous pouvons mettre à jour la présente politique afin de refléter des évolutions du service ou des exigences légales. La date figurant en haut de cette page indique la dernière révision ; toutes les versions publiées sont énumérées à la fin de cette page. En cas de modification significative, nous en informerons les utilisateurs dans l'application.</p>
   </section>
 
   <section>
@@ -1440,6 +1505,8 @@
       <a href="mailto:privacy@simplevoc.de">privacy@simplevoc.de</a></p>
     </div>
   </section>
+
+  <section class="doc-versions" data-lang="fr" hidden></section>
 
   <div class="footer-links">
     <a href="/impressum?lang=fr">Mentions légales</a>
@@ -1451,7 +1518,7 @@
 <div id="content-es" style="display:none">
 <main>
   <h1 class="page-title">Política de privacidad</h1>
-  <p class="updated">Última actualización: agosto de 2026 · Versión 1</p>
+  <p class="updated">Última actualización: octubre de 2026 · Versión 2</p>
 
   <div class="intro">
     simplevoc es una aplicación para aprender vocabulario. Puede utilizarla sin registrarse, en modo invitado anónimo,
@@ -1506,6 +1573,11 @@
         <tr>
           <td><strong>Texto transcrito o escrito</strong></td>
           <td>Extracción y traducción de palabras por IA a través de Vertex AI (Gemini) en la región de la UE de Google (véase el apartado 4.2)</td>
+          <td><span class="basis-tag">Art. 6.1.b RGPD</span></td>
+        </tr>
+        <tr>
+          <td><strong>Texto de las palabras guardadas</strong> (modo de escucha)</td>
+          <td>Síntesis de voz a través de Google Cloud Text-to-Speech en el punto de conexión regional de la UE, solo con la voz natural activada (véase el apartado 4.2a)</td>
           <td><span class="basis-tag">Art. 6.1.b RGPD</span></td>
         </tr>
         <tr>
@@ -1586,6 +1658,18 @@
     <p>Google se ha comprometido contractualmente a no utilizar los datos transmitidos para entrenar sus modelos de IA. Google Cloud EMEA Limited recurre a Google LLC y a otras sociedades del grupo Google como subencargados, por lo que no puede descartarse un acceso desde fuera de la UE/EEE —con fines de soporte y administración—; esas transferencias ulteriores están cubiertas por el Cloud Data Processing Addendum de Google, que incorpora las cláusulas contractuales tipo aprobadas por la Comisión Europea, y Google LLC está certificada conforme al Marco de Privacidad de Datos UE-EE. UU. Base jurídica: art. 6.1.b del RGPD.</p>
     <p><strong>Importante:</strong> le rogamos que no incluya datos personales sensibles (nombres, direcciones, información de salud o números de identificación) en el vocabulario que registre. La aplicación está concebida para aprender palabras y frases, no para conservar documentos personales.</p>
 
+    <h3 style="font-size:0.95rem;font-weight:600;margin:14px 0 6px;">4.2a Modo de escucha: voz sintética (Google Cloud Text-to-Speech)</h3>
+    <div class="highlight">
+      <strong>Usted decide de dónde viene la voz.</strong> El modo de escucha le lee en voz alta las palabras que ha guardado. Con la opción <em>«Voz natural para escuchar (IA en la nube)»</em> activada (Ajustes → Entrada por voz, activada de forma predeterminada), el <strong>texto</strong> de cada palabra —nunca una grabación, ni nada sobre usted— se envía a nuestro backend, que lo convierte en un breve clip de audio mediante <strong>Google Cloud Text-to-Speech</strong>. Si la desactiva, lee la voz integrada de su dispositivo; no se envía nada.
+    </div>
+    <p><strong>Con menos de 16 años no hay nada que decidir:</strong> el ajuste no se ofrece y se utiliza la voz del dispositivo. Véase el apartado 14.</p>
+    <ul>
+      <li>La solicitud contiene la palabra, su idioma y el token de inicio de sesión de su cuenta. Se envía a nuestras Cloud Functions en europe-west1, que llaman a Text-to-Speech en el <strong>punto de conexión regional de la UE</strong> de Google; nuestro backend se niega a llamar a cualquier otro.</li>
+      <li><strong>Se almacenan clips, no a usted.</strong> Cada clip se guarda en nuestro bucket de Cloud Storage (europe-west1) bajo una clave derivada únicamente del texto, el idioma y la voz, de modo que una palabra se genera una sola vez para todos los que la guardan. Nada en la caché está vinculado a una cuenta. Su teléfono conserva su propia copia para que una sesión funcione sin conexión.</li>
+      <li>Para limitar los costes contamos cuántos clips ha generado su cuenta cada día; el contador se encuentra en el registro de su cuenta y se elimina con ella.</li>
+      <li>El anexo de tratamiento de datos de Google y su compromiso de no utilizar los datos enviados para entrenar sus modelos se aplican tal como se describe en el apartado 4.2.</li>
+    </ul>
+    <p>Base jurídica: art. 6.1.b RGPD – leer sus palabras en voz alta es la función que ha activado.</p>
     <h3 style="font-size:0.95rem;font-weight:600;margin:14px 0 6px;">4.3 Qué hace la IA y en qué puede equivocarse</h3>
     <p><strong>Usted interactúa con un sistema de IA.</strong> Lee las palabras y frases que registra, determina qué palabras guardar, las traduce a su idioma de destino y genera material de práctica, como frases de ejemplo y ejercicios de conjugación.</p>
     <p><strong>Los resultados de la IA pueden ser erróneos.</strong> Una traducción puede ser inexacta, pasar por alto un matiz, elegir el sentido equivocado de una palabra ambigua o, sencillamente, equivocarse con aplomo. Considere lo que ve como una ayuda al estudio y no como una traducción autorizada; cuando importe, consulte un diccionario o pregunte a alguien que hable el idioma.</p>
@@ -1773,6 +1857,7 @@
         <tr><td>AssemblyAI (reconocimiento de voz en la nube, punto de conexión europeo; puede desactivarse en los ajustes)</td><td>AssemblyAI, Inc.</td><td><a href="https://www.assemblyai.com/legal/privacy-policy" target="_blank">assemblyai.com/legal/privacy-policy</a></td></tr>
         <tr><td>Iniciar sesión con Apple</td><td>Apple Inc.</td><td><a href="https://www.apple.com/privacy/" target="_blank">apple.com/privacy</a></td></tr>
         <tr><td>Vertex AI – Gemini (extracción y traducción de palabras por IA, región UE)</td><td>Google Cloud EMEA Limited (Irlanda)</td><td><a href="https://cloud.google.com/terms/data-processing-addendum" target="_blank">cloud.google.com/terms/data-processing-addendum</a> · <a href="https://cloud.google.com/privacy" target="_blank">cloud.google.com/privacy</a></td></tr>
+        <tr><td>Cloud Text-to-Speech (voz sintética del modo de escucha, punto de conexión regional de la UE; puede desactivarse en los ajustes)</td><td>Google Cloud EMEA Limited (Irlanda)</td><td><a href="https://cloud.google.com/terms/data-processing-addendum" target="_blank">cloud.google.com/terms/data-processing-addendum</a> · <a href="https://cloud.google.com/privacy" target="_blank">cloud.google.com/privacy</a></td></tr>
         <tr><td>RevenueCat</td><td>RevenueCat, Inc.</td><td><a href="https://www.revenuecat.com/privacy" target="_blank">revenuecat.com/privacy</a></td></tr>
         <tr><td>Reconocimiento de voz del sistema (alternativa cuando el reconocimiento en la nube está desactivado) — iOS: Apple SFSpeechRecognizer; Android: SpeechRecognizer del sistema</td><td>Apple Inc. (iOS), Google (Android)</td><td><a href="https://www.apple.com/privacy/" target="_blank">apple.com/privacy</a> · <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
         <tr><td>App Store / Play Store (distribución de la aplicación, actualizaciones y estadísticas propias de la plataforma sobre instalaciones y bloqueos, recopiladas por esta con independencia de la aplicación)</td><td>Apple Inc. (iOS), Google LLC (Android)</td><td><a href="https://www.apple.com/legal/privacy/data/en/app-store/" target="_blank">apple.com/legal/privacy</a> · <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
@@ -1866,7 +1951,7 @@
 
   <section>
     <h2>19. Modificaciones de esta política</h2>
-    <p>Podemos actualizar esta política para reflejar cambios en el servicio o exigencias legales. La fecha que figura al principio de esta página indica la última revisión. En caso de modificaciones significativas, informaremos a los usuarios dentro de la aplicación.</p>
+    <p>Podemos actualizar esta política para reflejar cambios en el servicio o exigencias legales. La fecha que figura al principio de esta página indica la última revisión; todas las versiones publicadas se enumeran al final de esta página. En caso de modificaciones significativas, informaremos a los usuarios dentro de la aplicación.</p>
   </section>
 
   <section>
@@ -1876,6 +1961,8 @@
       <a href="mailto:privacy@simplevoc.de">privacy@simplevoc.de</a></p>
     </div>
   </section>
+
+  <section class="doc-versions" data-lang="es" hidden></section>
 
   <div class="footer-links">
     <a href="/impressum?lang=es">Aviso legal</a>
@@ -1902,6 +1989,58 @@
     history.replaceState({}, '', url);
   }
 setLang(getLang());
+</script>
+<script>
+  // "Versions of this document": every frozen version, read from
+  // versions.json beside the document. Fetched rather than written into the
+  // page, so a frozen copy — which is never edited again — still lists the
+  // versions published after it. See docs/SETUP.md § Legal pages.
+  (function() {
+    const LABELS = {
+      en: { title: 'Versions of this document', version: 'Version', current: 'current', shown: 'shown on this page' },
+      de: { title: 'Fassungen dieses Dokuments', version: 'Fassung', current: 'aktuell', shown: 'auf dieser Seite angezeigt' },
+      fr: { title: 'Versions de ce document', version: 'Version', current: 'en vigueur', shown: 'affichée sur cette page' },
+      es: { title: 'Versiones de este documento', version: 'Versión', current: 'vigente', shown: 'mostrada en esta página' },
+    };
+    const doc = document.querySelector('meta[name="document-id"]').content;
+    const shown = Number(document.querySelector('meta[name="document-version"]').content);
+    fetch('/' + doc + '/versions.json', { cache: 'no-cache' })
+      .then(r => r.ok ? r.json() : Promise.reject(r.status))
+      .then(data => {
+        const versions = data.versions.slice().sort((a, b) => b.version - a.version);
+        if (!versions.length) return;
+        for (const box of document.querySelectorAll('.doc-versions')) {
+          const lang = box.dataset.lang;
+          const t = LABELS[lang];
+          const month = new Intl.DateTimeFormat(lang, { month: 'long', year: 'numeric' });
+          const h = document.createElement('h2');
+          h.textContent = t.title;
+          const ul = document.createElement('ul');
+          for (const v of versions) {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = '/' + doc + '/v' + v.version + '/?lang=' + lang;
+            const [y, m] = (v.documentDate || '').split('-').map(Number);
+            a.textContent = t.version + ' ' + v.version +
+                (y && m ? ' · ' + month.format(new Date(y, m - 1, 1)) : '');
+            li.appendChild(a);
+            const tags = [];
+            if (v.version === data.current) tags.push(t.current);
+            if (v.version === shown) tags.push(t.shown);
+            if (tags.length) {
+              const s = document.createElement('span');
+              s.className = 'tag';
+              s.textContent = '(' + tags.join(', ') + ')';
+              li.appendChild(s);
+            }
+            ul.appendChild(li);
+          }
+          box.replaceChildren(h, ul);
+          box.hidden = false;
+        }
+      })
+      .catch(() => {});  // no list beats a broken one; the document itself stands
+  })();
 </script>
 </body>
 </html>

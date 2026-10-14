@@ -8,8 +8,9 @@
        with versions.json beside it and with the frozen copy under /vN/ —
        `make legal-freeze` refuses to freeze a version these disagree on.
        See docs/SETUP.md § Legal pages. -->
-  <meta name="document-version" content="1" />
-  <meta name="document-date" content="2026-08" />
+  <meta name="document-id" content="agb" />
+  <meta name="document-version" content="2" />
+  <meta name="document-date" content="2026-10" />
   <style>
     /* ── Palette — mirrors the app's light (warm beige) theme,
           lib/theme/app_theme.dart → AppTheme.lightColors ───────── */
@@ -86,6 +87,12 @@
     }
     .card { background: var(--card); border: 1px solid var(--border-sub); border-radius: 12px; padding: 20px 24px; }
     .card p { font-size: 0.95rem; }
+    .doc-versions { margin-top: 40px; }
+    .doc-versions h2 { font-size: 1rem; }
+    .doc-versions ul { list-style: none; padding: 0; margin: 8px 0 0; }
+    .doc-versions li { padding: 6px 0; border-bottom: 1px solid var(--border-sub); font-size: 0.9rem; }
+    .doc-versions li:last-child { border-bottom: none; }
+    .doc-versions .tag { color: var(--text-mute); font-size: 0.82rem; margin-left: 6px; }
     .footer-links { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border-sub); display: flex; gap: 20px; flex-wrap: wrap; }
     .footer-links a { color: var(--text-mute); font-size: 0.875rem; }
     .footer-links a:hover { color: var(--accent); }
@@ -96,7 +103,7 @@
 
 <header>
   <div class="header-left">
-    <a href="/"><img src="../media/icon.png" class="logo-icon" width="1024" height="1024"
+    <a href="/"><img src="/media/icon.png" class="logo-icon" width="1024" height="1024"
          alt="simplevoc app icon"></a>
     <div>
       <h1>simplevoc</h1>
@@ -115,7 +122,7 @@
 <div id="content-de">
 <main>
   <h1 class="page-title">Allgemeine Geschäftsbedingungen (AGB)</h1>
-  <p class="updated">Stand: August 2026 · Fassung 1</p>
+  <p class="updated">Stand: Oktober 2026 · Fassung 2</p>
 
   <div class="intro">
     Diese Allgemeinen Geschäftsbedingungen regeln die Nutzung der App <strong>simplevoc</strong> und der zugehörigen Dienste. Mit der Registrierung bei simplevoc oder der Nutzung von simplevoc mit einem lokalen Account stimmst du diesen Bedingungen zu.
@@ -370,6 +377,8 @@
     </div>
   </section>
 
+  <section class="doc-versions" data-lang="de" hidden></section>
+
   <div class="footer-links">
     <a href="/privacy?lang=de">Datenschutzerklärung</a>
     <a href="/impressum">Impressum</a>
@@ -381,7 +390,7 @@
 <div id="content-en" style="display:none">
 <main>
   <h1 class="page-title">Terms of Use</h1>
-  <p class="updated">Last updated: August 2026 · Version 1</p>
+  <p class="updated">Last updated: October 2026 · Version 2</p>
 
   <div class="intro">
     These Terms of Use govern your access to and use of the <strong>simplevoc</strong> app and related services. By registering with simplevoc, or by using simplevoc with a local account, you agree to these terms.
@@ -637,6 +646,8 @@
     </div>
   </section>
 
+  <section class="doc-versions" data-lang="en" hidden></section>
+
   <div class="footer-links">
     <a href="/privacy">Privacy Policy</a>
     <a href="/impressum?lang=en">Legal Notice</a>
@@ -647,7 +658,7 @@
 <div id="content-fr" style="display:none">
 <main>
   <h1 class="page-title">Conditions générales d'utilisation</h1>
-  <p class="updated">Dernière mise à jour : août 2026 · Version 1</p>
+  <p class="updated">Dernière mise à jour : octobre 2026 · Version 2</p>
 
   <div class="intro">
     Les présentes conditions générales d'utilisation régissent votre accès à l'application <strong>simplevoc</strong> et aux services associés, ainsi que votre utilisation de ceux-ci. En vous inscrivant à simplevoc, ou en utilisant simplevoc avec un compte local, vous acceptez les présentes conditions.
@@ -903,6 +914,8 @@
     </div>
   </section>
 
+  <section class="doc-versions" data-lang="fr" hidden></section>
+
   <div class="footer-links">
     <a href="/privacy?lang=fr">Politique de confidentialité</a>
     <a href="/impressum?lang=fr">Mentions légales</a>
@@ -913,7 +926,7 @@
 <div id="content-es" style="display:none">
 <main>
   <h1 class="page-title">Condiciones de uso</h1>
-  <p class="updated">Última actualización: agosto de 2026 · Versión 1</p>
+  <p class="updated">Última actualización: octubre de 2026 · Versión 2</p>
 
   <div class="intro">
     Las presentes condiciones de uso rigen su acceso a la aplicación <strong>simplevoc</strong> y a los servicios asociados, así como su utilización. Al registrarse en simplevoc, o al utilizar simplevoc con una cuenta local, usted acepta estas condiciones.
@@ -1169,6 +1182,8 @@
     </div>
   </section>
 
+  <section class="doc-versions" data-lang="es" hidden></section>
+
   <div class="footer-links">
     <a href="/privacy?lang=es">Política de privacidad</a>
     <a href="/impressum?lang=es">Aviso legal</a>
@@ -1194,6 +1209,58 @@
     history.replaceState({}, '', url);
   }
 setLang(getLang());
+</script>
+<script>
+  // "Versions of this document": every frozen version, read from
+  // versions.json beside the document. Fetched rather than written into the
+  // page, so a frozen copy — which is never edited again — still lists the
+  // versions published after it. See docs/SETUP.md § Legal pages.
+  (function() {
+    const LABELS = {
+      en: { title: 'Versions of this document', version: 'Version', current: 'current', shown: 'shown on this page' },
+      de: { title: 'Fassungen dieses Dokuments', version: 'Fassung', current: 'aktuell', shown: 'auf dieser Seite angezeigt' },
+      fr: { title: 'Versions de ce document', version: 'Version', current: 'en vigueur', shown: 'affichée sur cette page' },
+      es: { title: 'Versiones de este documento', version: 'Versión', current: 'vigente', shown: 'mostrada en esta página' },
+    };
+    const doc = document.querySelector('meta[name="document-id"]').content;
+    const shown = Number(document.querySelector('meta[name="document-version"]').content);
+    fetch('/' + doc + '/versions.json', { cache: 'no-cache' })
+      .then(r => r.ok ? r.json() : Promise.reject(r.status))
+      .then(data => {
+        const versions = data.versions.slice().sort((a, b) => b.version - a.version);
+        if (!versions.length) return;
+        for (const box of document.querySelectorAll('.doc-versions')) {
+          const lang = box.dataset.lang;
+          const t = LABELS[lang];
+          const month = new Intl.DateTimeFormat(lang, { month: 'long', year: 'numeric' });
+          const h = document.createElement('h2');
+          h.textContent = t.title;
+          const ul = document.createElement('ul');
+          for (const v of versions) {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = '/' + doc + '/v' + v.version + '/?lang=' + lang;
+            const [y, m] = (v.documentDate || '').split('-').map(Number);
+            a.textContent = t.version + ' ' + v.version +
+                (y && m ? ' · ' + month.format(new Date(y, m - 1, 1)) : '');
+            li.appendChild(a);
+            const tags = [];
+            if (v.version === data.current) tags.push(t.current);
+            if (v.version === shown) tags.push(t.shown);
+            if (tags.length) {
+              const s = document.createElement('span');
+              s.className = 'tag';
+              s.textContent = '(' + tags.join(', ') + ')';
+              li.appendChild(s);
+            }
+            ul.appendChild(li);
+          }
+          box.replaceChildren(h, ul);
+          box.hidden = false;
+        }
+      })
+      .catch(() => {});  // no list beats a broken one; the document itself stands
+  })();
 </script>
 </body>
 </html>

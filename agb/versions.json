@@ -1,0 +1,22 @@
+{
+  "document": "agb",
+  "current": 2,
+  "versions": [
+    {
+      "version": 1,
+      "documentDate": "2026-08",
+      "frozenAt": "2026-08-21",
+      "path": "agb/v1/index.html",
+      "url": "https://simplevoc.de/agb/v1/",
+      "sha256": "a817caaec29ed27d3506ffe0c083208f5806c9fe2803a98e5d615d11b7be6f70"
+    },
+    {
+      "version": 2,
+      "documentDate": "2026-10",
+      "frozenAt": "2026-10-14",
+      "path": "agb/v2/index.html",
+      "url": "https://simplevoc.de/agb/v2/",
+      "sha256": "94654c37ee209ea90debc036fb5ca9c0d8ffdb25d14fbda2d752e5209d93df6a"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "document": "privacy",
+  "current": 2,
+  "versions": [
+    {
+      "version": 1,
+      "documentDate": "2026-08",
+      "frozenAt": "2026-08-21",
+      "path": "privacy/v1/index.html",
+      "url": "https://simplevoc.de/privacy/v1/",
+      "sha256": "f9ed50ca1218d3a30e6febb0f7542e241c94319718be1748eb3787f229464c5c"
+    },
+    {
+      "version": 2,
+      "documentDate": "2026-10",
+      "frozenAt": "2026-10-14",
+      "path": "privacy/v2/index.html",
+      "url": "https://simplevoc.de/privacy/v2/",
+      "sha256": "ab28d90e973ab5b5d3fbe8c73a3090e83e6c7e16ffce228e05b2054911f68cf6"
+    }
+  ]
+}
